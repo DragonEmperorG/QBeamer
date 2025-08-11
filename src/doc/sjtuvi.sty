@@ -1,0 +1,258 @@
+%%
+%% This is file `whuvi.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% whuvi.dtx  (with options: `package')
+%% ------------------------------------------------------------------------
+%% Copyright (C) Shanghai Jiao Tong University
+%% The definition in this file is referred to the Visual Identity System
+%% from Shanghai Jiao Tong University (whu).
+%% See https://vi.whu.edu.cn for more information.
+%% 
+%% whuG implements the design but doesn't hold the copyright.
+%% Any commercial usage in this file should be acknowledged by
+%% the administration of whu.
+%% More infomation about the license,
+%% see https://vi.whu.edu.cn/index.php/articles/bulletin/16.
+%% ------------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{whuvi}[2024/12/21 v3.1.1 Visual Identity System library for whubeamer]
+\newif\ifwhubeamer@tempif%
+\newbox\whubeamer@tempbox%
+\newskip\whubeamer@h%
+\def\DefineOption#1#2#3{%
+  % #1: package
+  % #2: key
+  % #3: value
+  \DeclareOptionBeamer{#3}{\expandafter\def\csname whubeamer@#1@#2\endcsname{#3}}%
+}
+\def\EqualOption{TT\fi\ifEqualOption}
+\def\ifEqualOption#1#2#3{%
+  % #1: package
+  % #2: key
+  % #3: value
+  \edef\tempvar{\csname whubeamer@#1@#2\endcsname}%
+  \def\tempvalue{#3}%
+  \ifx\tempvar\tempvalue\whubeamer@tempiftrue\else\whubeamer@tempiffalse\fi%
+  \ifwhubeamer@tempif%
+}
+\def\IsEmpty{TT\fi\ifIsEmpty}
+\def\ifIsEmpty#1{%
+  \setbox\whubeamer@tempbox=\hbox\bgroup\def\\{}#1\unskip\egroup%
+  \ifdim\wd\whubeamer@tempbox=0pt \whubeamer@tempiftrue%
+  \else\whubeamer@tempiffalse\fi%
+  \ifwhubeamer@tempif%
+}
+\providecommand{\getcontribdir}[1]{contrib/#1}
+\providecommand{\getcontribpath}[2]{\getcontribdir{#1}/#2}
+\RequirePackage{tikz}
+\usetikzlibrary{fadings}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{external}
+\usetikzlibrary{backgrounds}
+\definecolor{whuRedPrimary}{RGB}{167,32,56}         % engred
+\definecolor{whuRedSecondary}{RGB}{240,131,0}       % orange
+\definecolor{whuRedTertiary}{RGB}{253,208,0}        % yellow
+\definecolor{whuBluePrimary}{RGB}{0,64,152}         % problue
+\definecolor{whuBlueSecondary}{RGB}{51,141,39}      % lightgreen
+\definecolor{whuBlueTertiary}{RGB}{0,81,78}         % lightgray
+\RequirePackage{array}
+\newcommand{\definelogo}[4]{
+  % #1: csname
+  % #2: path
+  % #3: horizontal clip (0~1)
+  % #4: vertical clip (0~1)
+  \pgfmathparse{notgreater(#3,#4)}
+  \ifnum\pgfmathresult=1
+    \begin{tikzfadingfrompicture}[name=#1]
+      \fill[black] (-1,-1) rectangle (1,1);
+      \node {\includegraphics[width=1.5cm]{#2}};
+    \end{tikzfadingfrompicture}
+  \else
+    \begin{tikzfadingfrompicture}[name=#1]
+      \fill[black] (-1,-1) rectangle (1,1);
+      \node {\includegraphics[height=1.5cm]{#2}};
+    \end{tikzfadingfrompicture}
+  \fi
+  \expandafter\providecommand\csname #1\endcsname[1][]{%
+    % ##1: override color, or opacity=... (optional)
+    \tikzexternaldisable%
+    \begin{tikzpicture}
+      \begin{scope}
+        \clip ({-1.0+#3},{-1.0+#4}) rectangle ({1.0-#3},{1.0-#4});
+        \fill [##1, path fading=#1] (-1,-1) rectangle (1,1);
+      \end{scope}
+    \end{tikzpicture}%
+  }
+}
+\definelogo{whubadge}{vi/whu-vi-whubadge.pdf}{0}{0}
+\definelogo{zhlogo}{vi/whu-vi-zhlogo.pdf}{0.13}{0.75}
+\definelogo{enlogo}{vi/whu-vi-enlogo.pdf}{0.13}{0.75}
+\definelogo{dlogo}{vi/whu-vi-dlogo.pdf}{0}{0}
+\definelogo{vlogo}{vi/whu-vi-vlogo.pdf}{0.8}{0.13}
+\definelogo{whubg}{vi/whu-vi-whubg.png}{0.3}{0.5}
+\definelogo{whugate}{vi/whu-vi-whugate.png}{0.25}{0.8}
+\newcommand{\secondaryinstlogo}[3][]{%
+  % #1: shortinst (optional)
+  % #2: longinst
+  % #3: logo
+  \hbox{%
+    \raggedright%
+    \resizebox{!}{1cm}{\vphantom{-}#3}%
+    \if\IsEmpty{#2}%
+    \else%
+      \if\IsEmpty{#1}%
+        \if\IsEmpty{#3}\else%
+          {\hskip0.31cm\vrule width0.5pt}\hskip0.31cm%
+        \fi%
+        \vbox to 1cm{%
+          \vfill%
+          \hbox{%
+            \noindent%
+            \fontsize{7pt}{0pt}\selectfont\mdseries\scshape%
+            \begin{tabular}{@{}l<{\vphantom{\vrule depth2pt}}@{}}
+              #2
+            \end{tabular}%
+          }%
+          \vskip-2pt%
+          \vfill%
+        }%
+      \else%
+        \if\IsEmpty{#3}\else%
+          {\hskip0.23cm\vrule width0.5pt}\hskip0.23cm%
+        \fi%
+        \vbox to 1cm{%
+          \def\\{}%
+          \vfill
+          \offinterlineskip
+          \hbox{%
+            \fontsize{13pt}{0pt}\selectfont%
+            \mdseries\sffamily #2%
+          }
+          \vskip0.08cm%
+          \hbox{%
+            \fontsize{5pt}{0pt}\selectfont%
+            \mdseries\scshape #1%
+          }
+          \vskip-\prevdepth\vskip0.14cm%
+        }%
+      \fi%
+    \fi%
+  }%
+}
+\providecommand{\stamptext}[2][structure]{
+  {
+    \providecolor{#1}{named}{whuRedPrimary}
+    \tikzset{external/export=false}
+    \begin{tikzpicture}[baseline=(nodetext.base)]
+      \node [white] (nodetext) at (0,0) {#2};
+      \pgfextracty{\whubeamer@h}{\pgfpointanchor{nodetext}{north}}%
+      \pgfextracty{\pgf@ya}{\pgfpointanchor{nodetext}{south}}%
+      \addtolength{\whubeamer@h}{-\pgf@ya}
+      \scoped[on background layer]
+        \fill [#1]
+          (-1.25*\whubeamer@h,0)
+          -- (-0.85*\whubeamer@h,0.3*\whubeamer@h)
+          -- (-0.85*\whubeamer@h,0.5*\whubeamer@h)
+          -- (0.85*\whubeamer@h,0.5*\whubeamer@h)
+          -- (0.85*\whubeamer@h,0.3*\whubeamer@h)
+          -- (1.25*\whubeamer@h,0)
+          -- (0.85*\whubeamer@h,-0.3*\whubeamer@h)
+          -- (0.85*\whubeamer@h,-0.5*\whubeamer@h)
+          -- (-0.85*\whubeamer@h,-0.5*\whubeamer@h)
+          -- (-0.85*\whubeamer@h,-0.3*\whubeamer@h) -- cycle;
+    \end{tikzpicture}
+  }
+}
+\def\whubeamer@compatible@false{false}
+\ifx\whubeamer@compatible\whubeamer@compatible@false
+\else
+  \usetikzlibrary{patterns.meta}
+  \tikzdeclarepattern{
+    name=stamp,
+    parameters={
+        \pgfkeysvalueof{/pgf/pattern keys/size},
+        \pgfkeysvalueof{/pgf/pattern keys/xshift},
+        \pgfkeysvalueof{/pgf/pattern keys/yshift},
+      },
+    defaults={
+        size/.initial = 5pt,
+        xshift/.initial = 0pt,
+        yshift/.initial = 0pt,
+      },
+    bottom left={(
+        -0.5*\pgfkeysvalueof{/pgf/pattern keys/size}
+        +\pgfkeysvalueof{/pgf/pattern keys/xshift},
+        -0.4*\pgfkeysvalueof{/pgf/pattern keys/size}
+        +\pgfkeysvalueof{/pgf/pattern keys/yshift}
+        )},
+    top right={(
+        0.5*\pgfkeysvalueof{/pgf/pattern keys/size}
+        +\pgfkeysvalueof{/pgf/pattern keys/xshift},
+        0.4*\pgfkeysvalueof{/pgf/pattern keys/size}
+        +\pgfkeysvalueof{/pgf/pattern keys/yshift}
+        )},
+    tile size={(
+        \pgfkeysvalueof{/pgf/pattern keys/size},
+        0.8*\pgfkeysvalueof{/pgf/pattern keys/size}
+        )},
+    code={
+        \def\whubeamer@s{\pgfkeysvalueof{/pgf/pattern keys/size}}%
+        \tikzset{x=0.5*\whubeamer@s,y=0.2*\whubeamer@s}
+        \fill[xshift=\pgfkeysvalueof{/pgf/pattern keys/xshift},
+          yshift=\pgfkeysvalueof{/pgf/pattern keys/yshift}]
+        (-0.25*\whubeamer@s,0)
+        -- (-0.17*\whubeamer@s,0.06*\whubeamer@s)
+        -- (-0.17*\whubeamer@s,0.1*\whubeamer@s)
+        -- (0.17*\whubeamer@s,0.1*\whubeamer@s)
+        -- (0.17*\whubeamer@s,0.06*\whubeamer@s)
+        -- (0.25*\whubeamer@s,0)
+        -- (0.17*\whubeamer@s,-0.06*\whubeamer@s)
+        -- (0.17*\whubeamer@s,-0.1*\whubeamer@s)
+        -- (-0.17*\whubeamer@s,-0.1*\whubeamer@s)
+        -- (-0.17*\whubeamer@s,-0.06*\whubeamer@s) -- cycle;
+      }
+  }
+\fi
+\ifx\whubeamer@compatible\whubeamer@compatible@false
+  \providecommand{\stamparray}[3]{}
+\else
+  \providecommand{\stamparray}[3]{
+    % #1: pattern size
+    % #2: starting point
+    % #3: ending point
+    \usebeamercolor{palette primary}
+    \fill [pattern={stamp[size=#1]},
+      pattern color=bg!50!fg] #2 rectangle #3;
+    \def\whubeamer@s{#1}%
+    \pgfmathparse{0.5*\whubeamer@s}\let\xs=\pgfmathresult%
+    \pgfmathparse{-0.4*\whubeamer@s}\let\ys=\pgfmathresult%
+    \fill [pattern={stamp[size=#1,xshift=\xs, yshift=\ys]},
+      pattern color=bg!50!fg] #2 rectangle #3;
+  }
+\fi
+\pgfdeclaredecoration{stampline}{initial}
+{
+  \state{initial}[
+    width=\pgfdecorationsegmentlength,
+    auto corner on length=\pgfdecorationsegmentlength]
+  {
+    \def\whubeamer@l{\pgfdecorationsegmentlength}%
+    \pgfpathlineto{\pgfpoint{0.25*\whubeamer@l}{0pt}}
+    \pgfpathlineto{\pgfpoint{0.33*\whubeamer@l}{0.06*\whubeamer@l}}
+    \pgfpathlineto{\pgfpoint{0.33*\whubeamer@l}{0.1*\whubeamer@l}}
+    \pgfpathlineto{\pgfpoint{0.67*\whubeamer@l}{0.1*\whubeamer@l}}
+    \pgfpathlineto{\pgfpoint{0.67*\whubeamer@l}{0.06*\whubeamer@l}}
+    \pgfpathlineto{\pgfpoint{0.75*\whubeamer@l}{0pt}}
+    \pgfpathlineto{\pgfpoint{\whubeamer@l}{0pt}}
+  }
+  \state{final}
+  {
+    \pgfpathlineto{\pgfpointdecoratedpathlast}
+  }
+}
+\endinput
+%%
+%% End of file `whuvi.sty'.

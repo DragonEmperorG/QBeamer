@@ -1,0 +1,96 @@
+%%
+%% This is file `beamerthemewhubeamer.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% beamerthemewhubeamer.dtx  (with options: `package,maxplus,max,min,my')
+%% ------------------------------------------------------------------------
+%% Copyright (C) 2021-2024 WHUG
+%% 
+%% Licensed under the Apache License, Version 2.0 (the "License");
+%% you may not use this file except in compliance with the License.
+%% You may obtain a copy of the License at
+%% 
+%%     http://www.apache.org/licenses/LICENSE-2.0
+%% 
+%% Unless required by applicable law or agreed to in writing, software
+%% distributed under the License is distributed on an "AS IS" BASIS,
+%% WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%% See the License for the specific language governing permissions and
+%% limitations under the License.
+%% ------------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemewhubeamer}[2024/12/21 v3.1.1 whubeamer parent theme]
+\DeclareOptionBeamer{maxplus}{
+  \def\whubeamer@cover{maxplus}\def\whubeamer@logopos{topright}}
+\DeclareOptionBeamer{max}{
+  \def\whubeamer@cover{max}\def\whubeamer@logopos{bottomright}}
+\DeclareOptionBeamer{min}{
+  \def\whubeamer@cover{min}\def\whubeamer@logopos{topright}}
+\DeclareOptionBeamer{my}{
+  \def\whubeamer@cover{my}\def\whubeamer@logopos{bottomright}}
+    % reserved for customization
+\ExecuteOptionsBeamer{
+  maxplus,
+  min,
+  my,
+  max,
+}
+\DeclareOptionBeamer{red}{\def\whubeamer@color{red}}
+\DeclareOptionBeamer{blue}{\def\whubeamer@color{blue}}
+\ExecuteOptionsBeamer{red}
+\DeclareOptionBeamer{light}{\def\whubeamer@lum{light}}
+\DeclareOptionBeamer{dark}{\def\whubeamer@lum{dark}}
+\ExecuteOptionsBeamer{dark}
+\DeclareOptionBeamer{zh}{\def\whubeamer@lang{zh}}
+\DeclareOptionBeamer{en}{\def\whubeamer@lang{en}}
+\@ifclassloaded{ctexbeamer}{\ExecuteOptionsBeamer{zh}}{
+  \ExecuteOptionsBeamer{en}}
+\DeclareOptionBeamer{miniframes}{\def\whubeamer@nav{miniframes}}
+\DeclareOptionBeamer{infolines}{\def\whubeamer@nav{infolines}}
+\DeclareOptionBeamer{sidebar}{\def\whubeamer@nav{sidebar}}
+\DeclareOptionBeamer{default}{\def\whubeamer@nav{default}}
+\DeclareOptionBeamer{smoothbars}{\def\whubeamer@nav{smoothbars}}
+\DeclareOptionBeamer{split}{\def\whubeamer@nav{split}}
+\DeclareOptionBeamer{shadow}{\def\whubeamer@nav{shadow}}
+\DeclareOptionBeamer{tree}{\def\whubeamer@nav{tree}}
+\DeclareOptionBeamer{smoothtree}{\def\whubeamer@nav{smoothtree}}
+\ExecuteOptionsBeamer{miniframes}
+\DeclareOptionBeamer{topright}{\def\whubeamer@logopos{topright}}
+\DeclareOptionBeamer{bottomright}{\def\whubeamer@logopos{bottomright}}
+\ProcessOptionsBeamer
+\PassOptionsToPackage{\whubeamer@cover}{beamerinnerthemewhubeamer}
+\PassOptionsToPackage{\whubeamer@color}{beamercolorthemewhubeamer}
+\PassOptionsToPackage{\whubeamer@color}{beamerinnerthemewhubeamer}
+\PassOptionsToPackage{\whubeamer@lum}{beamercolorthemewhubeamer}
+\PassOptionsToPackage{\whubeamer@lang}{beamerinnerthemewhubeamer}
+\PassOptionsToPackage{\whubeamer@nav}{beamerouterthemewhubeamer}
+\PassOptionsToPackage{\whubeamer@logopos}{beamerouterthemewhubeamer}
+\mode<presentation>
+\usecolortheme{whubeamer}
+\usefonttheme{whubeamer}
+\useinnertheme{whubeamer}
+\useoutertheme{whubeamer}
+\newrobustcmd*\usewhutheme[2][]{
+  \def\whubeamer@mythemeoptions{#1}
+  \def\whubeamer@mythemelist{#2}
+  \@for\whubeamer@mythemename:=\whubeamer@mythemelist\do{
+    \@for\whubeamer@mythemeoption:=\whubeamer@mythemeoptions\do{
+      \expandafter\def\csname whubeamer@\whubeamer@mythemename
+        @\whubeamer@mythemeoption\endcsname{true}
+    }
+    \def\whubeamer@mythemefile{whubeamertheme\whubeamer@mythemename.ltx}
+    \IfFileExists{\whubeamer@mythemefile}{
+      \PackageWarning{\whubeamer@mythemename}{
+        Local ltx file is found. For documentation use only. \MessageBreak
+        Move to \getcontribdir{\whubeamer@mythemename} for release.
+        Unexpected error in other ltx may occur}
+      \renewcommand{\getcontribdir}[1]{.}
+    }{}
+    \input{\getcontribpath{\whubeamer@mythemename}{\whubeamer@mythemefile}}
+  }
+}
+\endinput
+%%
+%% End of file `beamerthemewhubeamer.sty'.
