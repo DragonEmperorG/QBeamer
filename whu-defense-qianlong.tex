@@ -89,20 +89,6 @@
 \def\cmdxmp#1#2#3{\small{\texttt{\color{structure}$\backslash$#1}\{#2\}
 \hspace{1em}\\ $\Rightarrow$\hspace{1em} {#3}\par\vskip1em}}
 
-\usetheme[maxplus]{whubeamer}
-% 使用 maxplus/max/min 切换标题页样式
-% 使用 red/blue 切换主色调
-% 使用 light/dark 切换亮/暗色模式
-% 使用外样式关键词以获得不同的边栏样式
-%   miniframes infolines  sidebar
-%   default    smoothbars split	 
-%   shadow     tree       smoothtree
-% 使用 topright/bottomright 切换徽标位置
-% 使用逗号分隔列表以同时使用多种选项
-
-% \setbeamertemplate{background}{}
-% 对于 max 主题，如果需要关闭正文背景图，请取消注释上一行。
-
 % \tikzexternalize[prefix=build/]
 % 如果您需要缓存 tikz 图像，请取消注释上一行，并在编译选项中添加 -shell-escape。
 
@@ -117,16 +103,47 @@
   breaklines,%
 }
 
-\author{钱隆}
-\institute[SJTUG]{武汉大学 测绘遥感信息工程全国重点实验室}
+% 10.1 Adding a Title Page
+% \title[⟨short title⟩]{⟨title⟩}
+% The ⟨short title⟩ is used in headlines and footlines. Inside the ⟨title⟩ line breaks can be inserted using
+% the double-backslash command.
+\title[基于智能手机的数据和模型双驱动定位方法研究]{\textbf{基于智能手机的数据和模型双驱动定位方法研究}} % 页脚显示标题 | 首页标题
+% \subtitle[⟨short subtitle⟩]{⟨subtitle⟩}
+% The ⟨short subtitle⟩ is not used by default, but is available via the insert \insertshortsubtitle. The
+% subtitle is shown below the title in a smaller font.
+\subtitle{博士学位论文预答辩}
+% \institute[⟨short institute⟩]{⟨institute⟩}
+% If more than one institute is given, they should be separated using the command \and and they should
+% be prefixed by the command \inst with different parameters.
+% \author{}
+\institute[测绘遥感信息工程全国重点实验室]{武汉大学 \  测绘遥感信息工程全国重点实验室}
+% \date[⟨short date⟩]{⟨date⟩}
 \date{\the\year 年 \the\month 月}
-\subject{上海交通大学图书馆专题培训讲座}
-\keywords{LaTeX, 论文排版, SJTUThesis}
+% \subject{⟨text⟩}
+% Enters the ⟨text⟩ as the subject text in the pdf document info. It currently has no other effect.
+\subject{武汉大学博士学位论文答辩}
+% \keywords{⟨text⟩}
+% Enters the ⟨text⟩ as keywords in the pdf document info. It currently has no other effect.
+\keywords{答辩}
 
-\title[\SJTUBeamer 示例文档] % 页脚显示标题
-{\textbf{如何使用 \LaTeX{} 排版论文}} % 首页标题
+% 15 Themes
+% 15.1 Five Flavors of Themes
+% \usetheme[⟨options⟩]{⟨name list⟩}
+% Installs the presentation theme named ⟨name⟩. Currently, the effect of this command is the same as
+% saying
+\usetheme[max,blue]{whubeamer}
+% 使用 maxplus/max/min 切换标题页样式
+% 使用 red/blue 切换主色调
+% 使用 light/dark 切换亮/暗色模式
+% 使用外样式关键词以获得不同的边栏样式
+%   miniframes infolines  sidebar
+%   default    smoothbars split	 
+%   shadow     tree       smoothtree
+% 使用 topright/bottomright 切换徽标位置
+% 使用逗号分隔列表以同时使用多种选项
 
-\subtitle{\SJTUBeamer 示例文档}
+\setbeamertemplate{background}{}
+% 对于 max 主题，如果需要关闭正文背景图，请取消注释上一行。
 
 \begin{document}
 
@@ -152,36 +169,19 @@
 
 \maketitle
 
-\begin{frame}
-  \frametitle{来源}
-  \begin{thebibliography}{00}
-    \setbeamertemplate{bibliography item}[online]
-    \bibitem{} Alexara Wu.
-    \newblock 如何使用 \LaTeX{} 排版论文[EB/OL].
-    \newblock 2021.
-    \url{https://github.com/sjtug/sjtulib-latex-talk/tree/alexara-2021}
-  \end{thebibliography}
-
-  \vspace*{2ex}
-
-  \begin{itemize}
-    \item 本示例文档的源码结构适用于简短的单次报告，仅展示 \beamer{} 文档类的通
-          用功能，更多地在使用 \SJTUBeamer{} 的样式信息。
-    \item 为发挥 \SJTUBeamer{} 的全部功能，参见发布区
-          \link{https://github.com/sjtug/SJTUBeamer/releases} 的快速入门、用户手
-          册与开发文档。
-    \item 就制作一组讲座而言，相关源码结构可以参考新讲座
-          \link{https://github.com/sjtug/sjtulib-latex-talk/tree/logcreative-2022}。
-          新讲座使用了社区版主题的同时也展示了 \SJTUBeamer{} 的特殊用法。
-  \end{itemize}
-
-\end{frame}
-
 \begin{frame}{目录}
+  % 10.5 Adding a Table of Contents
+  % \tableofcontents[⟨comma-separated option list⟩]
+  % Inserts a table of contents into the current frame.
+  \vspace{-0.5cm}
   \tableofcontents[hideallsubsections]	% 隐藏所有小节信息
 \end{frame}
 
-\include{contents/introduction}
+\include{contents/whu_defense_introduction}
+\include{contents/whu_defense_status}
+\include{contents/whu_defense_contents}
+\include{contents/whu_defense_conclusions}
+\include{contents/whu_defense_achievements}
 
 \begin{frame}
   \frametitle{参考文献}
