@@ -21,21 +21,28 @@
 % 写纯英文幻灯片可以改用 beamer 文档类。
 
 \usepackage{tikz}
-\usepackage[normalem]{ulem}
 \usetikzlibrary{arrows}
+
 \usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage{hologo}
-\usepackage{colortbl}
-\usepackage{shapepar}
-\usepackage{hyperxmp}
 \usepackage{booktabs}
-\usepackage{listings}
-\usepackage{tipa}
-\usepackage{multicol}
+\usepackage{caption}
+\usepackage{colortbl}
 \usepackage{datetime2}
 \usepackage{fontawesome5}
+\usepackage{graphicx}
+\usepackage{hologo}
 \usepackage{hyperref}
+\usepackage{hyperxmp}
+\usepackage{listings}
+\usepackage{makecell}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{physics}
+\usepackage{pifont}
+\usepackage{shapepar}
+\usepackage{siunitx}
+\usepackage{tipa}
+\usepackage[normalem]{ulem}
 
 % 参考文献设置，使用 style=gb7714-2015 样式为标准顺序编码制，
 % 使用 style=gb7714-2015ay 样式可以改为著者-出版年制。
@@ -58,28 +65,6 @@
   \let\quad\relax
   \let\hspace\@gobble
 }
-
-\renewcommand{\TeX}{\hologo{TeX}}
-\renewcommand{\LaTeX}{\hologo{LaTeX}}
-\newcommand{\BibTeX}{\hologo{BibTeX}}
-\newcommand{\XeTeX}{\hologo{XeTeX}}
-\newcommand{\pdfTeX}{\hologo{pdfTeX}}
-\newcommand{\LuaTeX}{\hologo{LuaTeX}}
-\newcommand{\MiKTeX}{\hologo{MiKTeX}}
-\newcommand{\MacTeX}{Mac\hologo{TeX}}
-\newcommand{\beamer}{\textsc{beamer}}
-\newcommand{\XeLaTeX}{\hologo{Xe}\kern-.13em\LaTeX{}}
-\newcommand{\pdfLaTeX}{pdf\LaTeX{}}
-\newcommand{\LuaLaTeX}{Lua\LaTeX{}}
-\def\TeXLive{\TeX{} Live}
-\let\TL=\TeXLive
-
-\newcommand{\SJTUThesis}{\textsc{SJTUThesis}}
-\newcommand{\SJTUThesisVersion}{2.0.3}
-\newcommand{\SJTUThesisDate}{2023/9/25}
-\newcommand{\SJTUBeamer}{\textsc{SJTUBeamer}}
-\newcommand{\SJTUBeamerVersion}{3.0.0}
-\newcommand{\SJTUBeamerDate}{2022/11/22}
 
 \newcommand\link[1]{\href{#1}{\faLink}}
 \newcommand\pkg[1]{\texttt{#1}}
@@ -183,10 +168,10 @@
 \include{contents/whu_defense_conclusions}
 \include{contents/whu_defense_achievements}
 
-\begin{frame}
-  \frametitle{参考文献}
-  \printbibliography[heading=none]
-\end{frame}
+%\begin{frame}
+%  \frametitle{参考文献}
+%  \printbibliography[heading=none]
+%\end{frame}
 
 \makebottom
 
