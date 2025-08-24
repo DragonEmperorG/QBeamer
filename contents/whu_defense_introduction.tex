@@ -20,34 +20,46 @@
 % instead; if ⟨short section name⟩ is explicitly empty, it will not appear in the navigation
 \section{研究背景与意义}
 
-\begin{frame}
+\begin{frame}[t]
 	\frametitle{研究背景} 
 	\framesubtitle{国家层面}
 	中华人民共和国国民经济和社会发展第十四个五年规划和2035年远景目标纲要
-	\begin{columns}
-		\begin{column}{0.4\textwidth}
-		    \vspace{-0.4cm}
+	\begin{columns}[t]
+		\begin{column}{0.3\textwidth}
 		   	\begin{figure}
-    			\includegraphics[width=\textwidth]{中华人民共和国国民经济和社会发展第十四个五年规划和2035年远景目标纲要_封面.png}
+    			\includegraphics[height=4.2cm]{中华人民共和国国民经济和社会发展第十四个五年规划和2035年远景目标纲要_封面.png}
 		   	\end{figure}
 		\end{column}   
-		\begin{column}{0.6\textwidth}
-			专栏 4 制造业核心竞争力提升
-		   	
-		   	05 北斗产业化应用
-		   	
-		   	突破通信导航一体化融合等技术，建设北斗应用产业创新平台，在通信、金融、能源、民航等行业开展典型示范，推动北斗在车载导航、智能手机、穿戴设备等消费领域市场化规模化应用。 
+		\begin{column}{0.7\textwidth}
+		    \begin{block}{专栏 4 制造业核心竞争力提升}
+				\begin{tabularx}{\linewidth}{@{\extracolsep{\fill}}l X}
+		            05 & 北斗产业化应用 \\
+		               & 突破通信导航一体化融合等技术，建设北斗应用产业创新平台，在通信、金融、能源、民航等行业开展典型示范，\CJKunderline{推动北斗在车载导航、智能手机、穿戴设备等消费领域市场化规模化应用}。	
+		   		\end{tabularx}		   		 
+			\end{block}
 		\end{column}
-	\end{columns}   	
+	\end{columns}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 	\frametitle{研究背景} 
 	\framesubtitle{产业层面}
-	\vspace{-0.2cm}
 	2025中国卫星导航与位置服务产业发展白皮书
-   	\begin{figure}
-   	\centering
-   	    \includegraphics[width=0.6\textwidth]{中国时空服务产业的范畴和内涵.png}
-   	\end{figure} 
+	\begin{columns}[t]
+		\begin{column}{0.3\textwidth}
+%		    \vspace{-0.4cm}
+		   	\begin{figure}
+    			\includegraphics[height=4.6cm]{2025中国卫星导航与位置服务产业发展白皮书_封面.png}
+		   	\end{figure}
+		\end{column}   
+		\begin{column}{0.7\textwidth}
+		    \begin{block}{大众消费领域将成北斗规模应用主战场}
+		        \begin{itemize}
+		          \item 已有约2.88亿部智能手机支持北斗定位功能，占比达 \SI{98}{\percent}
+		          \item 大众地图软件基于北斗高精度的车道级导航功能已覆盖全国 \SI{99}{\percent} 以上的城市和乡镇道路
+		          \item 11家主要电子地图服务供应商提供位置服务日均超 1 万亿次，日均提供导航服务总里程超 40 亿公里
+		        \end{itemize}
+			\end{block}
+		\end{column}
+	\end{columns}  
 \end{frame}

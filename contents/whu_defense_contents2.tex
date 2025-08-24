@@ -1,0 +1,326 @@
+% !TeX encoding = UTF-8
+% !TeX root = ../whu-defense-qianlong.tex
+
+%% ------------------------------------------------------------------------
+%% Copyright (C) 2021-2023 SJTUG
+%% 
+%% SJTUBeamer Example Document by SJTUG
+%% 
+%% SJTUBeamer Example Document is licensed under a
+%% Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+%% 
+%% You should have received a copy of the license along with this
+%% work. If not, see <http://creativecommons.org/licenses/by-nc-sa/4.0/>.
+%% -----------------------------------------------------------------------
+
+\subsection{研究内容2 数据驱动车载航迹推算方法研究}
+
+\begin{frame}
+	\frametitle{数据驱动车载航迹推算方法研究} 
+   	\begin{figure}
+   	\centering
+   	    \includegraphics[width=0.9\textwidth]{VehicleDeadReckoningAlgorithmArchitecture.pdf}
+   	\end{figure} 
+\end{frame}
+
+\begin{frame}
+	\frametitle{数据驱动车载航迹推算方法研究}	
+	\framesubtitle{状态定义}	
+	\begin{equation*}
+	   	\vb*{x}\left(t_n\right) := \left( \vb*{\chi}\left(t_n\right), \vb*{\theta}\left(t_n\right), \vb*{R}_s^v\left(t_n\right), \vb*{p}_s^v\left(t_n\right)\right) 
+	   	\label{eq:InvariantExtendedKalmanFilterPedestrianState}
+	\end{equation*} 
+\end{frame}
+
+\begin{frame}
+	\frametitle{数据驱动车载航迹推算方法研究}	
+	\framesubtitle{时间更新}
+	\vspace{-0.2cm}
+	{\small
+		状态量时间更新
+		\begin{align*}
+			\vb*{R}\left(t_{n+1}\right) &= \vb*{R}\left(t_{n+1}\right) + \vb*{R}\left(t_{n}\right) \vb*{\Gamma}_{0}\left( \vb*{\omega}\left(t_{n}\right) \Delta t \right) \\
+			\vb*{v}\left(t_{n+1}\right) &= \vb*{v}\left(t_{n}\right) 
+			+ \vb*{R}\left(t_{n}\right) \vb*{\Gamma}_{1}\left( \vb*{\omega}\left(t_{n}\right) \Delta t \right) \vb*{f}\left(t_{n}\right) \Delta t 
+			+ \vb*{g}\Delta t \\
+			\vb*{p}\left(t_{n+1}\right) &= \vb*{p}\left(t_{n}\right) 
+			+ \vb*{v}\left(t_{n}\right) \Delta t
+			+ \vb*{R}\left(t_{n}\right) \vb*{\Gamma}_{2}\left( \vb*{\omega}\left(t_{n}\right) \Delta t \right) \vb*{f}\left(t_{n}\right) \left(\Delta t\right)^2 
+			+ \frac{1}{2}\vb*{g}\left(\Delta t\right)^2 \\
+			\vb*{\delta \omega}\left(t_{n+1}\right) &= \vb*{\delta \omega}\left(t_{n}\right) \\
+			\vb*{\delta f}\left(t_{n+1}\right) &= \vb*{\delta f}\left(t_{n}\right) \\
+			\vb*{R}_s^v\left(t_{n+1}\right) &= \vb*{R}_s^v\left(t_{n}\right) \\
+			\vb*{p}_s^v\left(t_{n+1}\right) &= \vb*{p}_s^v\left(t_{n}\right) 
+		\end{align*}
+		
+		状态量协方差时间更新
+		\begin{equation*}
+			\vb*{P}\left(t_{n+1}\right) = \vb*{F}\left(t_{n}\right) \vb*{P}\left(t_{n+1}\right) \vb*{F}^{\mathrm{T}}\left(t_{n}\right)
+			+ \vb*{G}\left(t_{n}\right) \vb*{Q}\left(t_{n}\right) \vb*{G}^{\mathrm{T}}\left(t_{n}\right)
+		\end{equation*}
+	}
+ 
+\end{frame}
+
+\begin{frame}
+
+	\frametitle{数据驱动车载航迹推算方法研究}	
+	\framesubtitle{量测更新}
+	
+	{\small
+		数据驱动观测量
+		
+		\begin{equation*}
+			\label{eq:DataDrivenPedestrianMeasurementEstimator}
+			\vb*{R}_{s}^{n}\left(t_{n+1}\right), v^{v}_{v, \mathrm{lon}}\left(t_{n+1}\right)
+			=
+			f_{\mathrm{Estimator}}\left(\{\tilde{\vb*{\omega}}\left(t_i\right), \tilde{\vb*{f}}\left(t_i\right)\}_{i = n-W_{\mathrm{est}}}^{n}\right)
+		\end{equation*}
+				
+		观测方程
+		
+		\begin{center}
+			\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lll}
+	            $ \tilde{\vb*{y}}_{\vb*{R}_s^n} = \tilde{\vb*{R}}_s^n $ 
+	            & $ \hat{\vb*{y}}_{\vb*{R}_s^n} = \hat{\vb*{R}}_s^n $ 
+	            & $ \vb*{r}_{\vb*{R}_s^n} = \log_{\mathrm{G}_{\mathrm{SO}\left(3\right)}}\left(\tilde{\vb*{y}}_{\vb*{R}_s^n}\left(\hat{\vb*{y}}_{\vb*{R}_s^n}\right)^{\mathrm{T}}\right) $ 
+	            \\
+	            $ \tilde{\vb*{y}}_{\vb*{v}_v^v} = 
+	            \begin{pmatrix}
+	           		0 & \tilde{v}_{\mathrm{lat}}^v & 0
+	           	\end{pmatrix}^{\mathrm{T}} $ 
+	            & $ \hat{\vb*{y}}_{\vb*{v}_v^v} = \hat{\vb*{R}}_s^v \left( \left(\hat{\vb*{R}}_s^n\right)^{\mathrm{T}} \hat{\vb*{v}}_s^n + \left(\vb*{\omega}^s\right)_{\times} \hat{\vb*{p}}_v^s \right) $ 
+	            & $ \vb*{r}_{\vb*{v}_v^v} = \tilde{\vb*{y}}_{\vb*{v}_b^b} - \hat{\vb*{y}}_{\vb*{v}_b^b} $
+	   		\end{tabular*}
+   		\end{center}       
+	}
+ 
+\end{frame}
+
+\begin{frame}
+
+	\frametitle{数据驱动车载航迹推算方法研究}	
+	\framesubtitle{量测更新}
+	\vspace{-0.2cm}
+	{\small
+		状态量量测更新
+	}
+	{\scriptsize
+		\begin{align*}
+	    	\vb*{S}\left(t_{n+1}\right) &= \vb*{H}\left(t_{n+1}\right) \vb*{P}\left(t_{n+1}\right) \vb*{H}^{\mathrm{T}}\left(t_{n+1}\right) + \vb*{N}\left(t_{n+1}\right) \\
+	    	\vb*{K}\left(t_{n+1}\right) &= \vb*{P}\left(t_{n+1}\right) \vb*{H}^{\mathrm{T}}\left(t_{n+1}\right) \vb*{S}^{-1}\left(t_{n+1}\right) \\
+		    \vb*{e}\left(t_{n+1}\right) &= \vb*{H}\left(t_{n+1}\right) \vb*{r}\left(t_{n+1}\right) \\
+			\vb*{\chi}\left(t_{n+1}^+\right)   &= \exp_{\mathrm{G}_{\mathrm{SE}_2\left(3\right)}}\left( \vb*{e}_{\vb*{\xi}_{\vb*{\chi}}}\left(t_{n+1}^+\right) \right) \vb*{\chi}\left(t_{n+1}\right)\\
+			\vb*{\theta}\left(t_{n+1}^+\right) &= \vb*{\theta}\left(t_{n+1}\right) + \vb*{e}_{\vb*{\xi}_{\vb*{\theta}}}\left(t_{n+1}^+\right) \\
+			\vb*{R}_s^v\left(t_{n+1}^+\right)  &= \exp_{\mathrm{G}_{\mathrm{SO}\left(3\right)}}\left( \vb*{e}_{\vb*{\xi}_{\vb*{R}_s^v}}\left(t_{n+1}^+\right) \right) \vb*{R}_s^vb\left(t_{n+1}\right) \\
+			\vb*{p}_s^v\left(t_{n+1}^+\right)  &= \vb*{p}_s^v\left(t_{n+1}\right) + \vb*{e}_{\vb*{\xi}_{\vb*{p}_s^v}}\left(t_{n+1}^+\right)
+		\end{align*}
+	}
+	{\small		
+		状态量协方差量测更新
+	}
+	{\scriptsize
+		\begin{equation*}
+			\vb*{P}\left(t_{n+1}^+\right) = \left(\vb*{I} - \vb*{K}\left(t_{n+1}\right)\vb*{H}\left(t_{n+1}\right)\right) \vb*{P}\left(t_{n+1}\right) \left(\vb*{I} - \vb*{K}\left(t_{n+1}\right)\vb*{H}\left(t_{n+1}\right)\right)^{\mathrm{T}} + \vb*{K}\left(t_{n+1}\right)\vb*{N}\left(t_{n+1}\right) \vb*{K}^{\mathrm{T}}\left(t_{n+1}\right)
+		\end{equation*}
+	}
+ 
+\end{frame}
+
+\begin{frame} 
+ 	\frametitle{数据驱动车载航迹推算方法研究}
+ 	\framesubtitle{重庆停车场数据集}
+   	\begin{figure}
+   	\centering
+	    \includegraphics[width=0.7\textwidth]{ChongqinDatasetOverview.png}
+   	\end{figure}  
+\end{frame}
+
+\begin{frame} 
+ 	\frametitle{数据驱动车载航迹推算方法研究}
+ 	\framesubtitle{KITTI Odometry数据集}
+   	\begin{figure}
+   	\centering
+	    \includegraphics[width=0.7\textwidth]{KITTIOdometryOverview.png}
+   	\end{figure}  
+\end{frame}
+
+\begin{frame} 
+ 	\frametitle{数据驱动车载航迹推算方法研究}
+ 	\framesubtitle{重庆数据集万达广场（大渡口店）停车场航迹推算姿态误差}
+    {\small
+    \setlength{\tabcolsep}{2pt}
+		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}ccrrrrrrrrrrr}
+			\toprule
+			\multicolumn{2}{c}{轨迹} & 08 & 09 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 \\
+			\midrule
+			\multirow{4}{*}{窗口长度\SI{1}{\second}} 
+			& $\vb*{e}^{\mathrm{AOE}}_{MAE}$ & 7.6 & \textbf{1.6} & 9.0 & \textbf{7.6} & \textbf{2.4} & \textbf{6.7} & \textbf{4.2} & \textbf{10.1} & \textbf{8.9} & \textbf{4.6} & \textbf{20.0} \\
+			& $\vb*{e}^{\mathrm{AOE}}_{\mathrm{RMSE}}$ & 8.0 & \textbf{1.8} & 10.1 & \textbf{8.3} & \textbf{2.6} & \textbf{7.4} & \textbf{5.0} & \textbf{10.9} & \textbf{11.1} & \textbf{5.4} & \textbf{22.9} \\
+			& $\vb*{e}^{\mathrm{ROE}}_{MAE}$ & 12.4 & \textbf{2.5} & 17.3 & \textbf{14.5} & \textbf{3.7} & \textbf{13.1} & \textbf{6.8} & \textbf{20.0} & \textbf{16.8} & \textbf{7.8} & \textbf{39.5} \\
+			& $\vb*{e}^{\mathrm{ROE}}_{\mathrm{RMSE}}$ & 12.5 & \textbf{2.8} & 18.6 & \textbf{15.2} & \textbf{3.9} & \textbf{14.1} & \textbf{7.6} & \textbf{20.9} & 20.2 & \textbf{9.2} & \textbf{44.4} \\ \addlinespace[1mm]
+			\multirow{4}{*}{窗口长度\SI{2}{\second}}
+			& $\vb*{e}^{\mathrm{AOE}}_{MAE}$ & \textbf{4.1} & 3.8 & \textbf{6.1} & 8.7 & 25.5 & 17.5 & 11.3 & 71.1 & 10.3 & 12.0 & 33.5 \\
+			& $\vb*{e}^{\mathrm{AOE}}_{\mathrm{RMSE}}$ & \textbf{5.1} & 4.5 & \textbf{6.9} & 10.0 & 31.1 & 19.8 & 13.0 & 85.9 & 11.6 & 13.9 & 38.5 \\
+			& $\vb*{e}^{\mathrm{ROE}}_{MAE}$ & \textbf{4.0} & 6.4 & \textbf{11.8} & 15.2 & 48.4 & 33.7 & 22.1 & 99.4 & 16.9 & 21.7 & 65.6 \\
+			& $\vb*{e}^{\mathrm{ROE}}_{\mathrm{RMSE}}$ & \textbf{4.8} & 6.9 & \textbf{12.6} & 17.1 & 55.5 & 36.2 & 24.7 & 112.6 & \textbf{19.7} & 25.2 & 74.5 \\
+			\bottomrule 
+		\end{tabular*}
+	}	
+\end{frame}
+
+\begin{frame} 
+ 	\frametitle{数据驱动车载航迹推算方法研究}
+ 	\framesubtitle{基于重庆数据集对比输出状态量因素速度估计结果}
+    {\small
+    \setlength{\tabcolsep}{2pt}
+		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}clccccccccccc}
+			\toprule
+			\multicolumn{2}{c}{轨迹} & 08 & 09 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 \\
+			\midrule
+			\multirow{4}{*}{$\vb*{v}_y$} 
+			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+			& 0.410 & 0.401 & 0.336 & 0.434 & \textbf{0.282} & \textbf{0.333} & \textbf{0.266} & \textbf{0.297} & \textbf{0.510} & \textbf{0.274} & \textbf{0.426} \\         
+			& $\vb*{e}^{\mathrm{AVE}}_{\mathrm{RMSE}}$          
+			& \textbf{0.491} & 0.492 & 0.424 & 0.533 & \textbf{0.358} & \textbf{0.415} & \textbf{0.357} & \textbf{0.374} & \textbf{0.679} & \textbf{0.346} & \textbf{0.527} \\ 
+			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+			& \textbf{0.419} & 0.584 & 0.407 & 0.644 & \textbf{0.376} & 0.382 & \textbf{0.393} & \textbf{0.414} & \textbf{0.607} & \textbf{0.401} & \textbf{0.509} \\
+			& $\vb*{e}^{\mathrm{RVE}}_{RMSE,\Delta t}$ 
+			& \textbf{0.510} & 0.753 & 0.487 & 0.824 & \textbf{0.463} & 0.531 & \textbf{0.522} & \textbf{0.515} & \textbf{0.777} & \textbf{0.507} & \textbf{0.646} \\ \addlinespace[1mm]
+			\multirow{4}{*}{$\Delta\vb*{v}_y$} 
+			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+			& 1.884 & 0.689 & \textbf{0.241} & 1.451 & 0.481 & 0.605 & 0.942 & 1.339 & 1.573 & 1.374 & 1.326 \\         
+			& $\vb*{e}^{\mathrm{AVE}}_{\mathrm{RMSE}}$         
+			& 2.155 & 0.883 & 0.406 & 1.596 & 0.680 & 0.673 & 1.065 & 1.427 & 1.848 & 1.519 & 1.646 \\
+			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+			& 0.927 & \textbf{0.526} & \textbf{0.227} & 1.259 & 0.503 & \textbf{0.216} & 0.707 & 0.770 & 1.243 & 2.197 & 2.145 \\
+			& $\vb*{e}^{\mathrm{RVE}}_{RMSE,\Delta t}$ 
+			& 1.326 & 0.847 & \textbf{0.390} & 1.676 & 0.760 & \textbf{0.344} & 0.959 & 1.036 & 1.594 & 2.528 & 2.475 \\
+			\bottomrule 
+		\end{tabular*}
+	}	
+\end{frame}
+
+\begin{frame} 
+ 	\frametitle{数据驱动车载航迹推算方法研究}
+ 	\framesubtitle{基于重庆数据集对比输入维度因素速度估计误差}
+    {\footnotesize
+    \setlength{\tabcolsep}{2pt}
+		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}clccccccccccc}
+			\toprule
+			\multicolumn{2}{c}{轨迹} & 08 & 09 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 \\
+			\midrule
+			\multirow{4}{*}{\makecell{$\left( \vb*{\omega}_s^s, \vb*{f}_s^s, P_s^s \right)$\\$\mathbb{R}^7$}}
+			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+			& 0.410 & 0.401 & 0.336 & 0.434 & \textbf{0.282} & \textbf{0.333} & \textbf{0.266} & \textbf{0.297} & \textbf{0.510} & \textbf{0.274} & \textbf{0.426} \\         
+			& $\vb*{e}^{\mathrm{AVE}}_{\mathrm{RMSE}}$          
+			& \textbf{0.491} & 0.492 & 0.424 & 0.533 & \textbf{0.358} & \textbf{0.415} & \textbf{0.357} & \textbf{0.374} & \textbf{0.679} & \textbf{0.346} & \textbf{0.527} \\ 
+			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+			& \textbf{0.419} & 0.584 & 0.407 & 0.644 & \textbf{0.376} & 0.382 & \textbf{0.393} & \textbf{0.414} & \textbf{0.607} & \textbf{0.401} & \textbf{0.509} \\
+			& $\vb*{e}^{\mathrm{RVE}}_{RMSE,\Delta t}$ 
+			& \textbf{0.510} & 0.753 & 0.487 & 0.824 & \textbf{0.463} & 0.531 & \textbf{0.522} & \textbf{0.515} & \textbf{0.777} & \textbf{0.507} & \textbf{0.646} \\ \addlinespace[1mm]
+			\multirow{4}{*}{\makecell{$\left( \vb*{\omega}_s^s, \vb*{f}_s^s\right)$\\$\mathbb{R}^6$}} 
+			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+			& 0.208 & 0.315 & 0.325 & 0.381 & 0.232 & 0.141 & 0.241 & 0.290 & 0.481 & 0.245 & 0.383 \\       
+			& $\vb*{e}^{\mathrm{AVE}}_{\mathrm{RMSE}}$         
+			& 0.273 & 0.377 & 0.404 & 0.502 & 0.294 & 0.172 & 0.327 & 0.367 & 0.630 & 0.328 & 0.508 \\
+			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+			& 0.303 & 0.483 & 0.439 & 0.581 & 0.336 & 0.121 & 0.361 & 0.413 & 0.623 & 0.353 & 0.540 \\
+			& $\vb*{e}^{\mathrm{RVE}}_{RMSE,\Delta t}$ 
+			& 0.369 & 0.598 & 0.540 & 0.772 & 0.418 & 0.154 & 0.467 & 0.522 & 0.809 & 0.449 & 0.713 \\ \addlinespace[1mm]
+			\multirow{4}{*}{\makecell{$\left( \vb*{\omega}_s^s, \vb*{f}_s^s, \vb*{M}_s^s\right)$\\$\mathbb{R}^9$}} 
+			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+			& \textbf{0.365} & \textbf{0.351} & 0.288 & \textbf{0.416} & 0.341 & 0.360 & 0.279 & 0.362 & 0.591 & 0.378 & 0.530 \\
+			& $\vb*{e}^{\mathrm{AVE}}_{\mathrm{RMSE}}$          
+			& 0.504 & \textbf{0.430} & \textbf{0.361} & \textbf{0.517} & 0.435 & 0.461 & 0.378 & 0.471 & 0.744 & 0.502 & 0.666 \\
+			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+			& 0.509 & 0.542 & 0.390 & \textbf{0.614} & 0.449 & 0.449 & 0.433 & 0.534 & 0.738 & 0.566 & 0.644 \\ 
+			& $\vb*{e}^{\mathrm{RVE}}_{RMSE,\Delta t}$ 
+			& 0.626 & \textbf{0.662} & 0.506 & \textbf{0.787} & 0.558 & 0.565 & 0.571 & 0.663 & 0.965 & 0.711 & 0.820 \\
+			\bottomrule 
+		\end{tabular*}
+	}	
+\end{frame}
+
+\begin{frame} 
+ 	\frametitle{数据驱动车载航迹推算方法研究}
+ 	\framesubtitle{基于重庆数据集对比输入采样率因素速度估计结果}
+    {\footnotesize
+    \setlength{\tabcolsep}{2pt}
+		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}clccccccccccc}
+			\toprule
+			\multicolumn{2}{c}{轨迹} & 08 & 09 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 \\
+			\midrule
+			\multirow{2}{*}{\SI{50}{Hz}} 
+			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+			& 0.410 & 0.401 & 0.336 & 0.434 & 0.282 & 0.333 & 0.266 & 0.297 & 0.510 & 0.274 & 0.426 \\
+			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+			& 0.419 & 0.584 & 0.407 & 0.644 & 0.376 & 0.382 & 0.393 & 0.414 & \textbf{0.607} & 0.401 & \textbf{0.509} \\ \addlinespace[1mm]
+			\multirow{2}{*}{\SI{100}{Hz}} 
+			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+			& \textbf{0.277} & \textbf{0.308} & \textbf{0.274} & \textbf{0.361} & \textbf{0.206} & \textbf{0.237} & \textbf{0.225} & 0.277 & 0.480 & \textbf{0.229} & 0.411 \\ 
+			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+			& 0.411 & \textbf{0.448} & \textbf{0.382} & 0.587 & 0.309 & \textbf{0.302} & \textbf{0.319} & 0.391 & 0.640 & \textbf{0.345} & 0.573 \\ \addlinespace[1mm]
+			\multirow{2}{*}{\SI{150}{Hz}} 
+			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+			& 0.289 & 0.348 & 0.281 & 0.362 & 0.212 & 0.273 & 0.238 & \textbf{0.252} & \textbf{0.452} & 0.276 & \textbf{0.391} \\
+			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+			& 0.412 & 0.485 & 0.403 & \textbf{0.574} & \textbf{0.301} & 0.359 & 0.339 & \textbf{0.351} & 0.625 & 0.395 & 0.493 \\ \addlinespace[1mm]
+			\multirow{2}{*}{\SI{200}{Hz}} 
+			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+			& 0.285 & 0.311 & 0.322 & 0.466 & 0.222 & 0.284 & 0.261 & 0.261 & 0.457 & 0.276 & 0.394 \\         
+			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+			& \textbf{0.401} & 0.488 & 0.474 & 0.673 & 0.312 & 0.374 & 0.358 & 0.370 & 0.647 & 0.395 & 0.527 \\
+			\bottomrule 
+		\end{tabular*}
+	}	
+\end{frame}
+
+\begin{frame} 
+ 	\frametitle{数据驱动车载航迹推算方法研究}
+ 	\framesubtitle{重庆数据集万达广场（大渡口店）停车场航迹推算位置误差结果}
+    {\footnotesize
+    \setlength{\tabcolsep}{2pt}
+		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}clrrrrrrrrrrr}
+			\toprule
+			\multicolumn{2}{c}{轨迹} & 08 & 09 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 \\
+			\midrule
+			\multicolumn{2}{c}{里程$\left(\unit{m}\right)$} & 282  & 285  & 285  & 520  & 525  & 524  & 844  & 1556 & 593   & 839  & 1553   \\
+			\multicolumn{2}{c}{时长$\left(\unit{s}\right)$} & 124  & 122  & 208  & 168  & 216  & 370  & 316  & 529  & 459   & 418  & 807    \\
+			\multirow{2}{*}{AI-IMU} & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 15.9 & 24.1 & 65.2 & 11.3 & 26.0 & 1683.8 & 20.8 & 12.6 & 18383.1 & 4829.5 & 176752.2 \\
+			& $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 15.8 & 24.1 & 65.0 & 11.0 & 25.8 & 1656.0 & 20.7 & 12.4 & 6380.6 & 4098.8 & 36066.2 \\
+			\multirow{2}{*}{DeepOdo} & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 5.0 & 9.8 & 18.4 & 13.3 & 9.0 & 22.3 & 9.4 & 10.1 & 41.1 & 13.9 & 27.4 \\
+			& $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 4.7 & 9.7 & 18.4 & 13.2 & 9.0 & 22.3 & 9.3 & 10.0 & 41.0 & 13.6 & 27.2 \\
+			\multirow{2}{*}{DeepOri} & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 5.1 & 1.9 & 8.5 & 6.3 & 2.4 & 3.5 & 2.6 & 5.2 & 5.0 & 3.7 & 7.8 \\
+			& $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 4.5 & 1.4 & 8.4 & 5.2 & 1.7 & 3.4 & 1.4 & 2.7 & 4.2 & 2.2 & 6.0 \\
+			\multirow{2}{*}{\textbf{Proposed}} & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & \textbf{2.1} & \textbf{1.2} & \textbf{0.9} & \textbf{2.8} & \textbf{1.4} & \textbf{0.8} & \textbf{1.9} & \textbf{3.3} & \textbf{2.8} & \textbf{2.9} & \textbf{3.4} \\
+			& $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & \textbf{0.4} & \textbf{0.4} & \textbf{0.4} & \textbf{0.4} & \textbf{0.3} & \textbf{0.3} & \textbf{0.3} & \textbf{0.3} & \textbf{0.5} & \textbf{0.6} & \textbf{0.5} \\
+			\bottomrule 
+		\end{tabular*}
+	}	
+\end{frame}
+
+\begin{frame} 
+ 	\frametitle{数据驱动车载航迹推算方法研究}
+ 	\framesubtitle{KITTI Odometry数据集航迹推算位置误差结果}
+    {\footnotesize
+    \setlength{\tabcolsep}{2pt}
+		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}ccrrrrrrrrrr}
+			\toprule
+            \multicolumn{2}{c}{轨迹} & 00 & 01 & 02 & 04 & 05 & 06 & 07 & 08 & 09 & 10 \\
+			\midrule
+			\multicolumn{2}{c}{里程$\left(\unit{m}\right)$} & 3722 & 2603 & 5089 & 416 & 2214 & 1245 & 693 & 4245 & 1715 & 922 \\
+			\multicolumn{2}{c}{时长$\left(\unit{s}\right)$} &  471 &  121 &  483 &  29 &  288 &  115 & 114 &  537 &  165 & 126 \\
+			\multirow{2}{*}{AI-IMU}            & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 11.8 & 4.0 & 4.5 & 7.0 & 19.1 & 3.5 & 1.8 & 3.2 & 7.4 & 4.0 \\
+			                                   & $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 11.4 & 3.6 & 2.5 & 6.7 & 18.8 & 2.9 & 1.2 & 1.9 & 5.4 & 2.0 \\
+			\multirow{2}{*}{DeepOdo}           & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 7.4 & 5.0 & 3.9 & 2.6 & 3.7 & 2.3 & 1.7 & 4.8 & 5.2 & 5.0 \\
+			                                   & $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 6.8 & 4.0 & 1.3 & 1.3 & 3.3 & 1.5 & 0.9 & 3.7 & 2.7 & 3.0 \\
+			\multirow{2}{*}{DeepOri}           & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 4.1 & 4.4 & 4.4 & 9.8 & 2.1 & 3.6 & 1.7 & \textbf{3.0} & 5.2 & 3.8 \\
+			                                   & $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 3.3 & 3.5 & 2.3 & 9.8 & 1.6 & 3.1 & 0.9 & \textbf{1.7} & 2.8 & 1.8 \\
+			\multirow{2}{*}{\textbf{Proposed}} & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & \textbf{2.1} & \textbf{3.2} & \textbf{3.3} & \textbf{2.0} & \textbf{1.3} & \textbf{1.4} & \textbf{1.5} & 8.2 & \textbf{4.1} & \textbf{3.7} \\
+			                                   & $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & \textbf{1.2} & \textbf{1.9} & \textbf{1.0} & \textbf{0.4} & \textbf{0.4} & \textbf{0.5} & \textbf{0.7} & 4.1 & \textbf{1.2} & \textbf{1.1} \\
+			\bottomrule 
+		\end{tabular*}
+	}	
+\end{frame}
+

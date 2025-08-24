@@ -41,8 +41,10 @@
 \usepackage{pifont}
 \usepackage{shapepar}
 \usepackage{siunitx}
+\usepackage{tabularx}
 \usepackage{tipa}
 \usepackage[normalem]{ulem}
+\usepackage{xeCJKfntef}
 
 % 参考文献设置，使用 style=gb7714-2015 样式为标准顺序编码制，
 % 使用 style=gb7714-2015ay 样式可以改为著者-出版年制。
@@ -136,21 +138,21 @@
 \AtBeginSection[]{
   \begin{frame}
     %% 使用传统节目录，也可以将 subsectionstyle=... 换成 hideallsubsections 以隐藏所有小节信息
-    \tableofcontents[currentsection,subsectionstyle=show/show/hide]
+    \tableofcontents[currentsection,subsectionstyle=show/hide/hide]
     %% 或者使用节页
     % \sectionpage
   \end{frame}
 }
 
 % 使用小节目录
-\AtBeginSubsection[]{		       % 在每小节开始
-  \begin{frame}
-    %% 使用传统小节目录
-    \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
-    %% 或者使用小节页
-    % \subsectionpage
-  \end{frame}
-}
+%\AtBeginSubsection[]{		       % 在每小节开始
+%  \begin{frame}
+%    %% 使用传统小节目录
+%    \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+%    %% 或者使用小节页
+%    % \subsectionpage
+%  \end{frame}
+%}
 
 \maketitle
 
@@ -164,7 +166,9 @@
 
 \include{contents/whu_defense_introduction}
 \include{contents/whu_defense_status}
-\include{contents/whu_defense_contents}
+\include{contents/whu_defense_contents1}
+\include{contents/whu_defense_contents2}
+\include{contents/whu_defense_contents3}
 \include{contents/whu_defense_conclusions}
 \include{contents/whu_defense_achievements}
 
