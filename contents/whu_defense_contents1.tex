@@ -186,84 +186,185 @@
 \begin{frame}[t]
 	\frametitle{研究内容1 数据驱动行人航迹推算方法研究}
 	\framesubtitle{RoNIN 数据集不同方法对比轨迹评价结果}
-    {   
-        \tiny        
-		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}} cl cccccc}
-			\toprule
-			测试集                   & 评价指标                                        & PDR  & IONet & RoNIN & SSHNN & IMUNet & Proposed \\
-			\midrule
-			\multirow{2}{*}{Seen}   & $\vb*{e}^{\mathrm{APE}}_{\mathrm{RMSE}}$        & 29.5 & 21.1  & 3.5   & 4.96  & 3.7    & 4.0 \\
-			                        & $\vb*{e}^{\mathrm{RPE}}_{RMSE,\SI{1}{\minute}}$ & 21.4 & 24.6  & 2.7   & 3.48  & 2.7    & 2.2 \\
-			\multirow{2}{*}{Unseen} & $\vb*{e}^{\mathrm{APE}}_{\mathrm{RMSE}}$        & 27.7 & 32.0  & 5.1   & 6.80  & 6.1    & 3.5 \\
-						            & $\vb*{e}^{\mathrm{RPE}}_{RMSE,\SI{1}{\minute}}$ & 23.2 & 26.9  & 4.4   & 5.55  & 4.7    & 2.0 \\
-			\bottomrule 
-		\end{tabular*}     
-   	}
+	\vspace{-0.6cm}
 	\begin{columns}[t]
-		\begin{column}{0.5\textwidth}
-		   	\begin{figure}
-    			\includegraphics[height=4.2cm]{中华人民共和国国民经济和社会发展第十四个五年规划和2035年远景目标纲要_封面.png}
-		   	\end{figure}
+		\begin{column}{0.6\textwidth}
+	    {   
+	        \tiny   
+	        \setlength{\tabcolsep}{2pt}     
+			\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} cl ccccc >{\columncolor{gray!50}}c}
+				\toprule
+				测试集                   & 评价指标                                        & PDR  & IONet & RoNIN & SSHNN & IMUNet & Proposed \\
+				\midrule
+				\multirow{2}{*}{Seen}   & $\vb*{e}^{\mathrm{APE}}_{\mathrm{RMSE}}$        & 29.5 & 21.1  & 3.5   & 4.96  & 3.7    & 4.0 \\
+				                        & $\vb*{e}^{\mathrm{RPE}}_{RMSE,\SI{1}{\minute}}$ & 21.4 & 24.6  & 2.7   & 3.48  & 2.7    & 2.2 \\
+				\multirow{2}{*}{Unseen} & $\vb*{e}^{\mathrm{APE}}_{\mathrm{RMSE}}$        & 27.7 & 32.0  & 5.1   & 6.80  & 6.1    & 3.5 \\
+							            & $\vb*{e}^{\mathrm{RPE}}_{RMSE,\SI{1}{\minute}}$ & 23.2 & 26.9  & 4.4   & 5.55  & 4.7    & 2.0 \\
+				\bottomrule 
+			\end{tabular*}     
+	   	}
 		\end{column}   
-		\begin{column}{0.5\textwidth}
-
+		\begin{column}{0.4\textwidth}
+		{
+		   	\small
+			\begin{itemize}
+				\item 同时输出姿态和位置信息
+				\item Seen 测试集集精度相当
+				\item Unseen 测试集集精度更高
+			\end{itemize}
+		 }
+		\end{column}    
+	\end{columns}
+	\begin{columns}[t]
+		\begin{column}{0.3\textwidth}
+		   	\begin{figure}
+    			\includegraphics[height=3cm]{TrackComparation_a004_3.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{1.2cm} {\tiny Seen 测试集 a004\_3 轨迹}
+		\end{column}   
+		\begin{column}{0.3\textwidth}
+		   	\begin{figure}
+    			\includegraphics[height=3cm]{TrackComparation_a012_2.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{1.2cm} {\tiny Seen 测试集 a012\_2 轨迹}
+		\end{column}  
+		\begin{column}{0.3\textwidth}
+		   	\begin{figure}
+    			\includegraphics[height=3cm]{TrackComparation_a019_3.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{1.2cm} {\tiny Unseen 测试集 a019\_3 轨迹}
 		\end{column}
-	\end{columns} 
+	\end{columns} 	
 \end{frame}
 
 \begin{frame} 
  	\frametitle{数据驱动行人航迹推算方法研究}
  	\framesubtitle{RoNIN数据集 Seen 测试集观测量约束位姿评价结果}
-    {\footnotesize
-    \setlength{\tabcolsep}{2pt}
-		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcrrrrrrrrrrrrr}
-			\toprule
-			\multirow{2}{*}{轨迹} & \multirow{2}{*}{\makecell{里程\\$\left(\unit{m}\right)$}} & \multirow{2}{*}{\makecell{时长\\$\left(\unit{s}\right)$}} 
-			& \multicolumn{4}{c}{InEKF + $\vb*{v}_s^n$} & \multicolumn{4}{c}{InEKF + $\vb*{R}_b^n$ + $\vb*{v}$} & \multicolumn{4}{c}{InEKF + $\vb*{R}_b^n$ + $\vb*{v}_b^b$}\\
-			\cmidrule{4-7} \cmidrule{8-11} \cmidrule{12-15}
-			& & & $\vb*{e}^{\mathrm{AOE}}$ & $\vb*{e}^{\mathrm{ROE}}$ & $\vb*{e}^{\mathrm{APE}}$ & $\vb*{e}^{\mathrm{RPE}}$ & $\vb*{e}^{\mathrm{AOE}}$ & $\vb*{e}^{\mathrm{ROE}}$ & $\vb*{e}^{\mathrm{APE}}$ & $\vb*{e}^{\mathrm{RPE}}$ & $\vb*{e}^{\mathrm{AOE}}$ & $\vb*{e}^{\mathrm{ROE}}$ & $\vb*{e}^{\mathrm{APE}}$ & $\vb*{e}^{\mathrm{RPE}}$  \\
-			\midrule
-			a000\_7 & 287 & 294 & 12.3 & 10.3 & 2.1 & 2.4 & 8.9 & 5.5 & 6.5 & 5.0 & 0.9 & 0.9 & 1.9 & 1.1 \\
-			a000\_11 & 274 & 280 & 43.8 & 21.6 & 1.9 & 1.3 & 4.1 & 3.5 & 9.9 & 11.6 & 0.6 & 0.8 & 5.9 & 6.9 \\
-			a001\_2 & 454 & 630 & 14.7 & 22.5 & 4.3 & 4.2 & 2.8 & 3.6 & 14.8 & 12.4 & 2.6 & 2.9 & 2.6 & 2.0 \\
-			a003\_3 & 388 & 487 & 66.6 & 81.9 & 9.8 & 3.3 & 3.3 & 6.1 & 11.1 & 6.0 & 3.3 & 5.8 & 5.7 & 2.1 \\
-			a004\_3 & 252 & 256 & 21.0 & 38.8 & 1.7 & 0.7 & 3.0 & 1.6 & 2.7 & 3.7 & 0.8 & 0.9 & 1.1 & 0.6 \\
-			a005\_3 & 415 & 591 & 48.5 & 73.6 & 6.6 & 2.0 & 1.8 & 2.2 & 5.3 & 4.0 & 1.0 & 1.3 & 2.4 & 1.3 \\
-			a009\_1 & 271 & 414 & 36.5 & 64.5 & 5.0 & 5.2 & 2.2 & 2.5 & 14.2 & 4.4 & 1.5 & 1.7 & 6.5 & 2.5 \\
-			a010\_2 & 385 & 653 & 14.3 & 19.7 & 9.8 & 4.6 & 13.2 & 5.7 & 12.9 & 6.7 & 2.4 & 2.4 & 2.4 & 1.4 \\
-			a011\_2 & 377 & 684 & 14.4 & 8.6 & 2.4 & 0.7 & 12.7 & 3.7 & 7.6 & 7.0 & 0.9 & 0.7 & 5.8 & 2.8 \\
-			a012\_2 & 296 & 593 & 14.3 & 23.9 & 6.0 & 2.9 & 10.5 & 4.6 & 8.3 & 4.9 & 3.5 & 2.2 & 7.8 & 2.2 \\
-			平均值 & 420 & 555 & 31.1 & 38.8 & 5.9 & 3.6 & 6.7 & 4.1 & 8.4 & 7.0 & 1.9 & 1.7 & 4.0 & 2.2 \\
-			\bottomrule 
-		\end{tabular*}
-	}	
+	\begin{columns}[t]
+		\begin{column}{0.6\textwidth}
+		\scalebox{0.7}{
+		    {
+		    	\tiny
+		    	\setlength{\tabcolsep}{2pt}
+				\begin{tabular*}{1.4\linewidth}{@{\extracolsep{\fill}}lcr rrrr rrrr >{\columncolor{gray!50}}r>{\columncolor{gray!50}}r>{\columncolor{gray!50}}r>{\columncolor{gray!50}}r}
+					\toprule
+					\multirow{2}{*}{轨迹} & \multirow{2}{*}{\makecell{里程\\$\left(\unit{m}\right)$}} & \multirow{2}{*}{\makecell{时长\\$\left(\unit{s}\right)$}} 
+					& \multicolumn{4}{c}{InEKF + $\vb*{v}_s^n$} & \multicolumn{4}{c}{InEKF + $\vb*{R}_b^n$ + $\vb*{v}$} & \multicolumn{4}{c}{InEKF + $\vb*{R}_b^n$ + $\vb*{v}_b^b$}\\
+					\cmidrule{4-7} \cmidrule{8-11} \cmidrule{12-15}
+					& & & $\vb*{e}^{\mathrm{AOE}}$ & $\vb*{e}^{\mathrm{ROE}}$ & $\vb*{e}^{\mathrm{APE}}$ & $\vb*{e}^{\mathrm{RPE}}$ & $\vb*{e}^{\mathrm{AOE}}$ & $\vb*{e}^{\mathrm{ROE}}$ & $\vb*{e}^{\mathrm{APE}}$ & $\vb*{e}^{\mathrm{RPE}}$ & $\vb*{e}^{\mathrm{AOE}}$ & $\vb*{e}^{\mathrm{ROE}}$ & $\vb*{e}^{\mathrm{APE}}$ & $\vb*{e}^{\mathrm{RPE}}$  \\
+					\midrule
+					a000\_7 & 287 & 294 & 12.3 & 10.3 & 2.1 & 2.4 & 8.9 & 5.5 & 6.5 & 5.0 & 0.9 & 0.9 & 1.9 & 1.1 \\
+					a000\_11 & 274 & 280 & 43.8 & 21.6 & 1.9 & 1.3 & 4.1 & 3.5 & 9.9 & 11.6 & 0.6 & 0.8 & 5.9 & 6.9 \\
+					a001\_2 & 454 & 630 & 14.7 & 22.5 & 4.3 & 4.2 & 2.8 & 3.6 & 14.8 & 12.4 & 2.6 & 2.9 & 2.6 & 2.0 \\
+					a004\_3 & 252 & 256 & 21.0 & 38.8 & 1.7 & 0.7 & 3.0 & 1.6 & 2.7 & 3.7 & 0.8 & 0.9 & 1.1 & 0.6 \\
+					a014\_2 & 586 & 577 & 17.8 & 19.5 & 9.0 & 6.5 & 2.0 & 1.4 & 7.6 & 5.1 & 0.9 & 1.0 & 4.3 & 2.1 \\
+					a036\_2 & 769 & 723 & 8.6 & 10.1 & 4.4 & 1.7 & 1.7 & 2.1 & 5.2 & 2.4 & 0.7 & 0.7 & 2.6 & 1.3 \\
+					平均值 & 420 & 555 & 31.1 & 38.8 & 5.9 & 3.6 & 6.7 & 4.1 & 8.4 & 7.0 & 1.9 & 1.7 & 4.0 & 2.2 \\
+					\bottomrule 
+				\end{tabular*}
+			}		
+		}
+		\end{column}   
+		\begin{column}{0.5\textwidth}
+		\vspace{-0.5cm}
+		{
+		   	\small
+			\begin{itemize}
+					\item 航向和步速约束效果优于全局速度矢量
+					\item 动态速度约束可以进一步提升精度
+			\end{itemize}
+		 }
+		\end{column}    
+	\end{columns}
+	\begin{columns}[t]
+		\begin{column}{0.3\textwidth}
+		   	\begin{figure}
+    			\includegraphics[height=3cm]{ConstraintsFactorComparationTrack_a004_3.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{1.2cm} {\tiny Seen 测试集 a004\_3 轨迹}
+		\end{column}   
+		\begin{column}{0.3\textwidth}
+		   	\begin{figure}
+    			\includegraphics[height=3cm]{ConstraintsFactorComparationTrack_a014_2.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{1.2cm} {\tiny Seen 测试集 a014\_2 轨迹}
+		\end{column}  
+		\begin{column}{0.3\textwidth}
+		   	\begin{figure}
+    			\includegraphics[height=3cm]{ConstraintsFactorComparationTrack_a036_2.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{1.2cm} {\tiny Seen 测试集 a036\_2 轨迹}
+		\end{column}
+	\end{columns} 		
 \end{frame}
 
 \begin{frame} 
  	\frametitle{数据驱动行人航迹推算方法研究}
  	\framesubtitle{RoNIN数据集 Unseen 测试集观测量约束位姿评价结果}
-    {\footnotesize
-    \setlength{\tabcolsep}{2pt}
-		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcrrrrrrrrrrrrr}
-			\toprule
-			\multirow{2}{*}{轨迹} & \multirow{2}{*}{\makecell{里程\\$\left(\unit{m}\right)$}} & \multirow{2}{*}{\makecell{时长\\$\left(\unit{s}\right)$}} 
-			& \multicolumn{4}{c}{InEKF + $\vb*{v}_s^n$} & \multicolumn{4}{c}{InEKF + $\vb*{R}_b^n$ + $\vb*{v}$} & \multicolumn{4}{c}{InEKF + $\vb*{R}_b^n$ + $\vb*{v}_b^b$}\\
-			\cmidrule{4-7} \cmidrule{8-11} \cmidrule{12-15}
-			& & & $\vb*{e}^{\mathrm{AOE}}$ & $\vb*{e}^{\mathrm{ROE}}$ & $\vb*{e}^{\mathrm{APE}}$ & $\vb*{e}^{\mathrm{RPE}}$ & $\vb*{e}^{\mathrm{AOE}}$ & $\vb*{e}^{\mathrm{ROE}}$ & $\vb*{e}^{\mathrm{APE}}$ & $\vb*{e}^{\mathrm{RPE}}$ & $\vb*{e}^{\mathrm{AOE}}$ & $\vb*{e}^{\mathrm{ROE}}$ & $\vb*{e}^{\mathrm{APE}}$ & $\vb*{e}^{\mathrm{RPE}}$  \\
-			\midrule
-			a006\_2 & 284 & 838 & 1.9 & 1.5 & 1.6 & 1.1 & 1.8 & 1.4 & 15.4 & 10.4 & 1.8 & 1.4 & 6.1 & 5.6 \\
-			a019\_3 & 343 & 443 & 1.1 & 1.9 & 4.7 & 2.6 & 1.4 & 2.4 & 9.5 & 5.6 & 1.3 & 2.1 & 4.2 & 2.3 \\
-			a024\_1 & 387 & 458 & 0.6 & 0.8 & 1.4 & 1.1 & 0.7 & 1.0 & 7.7 & 4.1 & 0.6 & 0.9 & 2.4 & 1.4 \\
-			a024\_3 & 229 & 519 & 0.9 & 1.6 & 2.0 & 2.0 & 1.0 & 1.7 & 13.8 & 10.7 & 1.0 & 1.6 & 4.7 & 3.0 \\
-			a029\_1 & 353 & 421 & 1.4 & 2.0 & 9.0 & 5.4 & 0.7 & 1.0 & 7.4 & 4.9 & 0.6 & 0.9 & 3.1 & 1.5 \\
-			a029\_2 & 301 & 523 & 1.6 & 2.7 & 3.0 & 2.5 & 1.5 & 2.6 & 7.9 & 6.8 & 1.4 & 2.5 & 1.4 & 1.5 \\
-			a032\_1 & 394 & 428 & 0.4 & 0.6 & 1.2 & 0.9 & 0.5 & 0.7 & 9.1 & 5.0 & 0.5 & 0.6 & 3.1 & 2.2 \\
-			a032\_3 & 541 & 693 & 0.4 & 0.6 & 2.5 & 1.6 & 0.5 & 0.8 & 5.4 & 5.8 & 0.4 & 0.7 & 2.1 & 1.9 \\
-			a042\_2 & 412 & 717 & 1.2 & 1.9 & 5.6 & 1.7 & 1.2 & 1.9 & 12.9 & 8.8 & 1.1 & 1.9 & 2.6 & 1.8 \\
-			a049\_1 & 297 & 347 & 0.7 & 1.3 & 4.0 & 3.3 & 0.8 & 1.3 & 10.7 & 5.4 & 0.7 & 1.2 & 3.8 & 3.6 \\
-			平均值 & 456 & 571 & 1.9 & 3.1 & 5.3 & 3.4 & 1.3 & 1.9 & 10.2 & 6.0 & 1.2 & 1.8 & 3.5 & 2.0 \\	
-			\bottomrule 
-		\end{tabular*}
-	}	
+	\begin{columns}[t]
+		\begin{column}{0.6\textwidth}
+			\scalebox{0.7}{
+			    {
+			    	\tiny
+			    	\setlength{\tabcolsep}{2pt}
+					\begin{tabular*}{1.4\linewidth}{@{\extracolsep{\fill}}lcrrrrrrrrrrrrr}
+						\toprule
+						\multirow{2}{*}{轨迹} & \multirow{2}{*}{\makecell{里程\\$\left(\unit{m}\right)$}} & \multirow{2}{*}{\makecell{时长\\$\left(\unit{s}\right)$}} 
+						& \multicolumn{4}{c}{InEKF + $\vb*{v}_s^n$} & \multicolumn{4}{c}{InEKF + $\vb*{R}_b^n$ + $\vb*{v}$} & \multicolumn{4}{c}{InEKF + $\vb*{R}_b^n$ + $\vb*{v}_b^b$}\\
+						\cmidrule{4-7} \cmidrule{8-11} \cmidrule{12-15}
+						& & & $\vb*{e}^{\mathrm{AOE}}$ & $\vb*{e}^{\mathrm{ROE}}$ & $\vb*{e}^{\mathrm{APE}}$ & $\vb*{e}^{\mathrm{RPE}}$ & $\vb*{e}^{\mathrm{AOE}}$ & $\vb*{e}^{\mathrm{ROE}}$ & $\vb*{e}^{\mathrm{APE}}$ & $\vb*{e}^{\mathrm{RPE}}$ & $\vb*{e}^{\mathrm{AOE}}$ & $\vb*{e}^{\mathrm{ROE}}$ & $\vb*{e}^{\mathrm{APE}}$ & $\vb*{e}^{\mathrm{RPE}}$  \\
+						\midrule
+						a006\_2 & 284 & 838 & 1.9 & 1.5 & 1.6 & 1.1 & 1.8 & 1.4 & 15.4 & 10.4 & 1.8 & 1.4 & 6.1 & 5.6 \\
+						a019\_3 & 343 & 443 & 1.1 & 1.9 & 4.7 & 2.6 & 1.4 & 2.4 & 9.5 & 5.6 & 1.3 & 2.1 & 4.2 & 2.3 \\
+						a024\_1 & 387 & 458 & 0.6 & 0.8 & 1.4 & 1.1 & 0.7 & 1.0 & 7.7 & 4.1 & 0.6 & 0.9 & 2.4 & 1.4 \\
+						a050\_1 & 302 & 357 & 0.3 & 0.4 & 1.9 & 1.3 & 0.5 & 0.6 & 5.5 & 5.9 & 0.4 & 0.5 & 0.4 & 0.5 \\
+						a042\_2 & 412 & 717 & 1.2 & 1.9 & 5.6 & 1.7 & 1.2 & 1.9 & 12.9 & 8.8 & 1.1 & 1.9 & 2.6 & 1.8 \\
+						a058\_3 & 637 & 652 & 0.9 & 1.1 & 0.9 & 1.0 & 1.0 & 1.2 & 13.3 & 4.2 & 1.0 & 1.2 & 1.4 & 0.6 \\
+						平均值 & 456 & 571 & 1.9 & 3.1 & 5.3 & 3.4 & 1.3 & 1.9 & 10.2 & 6.0 & 1.2 & 1.8 & 3.5 & 2.0 \\	
+						\bottomrule 
+					\end{tabular*}
+				}		
+			}
+		\end{column}   
+		\begin{column}{0.5\textwidth}
+		\vspace{-0.5cm}
+		{
+		   	\small
+			\begin{itemize}
+				\item 航向和步速约束效果优于全局速度矢量
+				\item 动态速度约束可以进一步提升精度
+			\end{itemize}
+		 }
+		\end{column}    
+	\end{columns}
+	\begin{columns}[t]
+		\begin{column}{0.3\textwidth}
+		   	\begin{figure}
+    			\includegraphics[height=3cm]{ConstraintsFactorComparationTrack_a019_3.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{1.2cm} {\tiny Uneen 测试集 a019\_3 轨迹}
+		\end{column}   
+		\begin{column}{0.3\textwidth}
+		   	\begin{figure}
+    			\includegraphics[height=3cm]{ConstraintsFactorComparationTrack_a050_1.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{1.2cm} {\tiny Uneen 测试集 a050\_1 轨迹}
+		\end{column}  
+		\begin{column}{0.3\textwidth}
+		   	\begin{figure}
+    			\includegraphics[height=3cm]{ConstraintsFactorComparationTrack_a058_3.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{1.2cm} {\tiny Uneen 测试集 a058\_3 轨迹}
+		\end{column}
+	\end{columns} 	
 \end{frame}
 
