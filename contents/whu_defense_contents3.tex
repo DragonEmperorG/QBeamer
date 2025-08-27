@@ -15,105 +15,166 @@
 
 \subsection{研究内容3 数据和模型双驱动定位方法研究}
 
-\begin{frame}
+\begin{frame}[t]
 	\frametitle{数据和模型双驱动定位方法研究}	
-   	\begin{figure}
-   	\centering
-   	    \includegraphics[width=0.6\textwidth]{PedestrianAcousticPositioningAlgorithmArchitecture.pdf}
-   	\end{figure} 
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+		    \begin{block}{存在问题}
+		    {
+		    	\small
+		        \begin{itemize}
+					\item 单一模型驱动方法定位频率受限
+		        \end{itemize}
+    		 } 
+			\end{block}
+			\begin{block}{研究思路}
+			 {
+ 		    	\small
+				\begin{itemize}
+					\item 数据和模型双驱动保持定位精度和鲁棒性
+				\end{itemize}
+			}
+			\end{block}
+		\end{column}   
+		\begin{column}{0.5\textwidth}
+		   	\begin{figure}
+		   	\centering
+		   	    \includegraphics[width=\textwidth]{AudioPositioningSystem.pdf}
+		   	\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
-\begin{frame}
-
-	\frametitle{数据和模型双驱动定位方法研究}	
-	\framesubtitle{模型驱动几何观测量}
-	
-	{\small
-		模型驱动音频 TDoA 观测量
-		
-		\begin{equation*}
-			\Delta t_{ji}\left(t_{n+1}\right)
-			=
-			f_{\mathrm{Acoustic}}\left(\tilde{\vb*{s}}_{\mathrm{Sound}},\tilde{\vb*{s}}_{\mathrm{BLE}}\left(t_{n+1}\right)\right)
-		\end{equation*}
-				
-		观测方程
-		
-		\begin{equation*}
-			\vb*{H}^{\Delta r_{ji}} 
-			= 
-			\begin{pmatrix}
-				\vb*{H}^{\Delta r_{ji}}_{\vb*{R}_s^w}
-				~\vb*{H}^{\Delta r_{ji}}_{\vb*{v}_s^w}
-				~\vb*{H}^{\Delta r_{ji}}_{\vb*{p}_s^w}
-				~\vb*{H}^{\Delta r_{ji}}_{\vb*{\delta}_{\vb*{\omega}_s^s}} 
-				~\vb*{H}^{\Delta r_{ji}}_{\vb*{\delta}_{\vb*{f}_s^s}} 
-			\end{pmatrix}
-		\end{equation*}
-		
-		\begin{center}
-			\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lll}
-	            $ \vb*{H}^{\Delta r_{ji}} _{\vb*{R}_s^w}
-	            =
-       			\left(\frac{\vb*{P}_j-\hat{\vb*{p}}}{\left|\vb*{P}_j-\hat{\vb*{p}}\right|} - \frac{\vb*{P}_i-\hat{\vb*{p}}}{\left|\vb*{P}_i-\hat{\vb*{p}}\right|}\right)^{\mathrm{T}} \left(\hat{\vb*{p}}\right)_{\times}  $ 
-	            & $ \vb*{H}^{\Delta r_{ji}} _{\vb*{v}_s^w} = \vb*{0}_{1 \times 3} $ 
-	            & $ \vb*{H}^{\Delta r_{ji}} _{\vb*{p}_s^w}
-       			=
-       			-\left(\frac{\vb*{P}_i-\hat{\vb*{p}}}{\left|\vb*{P}_i-\hat{\vb*{p}}\right|}-\frac{\vb*{P}_j-\hat{\vb*{p}}}{\left|\vb*{P}_j-\hat{\vb*{p}}\right|}\right)^{\mathrm{T}} $
-	            \\
-	            $ \vb*{H}^{\Delta r_{ji}} _{\vb*{\delta}_{\vb*{\omega}_s^s}} = \vb*{0}_{1 \times 3} $ 
-	            & $ \vb*{H}^{\Delta r_{ji}}_{\vb*{\delta}_{\vb*{f}_s^s}} = \vb*{0}_{1 \times 3} $ 
-	            & 
-	   		\end{tabular*}
-   		\end{center} 
-
-	}
- 
- \end{frame}
- 
- 
- 
- 
+\begin{frame}[t]
+	\frametitle{数据和模型双驱动定位方法研究}
+	\framesubtitle{模型驱动几何观测量}	
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+		    \vspace{-1.0cm}
+			\begin{block}{模型驱动音频 TDoA 观测量}
+			{
+				\tiny
+				\begin{equation*}
+					\Delta t_{ji}\left(t_{n+1}\right)
+					=
+					f_{\mathrm{Acoustic}}\left(\tilde{\vb*{s}}_{\mathrm{Sound}},\tilde{\vb*{s}}_{\mathrm{BLE}}\left(t_{n+1}\right)\right)
+				\end{equation*}
+			}
+				观测方程
+			{
+				\tiny	
+				\begin{equation*}
+					\vb*{H}^{\Delta r_{ji}} 
+					= 
+					\begin{pmatrix}
+						\vb*{H}^{\Delta r_{ji}}_{\vb*{R}_s^w}
+						~\vb*{H}^{\Delta r_{ji}}_{\vb*{v}_s^w}
+						~\vb*{H}^{\Delta r_{ji}}_{\vb*{p}_s^w}
+						~\vb*{H}^{\Delta r_{ji}}_{\vb*{\delta}_{\vb*{\omega}_s^s}} 
+						~\vb*{H}^{\Delta r_{ji}}_{\vb*{\delta}_{\vb*{f}_s^s}} 
+					\end{pmatrix}
+				\end{equation*}		
+		   	}
+		   	\end{block}
+		   	\vspace{1.5cm}
+		   	{
+				\tiny
+				\begin{center}
+					\setlength{\tabcolsep}{2pt}
+					\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lll}
+						$ \vb*{H}^{\Delta r_{ji}} _{\vb*{R}_s^w}
+						=
+							       			\left(\frac{\vb*{P}_j-\hat{\vb*{p}}}{\left|\vb*{P}_j-\hat{\vb*{p}}\right|} - \frac{\vb*{P}_i-\hat{\vb*{p}}}{\left|\vb*{P}_i-\hat{\vb*{p}}\right|}\right)^{\mathrm{T}} \left(\hat{\vb*{p}}\right)_{\times}  $ 
+						& $ \vb*{H}^{\Delta r_{ji}} _{\vb*{v}_s^w} = \vb*{0}_{1 \times 3} $ 
+						& $ \vb*{H}^{\Delta r_{ji}} _{\vb*{p}_s^w}
+							       			=
+							       			-\left(\frac{\vb*{P}_i-\hat{\vb*{p}}}{\left|\vb*{P}_i-\hat{\vb*{p}}\right|}-\frac{\vb*{P}_j-\hat{\vb*{p}}}{\left|\vb*{P}_j-\hat{\vb*{p}}\right|}\right)^{\mathrm{T}} $
+						\\
+						$ \vb*{H}^{\Delta r_{ji}} _{\vb*{\delta}_{\vb*{\omega}_s^s}} = \vb*{0}_{1 \times 3} $ 
+						& $ \vb*{H}^{\Delta r_{ji}}_{\vb*{\delta}_{\vb*{f}_s^s}} = \vb*{0}_{1 \times 3} $ 
+						& 
+			   		\end{tabular*}
+		   		\end{center} 
+			}
+		\end{column}   
+		\begin{column}{0.5\textwidth}
+		    \vspace{-1.5cm}
+		   	\begin{figure}
+		   	\centering
+		   	    \includegraphics[width=\textwidth]{PedestrianAcousticPositioningAlgorithmArchitecture.pdf}
+		   	\end{figure}
+		\end{column}
+	\end{columns} 
+\end{frame}
  
 \begin{frame} 
  	\frametitle{数据和模型双驱动定位方法研究}
  	\framesubtitle{南京南高铁站数据集}
-   	\begin{figure}
-   	\centering
-	    \includegraphics[width=0.7\textwidth]{NanjingNJNRSDatasetTrackOverview.png}
-   	\end{figure}  
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+		   	\begin{figure}
+			    \includegraphics[width=\textwidth]{NanjingNJNRSDatasetTrackOverview.png}
+		   	\end{figure}  
+		\end{column}   
+		\begin{column}{0.5\textwidth}
+		   	\begin{figure}
+		   	\centering
+		   	    \includegraphics[width=\textwidth]{NanjingNJNRSDatasetAcousticSignalZoomedMap.png}
+		   	\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
  
 \begin{frame} 
  	\frametitle{数据和模型双驱动定位方法研究}
  	\framesubtitle{南京南高铁站数据集不同定位方法评价结果}
-    {\small
-    \setlength{\tabcolsep}{2pt}
-		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrrrrrr}
-			\toprule
-            \multicolumn{2}{c}{轨迹} & L1 & L2 & Z1 & Z2 & Z3 & Dataset \\
-			\midrule
-			\multicolumn{2}{c}{参考里程$\left(\unit{m}\right)$} & 737 & 737 & 593 & 590 & 590 & 3247 \\
-			\midrule
-			\multicolumn{2}{c}{参考时长$\left(\unit{s}\right)$} & 566 & 548 & 508 & 486 & 461 & 2569 \\
-			\midrule
-			\multirow{1}{*}{\makecell[c]{MD (TDoA) LS}}
-			& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.422 & 0.284 & 0.673 & 1.149 & 0.444 & 0.584 \\
-			\midrule
-			\multirow{1}{*}{\makecell[l]{MD (TDoA) Classic EKF}}
-			& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.639 & 0.337 & 1.508 & 1.025 & 0.562 & 0.806 \\
-			\midrule
-			\multirow{1}{*}{\makecell[l]{MD (TDoA) Invariant EKF}}
-			& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.318 & 0.213 & 0.574 & 0.869 & 0.348 & 0.456 \\
-			\midrule
-			\multirow{1}{*}{\makecell[l]{DD ($\vb*{R}$) MD (TDoA) Invariant EKF}}
-			& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.370 & 0.208 & 0.494 & 0.611 & \textbf{0.312} & 0.395 \\
-			\midrule
-			\multirow{1}{*}{\makecell[l]{DD ($\vb*{R}$, $\vb*{v}$) MD (TDoA) Invariant EKF}}
-			& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & \textbf{0.316} & \textbf{0.198} & \textbf{0.433} & \textbf{0.539} & 0.368 & \textbf{0.366} \\
-			\bottomrule
-		\end{tabular*}	
-	}	
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+	    {
+	    	\tiny
+	    	\setlength{\tabcolsep}{2pt}
+			\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrrrrrr}
+				\toprule
+	            \multicolumn{2}{c}{轨迹} & L1 & L2 & Z1 & Z2 & Z3 & Dataset \\
+				\midrule
+				\multicolumn{2}{c}{参考里程$\left(\unit{m}\right)$} & 737 & 737 & 593 & 590 & 590 & 3247 \\
+				\midrule
+				\multicolumn{2}{c}{参考时长$\left(\unit{s}\right)$} & 566 & 548 & 508 & 486 & 461 & 2569 \\
+				\midrule
+				\multirow{1}{*}{\makecell[c]{MD (TDoA) LS}}
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.422 & 0.284 & 0.673 & 1.149 & 0.444 & 0.584 \\
+				\midrule
+				\multirow{1}{*}{\makecell[l]{MD (TDoA) Classic EKF}}
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.639 & 0.337 & 1.508 & 1.025 & 0.562 & 0.806 \\
+				\midrule
+				\multirow{1}{*}{\makecell[l]{MD (TDoA) Invariant EKF}}
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.318 & 0.213 & 0.574 & 0.869 & 0.348 & 0.456 \\
+				\midrule
+				\multirow{1}{*}{\makecell[l]{DD ($\vb*{R}$) MD (TDoA) Invariant EKF}}
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.370 & 0.208 & 0.494 & 0.611 & \textbf{0.312} & 0.395 \\
+				\midrule
+				\multirow{1}{*}{\makecell[l]{DD ($\vb*{R}$, $\vb*{v}$) MD (TDoA) Invariant EKF}}
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & \textbf{0.316} & \textbf{0.198} & \textbf{0.433} & \textbf{0.539} & 0.368 & \textbf{0.366} \\
+				\bottomrule
+			\end{tabular*}	
+		}  
+		\end{column}   
+		\begin{column}{0.5\textwidth}
+			\begin{columns}[t]
+					\begin{column}{0.5\textwidth}
+					   	\begin{figure}
+						    \includegraphics[width=\textwidth]{NanjingNJNRSDatasetTrackOverview.png}
+					   	\end{figure}  
+					\end{column}   
+					\begin{column}{0.5\textwidth}
+					   	\begin{figure}
+					   	\centering
+					   	    \includegraphics[width=\textwidth]{NanjingNJNRSDatasetAcousticSignalZoomedMap.png}
+					   	\end{figure}
+					\end{column}
+				\end{columns}
+		\end{column}
+	\end{columns}	
 \end{frame}
  
 \begin{frame}
