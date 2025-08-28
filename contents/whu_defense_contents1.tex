@@ -241,7 +241,7 @@
 \end{frame}
 
 \begin{frame} 
- 	\frametitle{数据驱动行人航迹推算方法研究}
+ 	\frametitle{研究内容1 数据驱动行人航迹推算方法研究}
  	\framesubtitle{RoNIN数据集 Seen 测试集观测量约束位姿评价结果}
 	\begin{columns}[t]
 		\begin{column}{0.6\textwidth}
@@ -305,7 +305,7 @@
 \end{frame}
 
 \begin{frame} 
- 	\frametitle{数据驱动行人航迹推算方法研究}
+ 	\frametitle{研究内容1 数据驱动行人航迹推算方法研究}
  	\framesubtitle{RoNIN数据集 Unseen 测试集观测量约束位姿评价结果}
 	\begin{columns}[t]
 		\begin{column}{0.6\textwidth}
@@ -366,5 +366,21 @@
 		   	\hspace{1.2cm} {\tiny Uneen 测试集 a058\_3 轨迹}
 		\end{column}
 	\end{columns} 	
+\end{frame}
+
+\begin{frame}
+	\frametitle{研究内容1 小结}
+		\begin{block}{提出了一种数据驱动位姿约束智能手机行人航迹推算方法。}
+		{   
+		    \footnotesize
+		    该方法基于HNN模型构建智能手机和人体的相对姿态关系，观测量是智能手机握持姿态的数学表达，通过该观测量构建起行人姿态和速度伪观测量约束，在不变扩展卡尔曼滤波框架下实现可控位姿估计。
+		} 
+		\end{block}		
+		\begin{block}{在 RoNIN 数据集上对该方法进行了验证}
+		{
+		    \footnotesize
+		    实验分析讨论了神经网络核心架构，外围输入输出和网络规模等因素对数据驱动方法的影响，深入研究了不同数据驱动观测量组合对位姿估计的影响。 
+		} 
+		\end{block}
 \end{frame}
 

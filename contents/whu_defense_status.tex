@@ -16,74 +16,154 @@
 \section{国内外研究现状}
 
 \begin{frame}
-
-	\frametitle{数据驱动行人航迹推算数据集}
-	
-	{\small
-	    \setlength{\tabcolsep}{2pt}
-		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} cccrrrrcccccc}
-			\toprule
-			\multirow{3.5}{*}{数据集} & \multirow{3.5}{*}{日期} & \multirow{3.5}{*}{\makecell[c]{有\\效\\性}} & \multicolumn{6}{c}{规模与多样性} & \multicolumn{2}{c}{惯性传感器} & \multicolumn{2}{c}{参考真值}  \\ 
-			\cmidrule{4-9} \cmidrule{10-11} \cmidrule{12-13}
-			& & & \multirow{2}{*}{\makecell[c]{长度\\$\left(\unit{\km}\right)$}} 
-			& \multirow{2}{*}{\makecell[c]{时长\\$\left(\unit{\hour}\right)$}} 
-			& \multirow{2}{*}{轨迹} & \multirow{2}{*}{\makecell[c]{采集\\人数}} 
-			& \multirow{2}{*}{\makecell[c]{携带\\方式}} 
-			& \multirow{2}{*}{\makecell[c]{运动\\模式}}
-			& \multirow{2}{*}{数量} 
-			& \multirow{2}{*}{\makecell[c]{采样率\\$\left(\unit{\hertz}\right)$}} 
-			& \multirow{2}{*}{设备} 
-			& \multirow{2}{*}{\makecell[c]{采样率\\$\left(\unit{\hertz}\right)$}} \\
-			& & & & & & & & & & & & \\
-			\midrule
-	        \href{https://yanhangpublic.github.io/ridi/}{RIDI}                          & 2017 & \ding{51} & 10.4 &   1.6 &   72 &         6 & 4 & 2 &   2 & 200 & Tango         & 200 \\
-	   		\href{https://zenodo.org/records/1476931}{ADVIO}                            & 2018 & \ding{51} &  4.5 &   1.1 &   23 &         1 & 1 & 2 &   3 & 100 & Tango         & 100 \\
-	   		\href{http://deepio.cs.ox.ac.uk/}{OxIOD}                                    & 2018 & \ding{51} & 42.5 &  14.7 &  158 &         5 & 4 & 2 &   4 & 100 & Vicon         & 250 \\
-	   		\href{https://cvg.cit.tum.de/data/datasets/visual-inertial-dataset}{TUM VI} & 2018 & \ding{51} & 20   &   3.8 &   28 &         1 & 1 & 2 &   1 & 200 & OptiTrack     & 120 \\
-	   		\href{https://ronin.cs.sfu.ca/}{RoNIN}                                      & 2020 & \ding{51} & 56.6 &  42.7 &  276 &       100 & 4 & 2 &   4 & 200 & Tango         & 200 \\
-	   		\href{https://github.com/MAPS-Lab/smartphone-tracking-dataset}{MAPS Lab}    & 2021 & \ding{51} &  0.7 &   2.0 &    3 &         1 & 2 & 2 &   2 & 200 & Vicon         &   5 \\
-	   		\href{https://github.com/LF1952987278/SIMD_Repository}{SIMD}                & 2023 & \ding{51} & 717  & 190   & 4562 & $\geq$150 & 4 & 2 & 572 &  50 & GNSS | Marker &   1 \\
-	   		\href{https://github.com/BehnamZeinali/IMUNet}{IMUNet}                      & 2024 & \ding{51} & 35.9 &   9   &  126 &         4 & 4 & 2 &   5 & 200 & Tango         & 200 \\
-			\bottomrule	
-		\end{tabular*}        
-	}
+	\frametitle{行人航迹推算数据集}
+	\begin{columns}[t]
+		\begin{column}{0.6\textwidth}
+		{
+		    \tiny
+		    \setlength{\tabcolsep}{2pt}
+			\begin{tabular*}{1.2\textwidth}{@{\extracolsep{\fill}} cccrrrrcccccc}
+				\toprule
+				\multirow{3.5}{*}{数据集} & \multirow{3.5}{*}{日期} & \multirow{3.5}{*}{\makecell[c]{有\\效\\性}} & \multicolumn{6}{c}{规模与多样性} & \multicolumn{2}{c}{惯性传感器} & \multicolumn{2}{c}{参考真值}  \\ 
+				\cmidrule{4-9} \cmidrule{10-11} \cmidrule{12-13}
+				& & & \multirow{2}{*}{\makecell[c]{长度\\$\left(\unit{\km}\right)$}} 
+				& \multirow{2}{*}{\makecell[c]{时长\\$\left(\unit{\hour}\right)$}} 
+				& \multirow{2}{*}{轨迹} & \multirow{2}{*}{\makecell[c]{采集\\人数}} 
+				& \multirow{2}{*}{\makecell[c]{携带\\方式}} 
+				& \multirow{2}{*}{\makecell[c]{运动\\模式}}
+				& \multirow{2}{*}{数量} 
+				& \multirow{2}{*}{\makecell[c]{采样率\\$\left(\unit{\hertz}\right)$}} 
+				& \multirow{2}{*}{设备} 
+				& \multirow{2}{*}{\makecell[c]{采样率\\$\left(\unit{\hertz}\right)$}} \\
+				& & & & & & & & & & & & \\
+				\midrule
+		        \href{https://yanhangpublic.github.io/ridi/}{RIDI}                          & 2017 & \ding{51} & 10.4 &   1.6 &   72 &         6 & 4 & 2 &   2 & 200 & Tango         & 200 \\
+		   		\href{https://zenodo.org/records/1476931}{ADVIO}                            & 2018 & \ding{51} &  4.5 &   1.1 &   23 &         1 & 1 & 2 &   3 & 100 & Tango         & 100 \\
+		   		\href{http://deepio.cs.ox.ac.uk/}{OxIOD}                                    & 2018 & \ding{51} & 42.5 &  14.7 &  158 &         5 & 4 & 2 &   4 & 100 & Vicon         & 250 \\
+		   		\href{https://cvg.cit.tum.de/data/datasets/visual-inertial-dataset}{TUM VI} & 2018 & \ding{51} & 20   &   3.8 &   28 &         1 & 1 & 2 &   1 & 200 & OptiTrack     & 120 \\
+		   		\href{https://ronin.cs.sfu.ca/}{RoNIN}                                      & 2020 & \ding{51} & 56.6 &  42.7 &  276 &       100 & 4 & 2 &   4 & 200 & Tango         & 200 \\
+		   		\href{https://github.com/MAPS-Lab/smartphone-tracking-dataset}{MAPS Lab}    & 2021 & \ding{51} &  0.7 &   2.0 &    3 &         1 & 2 & 2 &   2 & 200 & Vicon         &   5 \\
+		   		\href{https://github.com/LF1952987278/SIMD_Repository}{SIMD}                & 2023 & \ding{51} & 717  & 190   & 4562 & $\geq$150 & 4 & 2 & 572 &  50 & GNSS | Marker &   1 \\
+		   		\href{https://github.com/BehnamZeinali/IMUNet}{IMUNet}                      & 2024 & \ding{51} & 35.9 &   9   &  126 &         4 & 4 & 2 &   5 & 200 & Tango         & 200 \\
+				\bottomrule	
+			\end{tabular*}        
+		}
+		\end{column}  
+		\begin{column}{0.1\textwidth}
+		\end{column} 
+		\begin{column}{0.3\textwidth}
+		    \begin{itemize}
+				\item 数据量
+				\item 多样性
+			\end{itemize}
+		\end{column}
+	\end{columns}
+   	\begin{figure}
+		\includegraphics[height=2cm]{data_pipeline.png}
+   	\end{figure}
 \end{frame}
 
 \begin{frame}
+	\frametitle{载具航迹推算方法数据集}
+	\vspace{-0.5cm}
+	\begin{columns}[t]
+		\begin{column}{0.7\textwidth}
+		{
+		    \tiny
+		    \setlength{\tabcolsep}{2pt}
+			\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}c c c l rrrc lc}
+				\toprule
+				\multirow{2}{*}{数据集} & \multirow{3}{*}{日期} & \multirow{2}{*}{\makecell[c]{有\\效\\性}} & \multirow{2}{*}{载具} &\multicolumn{4}{c}{规模} & \multicolumn{2}{c}{真值} \\
+				\cmidrule{5-8} \cmidrule{9-10}
+				& & & & 轨迹 & \makecell[c]{长度\\$\left(\unit{\km}\right)$} & \makecell[c]{时长\\$\left(\unit{\hour}\right)$} & \makecell[c]{采样率\\$\left(\unit{\hertz}\right)$} & \multicolumn{1}{c}{设备} & \makecell[c]{采样率\\$\left(\unit{\hertz}\right)$} \\
+				\midrule
+				\href{https://www.cvlibs.net/datasets/kitti/eval_odometry.php}{KITTI} 
+				& 2012 & \ding{51} & LV                &  11 &   22.2 & 40.1 &    200 & GNSS/INS                       & 100       \\
+				\href{https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets}{EuRoC MAV} 
+				& 2016 & \ding{51} & MR                &  11 &    0.9 &  0.4 &    200 & Leica MS50 \& Vicon            & 20 \& 100 \\
+				\href{https://sites.google.com/view/complex-urban-dataset/home}{Complex Urban Dataset} 
+				& 2018 & \ding{51} & LV                &  41 &  356.1 &  $-$ &    100 & SLAM                           & 100       \\
+				\href{https://github.com/onyekpeu/IO-VNBD}{IO-VNBD} 
+				& 2021 & \ding{51} & LV                &  43 & 4400   & 58   &    100 & GNSS                           &  10       \\
+				\href{https://www.kaggle.com/competitions/smartphone-decimeter-2022/data}{GSDC} 
+				& 2022 & \ding{51} & LV                &  62 & 2123.6 & 30.3 & 50-200 & GNSS/INS                       &   1       \\
+				\href{https://www.kaggle.com/competitions/smartphone-decimeter-2023}{GSDC} 
+				& 2023 & \ding{51} & LV                &  65 & 1685.3 & 29.4 & 50-200 & GNSS/INS                       &   1       \\
+				\href{https://figshare.com/articles/dataset/Multiple_and_Gyro-Free_Inertial_Datasets/26927089/1?file=48979765}{MAGF-ID} 
+				& 2024 & \ding{51} & LV \& MR          & 115 &    $-$ &  5.6 &    200 & $\mathrm{GNSS}^{\mathrm{RTK}}$ & 200        \\
+				\bottomrule	
+			\end{tabular*}   
+		}
+		\end{column}   
+		\begin{column}{0.3\textwidth}
+		    \begin{itemize}
+				\item 以智能手机为中心的车载数据采集
+			\end{itemize}
+		\end{column}
+	\end{columns}
+	\begin{columns}[t]
+		\begin{column}{0.3\textwidth}
+		   	\begin{figure}
+				\includegraphics[height=2.5cm]{KITTIRecordingPlatform.jpg}
+		   	\end{figure}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+		    \vspace{-0.5cm}
+		   	\begin{figure}
+				\includegraphics[height=2.5cm]{ComplexUrbanDatasetRecordingPlatform.png}
+		   	\end{figure}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+		    \vspace{-0.5cm}
+		   	\begin{figure}
+				\includegraphics[height=2.5cm]{GSDC2023RecordingPlatform.png}
+		   	\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
 
+\begin{frame}
 	\frametitle{数据驱动行人航迹推算方法}
-	
-	{\scriptsize
-		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lclc}
-			\toprule
-			\multicolumn{1}{c}{模型} & 日期 & 期刊/会议 & 数据集 \\
-			\midrule
-			\multirow{2}{*}{IONet} & 2018 & AAAI                            & \multirow{2}{*}{OxIOD} \\ % Proceedings of the AAAI Conference on Artificial Intelligence
-			                       & 2019 & IEEE. Trans. Mob. Comput.       &                        \\ % IEEE Transactions on Mobile Computing
-			               L-IONet & 2020 & IEEE Internet Things J.         & OxIOD                  \\ % IEEE Internet of Things Journal
-			                 RoNIN & 2020 & ICRA                            & RoNIN                  \\ % 2020 IEEE International Conference on Robotics and Automation (ICRA)
-			        Extended IONet & 2021 & Expert Syst. Appl.              & OxIOD                   \\ 
-			                   DIO & 2021 & IEEE Trans. Instrum. Meas.      & RoNIN \& Private       \\ % IEEE Transactions on Instrumentation and Measurement
-			                  IDOL & 2021 & AAAI                            & IDOL                   \\ % Proceedings of the AAAI Conference on Artificial Intelligence, 35
-			                   RIO & 2022 & CVPR                            & Public \& Private      \\ % 2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) | 18-24 June 2022 | 27 September 2022
-			                 HNNTA & 2022 & IEEE Trans. Instrum. Meas.      & RoNIN \& Private       \\ % IEEE Transactions on Instrumentation and Measurement
-			                  CTIN & 2022 & AAAI                            & Public \& Private      \\ % Proceedings of the AAAI Conference on Artificial Intelligence, 36
-			                  RIOT & 2023 & Sensors                         & OxIOD                  \\
-			              DO IONet & 2023 & IEEE Access                     & OxIOD                  \\
-			                 SSHNN & 2023 & IEEE Sens. J.                   & Private                \\
-			                  SIMD & 2023 & IEEE Trans. Instrum. Meas.      & SIMD                   \\ % IEEE Transactions on Instrumentation and Measurement
-			                IMUNet & 2024 & IEEE Trans. Instrum. Meas.      & Public                 \\
-			              ResMixer & 2024 & IEEE Sens. J.                   & RoNIN \& Private       \\
-			\bottomrule
-		\end{tabular*}        
-	}
-	
+	\vspace{-0.5cm}
+	\begin{columns}[t]
+		\begin{column}{0.4\textwidth}
+		{
+		    \tiny
+		    \setlength{\tabcolsep}{2pt}
+			\begin{tabular*}{1.2\textwidth}{@{\extracolsep{\fill}}lclc}
+				\toprule
+				\multicolumn{1}{c}{模型} & 日期 & 期刊/会议 & 数据集 \\
+				\midrule
+				\multirow{2}{*}{IONet} & 2018 & AAAI                            & \multirow{2}{*}{OxIOD} \\ % Proceedings of the AAAI Conference on Artificial Intelligence
+				                       & 2019 & IEEE. Trans. Mob. Comput.       &                        \\ % IEEE Transactions on Mobile Computing
+				               L-IONet & 2020 & IEEE Internet Things J.         & OxIOD                  \\ % IEEE Internet of Things Journal
+				                 RoNIN & 2020 & ICRA                            & RoNIN                  \\ % 2020 IEEE International Conference on Robotics and Automation (ICRA)
+				        Extended IONet & 2021 & Expert Syst. Appl.              & OxIOD                   \\ 
+				                   DIO & 2021 & IEEE Trans. Instrum. Meas.      & RoNIN \& Private       \\ % IEEE Transactions on Instrumentation and Measurement
+				                  IDOL & 2021 & AAAI                            & IDOL                   \\ % Proceedings of the AAAI Conference on Artificial Intelligence, 35
+				                   RIO & 2022 & CVPR                            & Public \& Private      \\ % 2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) | 18-24 June 2022 | 27 September 2022
+				                 HNNTA & 2022 & IEEE Trans. Instrum. Meas.      & RoNIN \& Private       \\ % IEEE Transactions on Instrumentation and Measurement
+				                  CTIN & 2022 & AAAI                            & Public \& Private      \\ % Proceedings of the AAAI Conference on Artificial Intelligence, 36
+				                  RIOT & 2023 & Sensors                         & OxIOD                  \\
+				              DO IONet & 2023 & IEEE Access                     & OxIOD                  \\
+				                 SSHNN & 2023 & IEEE Sens. J.                   & Private                \\
+				                  SIMD & 2023 & IEEE Trans. Instrum. Meas.      & SIMD                   \\ % IEEE Transactions on Instrumentation and Measurement
+				                IMUNet & 2024 & IEEE Trans. Instrum. Meas.      & Public                 \\
+				              ResMixer & 2024 & IEEE Sens. J.                   & RoNIN \& Private       \\
+				\bottomrule
+			\end{tabular*}     
+		}
+		\end{column}   
+		\begin{column}{0.6\textwidth}
+		    \begin{itemize}
+				\item 以智能手机为中心的车载数据采集
+			\end{itemize}
+		\end{column}
+	\end{columns}	
 \end{frame}
 
 \begin{frame}
-
-	\frametitle{数据和模型双驱动行人航迹推算方法}
-	
+	\frametitle{数据和模型双驱动行人航迹推算方法}	
 	{\footnotesize
 		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}cccc}
 			\toprule
@@ -105,38 +185,6 @@
 			               EKF+ResNet & 2023 & ICARM                           & RoNIN                    \\ % 2023 International Conference on Advanced Robotics and Mechatronics (ICARM)
 			\bottomrule
 		\end{tabular*}       
-	}
-	
-\end{frame}
-
-\begin{frame}
-
-	\frametitle{载具航迹推算方法数据集}
-	
-	{\footnotesize
-	    \setlength{\tabcolsep}{2pt}
-		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}c c c l rrrc lc}
-			\toprule
-			\multirow{2}{*}{数据集} & \multirow{3}{*}{日期} & \multirow{2}{*}{\makecell[c]{有\\效\\性}} & \multirow{2}{*}{载具} &\multicolumn{4}{c}{规模} & \multicolumn{2}{c}{真值} \\
-			\cmidrule{5-8} \cmidrule{9-10}
-			& & & & 轨迹 & \makecell[c]{长度\\$\left(\unit{\km}\right)$} & \makecell[c]{时长\\$\left(\unit{\hour}\right)$} & \makecell[c]{采样率\\$\left(\unit{\hertz}\right)$} & \multicolumn{1}{c}{设备} & \makecell[c]{采样率\\$\left(\unit{\hertz}\right)$} \\
-			\midrule
-			\href{https://www.cvlibs.net/datasets/kitti/eval_odometry.php}{KITTI} 
-			& 2012 & \ding{51} & LV                &  11 &   22.2 & 40.1 &    200 & GNSS/INS                       & 200       \\
-			\href{https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets}{EuRoC MAV} 
-			& 2016 & \ding{51} & MR                &  11 &    0.9 &  0.4 &    200 & Leica MS50 \& Vicon            & 20 \& 100 \\
-			\href{https://sites.google.com/view/complex-urban-dataset/home}{Complex Urban Dataset} 
-			& 2018 & \ding{51} & LV                &  41 &  356.1 &  $-$ &    100 & SLAM                           & 100       \\
-			\href{https://github.com/onyekpeu/IO-VNBD}{IO-VNBD} 
-			& 2021 & \ding{51} & LV                &  43 & 4400   & 58   &    100 & GNSS                           &  10       \\
-			\href{https://www.kaggle.com/competitions/smartphone-decimeter-2022/data}{GSDC} 
-			& 2022 & \ding{51} & LV                &  62 & 2123.6 & 30.3 & 50-200 & GNSS/INS                       &   1       \\
-			\href{https://www.kaggle.com/competitions/smartphone-decimeter-2023}{GSDC} 
-			& 2023 & \ding{51} & LV                &  65 & 1685.3 & 29.4 & 50-200 & GNSS/INS                       &   1       \\
-			\href{https://figshare.com/articles/dataset/Multiple_and_Gyro-Free_Inertial_Datasets/26927089/1?file=48979765}{MAGF-ID} 
-			& 2024 & \ding{51} & LV \& MR          & 115 &    $-$ &  5.6 &    200 & $\mathrm{GNSS}^{\mathrm{RTK}}$ & 200        \\
-			\bottomrule	
-		\end{tabular*}        
 	}
 	
 \end{frame}

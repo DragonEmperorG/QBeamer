@@ -130,10 +130,10 @@
  	\framesubtitle{南京南高铁站数据集不同定位方法评价结果}
 	\begin{columns}[t]
 		\begin{column}{0.5\textwidth}
-	    {
+	    \scalebox{0.8}{{
 	    	\tiny
 	    	\setlength{\tabcolsep}{2pt}
-			\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrrrrrr}
+			\begin{tabular*}{1.2\textwidth}{@{\extracolsep{\fill}}llrrrrrr}
 				\toprule
 	            \multicolumn{2}{c}{轨迹} & L1 & L2 & Z1 & Z2 & Z3 & Dataset \\
 				\midrule
@@ -141,142 +141,239 @@
 				\midrule
 				\multicolumn{2}{c}{参考时长$\left(\unit{s}\right)$} & 566 & 548 & 508 & 486 & 461 & 2569 \\
 				\midrule
-				\multirow{1}{*}{\makecell[c]{MD (TDoA) LS}}
+				\multirow{2}{*}{\makecell[c]{MD (TDoA)\\ LS}}
 				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.422 & 0.284 & 0.673 & 1.149 & 0.444 & 0.584 \\
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{\SI{95}{\percent}}$ & 0.905 & 0.482 & 1.561 & 2.540 & 1.113 & 1.215 \\
 				\midrule
-				\multirow{1}{*}{\makecell[l]{MD (TDoA) Classic EKF}}
+				\multirow{2}{*}{\makecell[l]{MD (TDoA)\\ Classic EKF}}
 				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.639 & 0.337 & 1.508 & 1.025 & 0.562 & 0.806 \\
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{\SI{95}{\percent}}$ & 1.433 & 0.717 & 2.967 & 2.615 & 1.410 & 1.882 \\
 				\midrule
-				\multirow{1}{*}{\makecell[l]{MD (TDoA) Invariant EKF}}
+				\multirow{2}{*}{\makecell[l]{MD (TDoA)\\ Invariant EKF}}
 				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.318 & 0.213 & 0.574 & 0.869 & 0.348 & 0.456 \\
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{\SI{95}{\percent}}$ & \textbf{0.675} & 0.439 & 1.184 & 2.133 & 0.788 & 0.887 \\
 				\midrule
-				\multirow{1}{*}{\makecell[l]{DD ($\vb*{R}$) MD (TDoA) Invariant EKF}}
+				\multirow{2}{*}{\makecell[l]{DD ($\vb*{R}$) MD (TDoA)\\ Invariant EKF}}
 				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.370 & 0.208 & 0.494 & 0.611 & \textbf{0.312} & 0.395 \\
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{\SI{95}{\percent}}$ & 0.829 & 0.384 & 0.987 & 1.193 & \textbf{0.711} & 0.812 \\
 				\midrule
-				\multirow{1}{*}{\makecell[l]{DD ($\vb*{R}$, $\vb*{v}$) MD (TDoA) Invariant EKF}}
+				\multirow{2}{*}{\makecell[l]{DD ($\vb*{R}$, $\vb*{v}$) MD (TDoA)\\ Invariant EKF}}
 				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & \textbf{0.316} & \textbf{0.198} & \textbf{0.433} & \textbf{0.539} & 0.368 & \textbf{0.366} \\
-				\bottomrule
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{\SI{95}{\percent}}$ & 0.690 & \textbf{0.364} & \textbf{0.970} & \textbf{1.014} & 0.807 & \textbf{0.785} \\
+				\bottomrule 
 			\end{tabular*}	
-		}  
+		}}
 		\end{column}   
 		\begin{column}{0.5\textwidth}
+		    \vspace{-4.5cm}
 			\begin{columns}[t]
-					\begin{column}{0.5\textwidth}
+					\begin{column}{0.3\textwidth}
 					   	\begin{figure}
-						    \includegraphics[width=\textwidth]{NanjingNJNRSDatasetTrackOverview.png}
-					   	\end{figure}  
+						    \includegraphics[height=0.9\textheight]{NanjingNJNRSL1TrackMethodComparation.png}
+					   	\end{figure}
+					   	\vspace{-0.5cm}
+		   			   	{\tiny L1 轨迹位置估计结果}
 					\end{column}   
-					\begin{column}{0.5\textwidth}
+					\begin{column}{0.3\textwidth}
 					   	\begin{figure}
 					   	\centering
-					   	    \includegraphics[width=\textwidth]{NanjingNJNRSDatasetAcousticSignalZoomedMap.png}
+					   	    \includegraphics[height=0.9\textheight]{NanjingNJNRSZ1TrackMethodComparation.png}
 					   	\end{figure}
+					   	\vspace{-0.5cm}
+		   			   	{\tiny Z1 轨迹位置估计结果}
+					\end{column}
+					\begin{column}{0.4\textwidth}
+					    \vspace{1cm}
+						{\small 						
+							\begin{itemize}
+								\item 改进滤波模型可以提升位置估计精度
+								\item 增加动态位姿约束可以提升位置估计精度
+							\end{itemize}
+						}
 					\end{column}
 				\end{columns}
 		\end{column}
-	\end{columns}	
+	\end{columns}
 \end{frame}
  
 \begin{frame}
  	\frametitle{数据和模型双驱动定位方法研究}
  	\framesubtitle{南京南高铁站数据集不同 TDoA 组合频率结果对比}
-	{\small
-		\setlength{\tabcolsep}{2pt}
-		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}rlrrrrrr}
-			\toprule
-		    \multicolumn{2}{c}{轨迹} & L1 & L2 & Z1 & Z2 & Z3 & Dataset \\
-			\midrule
-			\multicolumn{2}{c}{参考里程$\left(\unit{m}\right)$} & 737 & 737 & 593 & 590 & 590 & 3247 \\
-			\midrule
-			\multicolumn{2}{c}{参考时长$\left(\unit{s}\right)$} & 566 & 548 & 508 & 486 & 461 & 2569 \\
-			\midrule
-			\multirow{1}{*}{$\SI{1}{\hertz}$}
-			& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & \textbf{0.316} & \textbf{0.198} & \textbf{0.433} & \textbf{0.539} & \textbf{0.368} & \textbf{0.366} \\
-			\midrule
-			\multirow{1}{*}{$\SI{0.5}{\hertz}$}
-			& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.351 & 0.227 & 0.518 & 0.733 & 0.464 & 0.450 \\
-			\midrule
-			\multirow{1}{*}{$\SI{0.3}{\hertz}$}
-			& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.374 & 0.263 & 0.690 & 0.674 & 0.519 & 0.495 \\
-			\midrule
-			\multirow{1}{*}{$\SI{0.2}{\hertz}$}
-			& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.438 & 0.330 & 0.740 & 0.916 & 0.723 & 0.616 \\		
-			\bottomrule 
-		\end{tabular*}
-	}
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+	    {
+	    	\tiny
+	    	\setlength{\tabcolsep}{2pt}
+			\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}rlrrrrrr}
+				\toprule
+			    \multicolumn{2}{c}{轨迹} & L1 & L2 & Z1 & Z2 & Z3 & Dataset \\
+				\midrule
+				\multicolumn{2}{c}{参考里程$\left(\unit{m}\right)$} & 737 & 737 & 593 & 590 & 590 & 3247 \\
+				\midrule
+				\multicolumn{2}{c}{参考时长$\left(\unit{s}\right)$} & 566 & 548 & 508 & 486 & 461 & 2569 \\
+				\midrule
+				\multirow{1}{*}{$\SI{1}{\hertz}$}
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & \textbf{0.316} & \textbf{0.198} & \textbf{0.433} & \textbf{0.539} & \textbf{0.368} & \textbf{0.366} \\
+				\midrule
+				\multirow{1}{*}{$\SI{0.5}{\hertz}$}
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.351 & 0.227 & 0.518 & 0.733 & 0.464 & 0.450 \\
+				\midrule
+				\multirow{1}{*}{$\SI{0.3}{\hertz}$}
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.374 & 0.263 & 0.690 & 0.674 & 0.519 & 0.495 \\
+				\midrule
+				\multirow{1}{*}{$\SI{0.2}{\hertz}$}
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.438 & 0.330 & 0.740 & 0.916 & 0.723 & 0.616 \\		
+				\bottomrule 
+			\end{tabular*}	
+		}
+		\end{column}   
+		\begin{column}{0.5\textwidth}
+		    \vspace{-2.5cm}
+			\begin{columns}[t]
+					\begin{column}{0.3\textwidth}
+					   	\begin{figure}
+						    \includegraphics[height=0.9\textheight]{NanjingNJNRSL2TrackTDoAIntegratedFrequencyComparation.png}
+					   	\end{figure}
+					   	\vspace{-0.5cm}
+		   			   	\hspace{0.0cm} {\tiny L2 轨迹位置估计结果}
+					\end{column}   
+					\begin{column}{0.3\textwidth}
+					   	\begin{figure}
+					   	\centering
+					   	    \includegraphics[height=0.9\textheight]{NanjingNJNRSZ2TrackTDoAIntegratedFrequencyComparation.png}
+					   	\end{figure}
+					   	\vspace{-0.5cm}
+		   			   	\hspace{0.0cm} {\tiny Z2 轨迹位置估计结果}
+					\end{column}
+					\begin{column}{0.4\textwidth}
+					    \vspace{1cm}
+						{\small 						
+							\begin{itemize}
+								\item 降低模型驱动高精度定位信号更新频率对于整体精度影响较小
+							\end{itemize}
+						}
+					\end{column}
+				\end{columns}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
  	\frametitle{数据和模型双驱动定位方法研究}
  	\framesubtitle{南京南高铁站数据集不同智能手机结果对比}
-	{\small
-		\setlength{\tabcolsep}{2pt}
-		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrrrrrr}
-			\toprule
-			\multicolumn{2}{c}{轨迹} & L1 & L2 & Z1 & Z2 & Z3 & Dataset \\
-			\midrule
-			\multicolumn{2}{c}{参考里程$\left(\unit{m}\right)$} & 737 & 737 & 593 & 590 & 590 & 3247 \\
-			\midrule
-			\multicolumn{2}{c}{参考时长$\left(\unit{s}\right)$} & 566 & 548 & 508 & 486 & 461 & 2569 \\
-			\midrule
-			\multirow{1}{*}{\makecell[l]{HUAWEI Mate 30 LS}}
-			& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.675 & 0.607 & 2.586 & 1.397 & 1.365 & 1.276 \\
-			\midrule
-			\multirow{1}{*}{\makecell[l]{HUAWEI Mate 30 Invariant EKF}}
-			& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & \textbf{0.184} & 0.199 & 0.865 & 0.611 & 0.485 & 0.447 \\
-			\midrule
-			\multirow{1}{*}{\makecell[l]{HUAWEI Nova 7 LS}}
-			& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.767 & 0.771 & 3.492 & 1.448 & 1.096 & 1.467 \\
-			\midrule
-			\multirow{1}{*}{\makecell[l]{HUAWEI Nova 7 Invariant EKF}}
-			& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.220 & 0.206 & 0.694 & \textbf{0.495} & 0.516 & 0.409 \\
-			\midrule
-			\multirow{1}{*}{\makecell[l]{SAMSUNG Galaxy S9 LS}}
-			& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.422 & 0.284 & 0.673 & 1.149 & 0.444 & 0.584 \\
-			\midrule
-			\multirow{1}{*}{\makecell[l]{SAMSUNG Galaxy S9 Invariant EKF}}
-			& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.316 & \textbf{0.198} & \textbf{0.433} & 0.539 & \textbf{0.368} & \textbf{0.366} \\
-			\bottomrule 
-		\end{tabular*} 
-	}
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+	    \scalebox{0.8}{{
+	    	\tiny
+	    	\setlength{\tabcolsep}{2pt}
+			\begin{tabular*}{1.2\linewidth}{@{\extracolsep{\fill}}llrrrrrr}
+				\toprule
+				\multicolumn{2}{c}{轨迹} & L1 & L2 & Z1 & Z2 & Z3 & Dataset \\
+				\midrule
+				\multicolumn{2}{c}{参考里程$\left(\unit{m}\right)$} & 737 & 737 & 593 & 590 & 590 & 3247 \\
+				\midrule
+				\multicolumn{2}{c}{参考时长$\left(\unit{s}\right)$} & 566 & 548 & 508 & 486 & 461 & 2569 \\
+				\midrule
+				\multirow{1}{*}{\makecell[l]{HUAWEI Mate 30\\ LS}}
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.675 & 0.607 & 2.586 & 1.397 & 1.365 & 1.276 \\
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{\SI{95}{\percent}}$ & 1.500 & 1.349 & 4.687 & 3.534 & 3.168 & 2.722 \\
+				\midrule
+				\multirow{1}{*}{\makecell[l]{HUAWEI Mate 30\\ Invariant EKF}}
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & \textbf{0.184} & 0.199 & 0.865 & 0.611 & 0.485 & 0.447 \\
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{\SI{95}{\percent}}$ & \textbf{0.375} & 0.367 & 2.053 & 1.254 & 1.268 & 0.926 \\
+				\midrule
+				\multirow{1}{*}{\makecell[l]{HUAWEI Nova 7\\ LS}}
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.767 & 0.771 & 3.492 & 1.448 & 1.096 & 1.467 \\
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{\SI{95}{\percent}}$ & 1.724 & 2.034 & 4.731 & 3.406 & 2.213 & 2.918 \\
+				\midrule
+				\multirow{1}{*}{\makecell[l]{HUAWEI Nova 7\\ Invariant EKF}}
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.220 & 0.206 & 0.694 & \textbf{0.495} & 0.516 & 0.409 \\
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{\SI{95}{\percent}}$ & 0.480 & 0.406 & 1.889 & 1.054 & 1.036 & 0.860 \\
+				\midrule
+				\multirow{1}{*}{\makecell[l]{SAMSUNG Galaxy S9\\ LS}}
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.422 & 0.284 & 0.673 & 1.149 & 0.444 & 0.584 \\
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{\SI{95}{\percent}}$ & 0.905 & 0.482 & 1.561 & 2.540 & 1.113 & 1.215 \\
+				\midrule
+				\multirow{1}{*}{\makecell[l]{SAMSUNG Galaxy S9\\ Invariant EKF}}
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{MAE}$ & 0.316 & \textbf{0.198} & \textbf{0.433} & 0.539 & \textbf{0.368} & \textbf{0.366} \\
+				& $\vb*{e}^{\mathrm{APE,horizontal}}_{\SI{95}{\percent}}$ & 0.690 & \textbf{0.364} & \textbf{0.970} & \textbf{1.014} & \textbf{0.807} & \textbf{0.785} \\
+				\bottomrule 
+			\end{tabular*} 	
+		}}
+		\end{column}   
+		\begin{column}{0.5\textwidth}
+		    \vspace{-4.5cm}
+			\begin{columns}[t]
+					\begin{column}{0.3\textwidth}
+					   	\begin{figure}
+						    \includegraphics[height=0.9\textheight]{NanjingNJNRSL1TrackSmartphoneComparation.png}
+					   	\end{figure}
+					   	\vspace{-0.5cm}
+		   			   	\hspace{0.0cm} {\tiny L2 轨迹位置估计结果}
+					\end{column}   
+					\begin{column}{0.3\textwidth}
+					   	\begin{figure}
+					   	\centering
+					   	    \includegraphics[height=0.9\textheight]{NanjingNJNRSZ3TrackSmartphoneComparation.png}
+					   	\end{figure}
+					   	\vspace{-0.5cm}
+		   			   	\hspace{0.0cm} {\tiny Z2 轨迹位置估计结果}
+					\end{column}
+					\begin{column}{0.4\textwidth}
+					    \vspace{1cm}
+						{\small 						
+							\begin{itemize}
+								\item 维持了模型的泛化性
+							\end{itemize}
+						}
+					\end{column}
+				\end{columns}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
 	\frametitle{数据和模型双驱动定位方法研究}
-   	\begin{figure}
-   	\centering
-   	    \includegraphics[width=0.6\textwidth]{VehicleGnssPositioningAlgorithmArchitecture.pdf}
-   	\end{figure} 
-\end{frame}
-
-\begin{frame}
-	\frametitle{数据和模型双驱动定位方法研究}	
-	\framesubtitle{量测更新}	
-	{\small
-		模型驱动观测量
-		
-		\begin{equation*}
-			\vb*{p}_{s}^{n}\left(t_{n+1}\right)
-			=
-			f_{\mathrm{GNSS}}\left(\tilde{\vb*{s}}_{\mathrm{GNSS}}\left(t_i\right)\right)
-		\end{equation*}
-				
-		观测方程
-		
-		\begin{equation*}
-			\vb*{H}^{\vb*{p}^s_{n}} 
-			= 
-			\begin{pmatrix}
-				\left(\hat{\vb*{p}}\right)_{\times}
-				&\vb*{0}_3
-				&\vb*{I}_3
-				&\vb*{0}_3
-				&\vb*{0}_3
-				&\vb*{0}_3
-				&\vb*{0}_3
-			\end{pmatrix}
-		\end{equation*}    
-	} 
+	\framesubtitle{模型驱动位置观测量}
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+		    \vspace{-1.0cm}
+			\begin{block}{模型驱动 GNSS 观测量}
+			{
+				\tiny
+				\begin{equation*}
+					\vb*{p}_{s}^{n}\left(t_{n+1}\right)
+					=
+					f_{\mathrm{GNSS}}\left(\tilde{\vb*{s}}_{\mathrm{GNSS}}\left(t_i\right)\right)
+				\end{equation*}
+			}
+				观测方程
+			{
+				\tiny	
+				\begin{equation*}
+					\vb*{H}^{\vb*{p}^s_{n}} 
+					= 
+					\begin{pmatrix}
+						\left(\hat{\vb*{p}}\right)_{\times}
+						&\vb*{0}_3
+						&\vb*{I}_3
+						&\vb*{0}_3
+						&\vb*{0}_3
+						&\vb*{0}_3
+						&\vb*{0}_3
+					\end{pmatrix}
+				\end{equation*}	
+		   	}
+		   	\end{block}
+		\end{column}   
+		\begin{column}{0.5\textwidth}
+		    \vspace{-1.5cm}
+		   	\begin{figure}
+		   	\centering
+		   	    \includegraphics[width=\textwidth]{VehicleGnssPositioningAlgorithmArchitecture.pdf}
+		   	\end{figure}
+		\end{column}
+	\end{columns}  
 \end{frame}
 
  \begin{frame} 
@@ -301,49 +398,73 @@
  \begin{frame} 
  	\frametitle{数据和模型双驱动定位方法研究}
  	\framesubtitle{GSDC2023-2024 数据集结果对比}
+	\begin{columns}[t]
+		\begin{column}{0.6\textwidth}
+			\scalebox{0.9}{{   
+				\tiny   
+				\setlength{\tabcolsep}{2pt}     
+				\begin{tabular*}{1.2\linewidth}{@{\extracolsep{\fill}}lcccl rrr rrr}
+					\toprule
+					\multirow{2.5}{*}{轨迹采集名称} 
+					& \multirow{2.5}{*}{编号} 
+					& \multirow{2.5}{*}{\makecell[c]{里程\\$\left(\unit{\kilo\meter}\right)$}} 
+					& \multirow{2.5}{*}{\makecell[c]{时长\\$\left(\unit{\second}\right)$}} 
+					& \multirow{2.5}{*}{\makecell[c]{手机型号}} 
+					& \multicolumn{3}{c}{\makecell[c]{RTKLIB\\$\vb*{e}^{\mathrm{APE,horizontal}}$}}
+					& \multicolumn{3}{c}{\makecell[c]{RTKLIB Invariant EKF\\$\vb*{e}^{\mathrm{APE,horizontal}}$}} \\
+					\cmidrule{6-8} \cmidrule{9-11}
+					& & & & & $\SI{50}{\percent}$  & $\SI{95}{\percent}$  & score & $\SI{50}{\percent}$  & $\SI{95}{\percent}$  & score \\
+					\midrule
+					\multirow{3}{*}{\makecell[c]{2023-05-19-20-10\\-us-ca-mtv-ie2}} & \multirow{3}{*}{\makecell[c]{46}} & \multirow{3}{*}{\makecell[r]{5.9}} & \multirow{3}{*}{\makecell[r]{1229}} & Pixel 5 & 1.079 & 2.572 & 1.826 & 1.080 & 2.318 & \textbf{1.699} \\
+					& & & & Pixel 7 Pro & 1.238 & 2.503 & 1.871 & 1.209 & 2.485 & \textbf{1.847} \\
+					& & & & Galaxy S22 Ultra & 1.202 & 2.942 & \textbf{2.072} & 1.204 & 2.989 & 2.097 \\
+					\midrule
+					\multirow{3}{*}{\makecell[c]{2023-05-25-20-11\\-us-ca-sjc-he2}} & \multirow{3}{*}{\makecell[c]{51}} & \multirow{3}{*}{\makecell[r]{10.7}} & \multirow{3}{*}{\makecell[r]{1263}} & Pixel 5 & 0.942 & 2.321 & 1.632 & 0.925 & 2.147 & \textbf{1.536} \\
+					& & & & Pixel 7 Pro & 0.668 & 2.005 & 1.336 & 0.669 & 1.783 & \textbf{1.226} \\
+					& & & & Galaxy S22 Ultra & 0.660 & 1.463 & 1.062 & 0.592 & 1.360 & \textbf{0.976} \\
+					\midrule
+					\multirow{2}{*}{\makecell[c]{2023-05-26-18-51\\-us-ca-sjc-ge2}} & \multirow{2}{*}{\makecell[c]{53}} & \multirow{2}{*}{\makecell[r]{7.4}} & \multirow{2}{*}{\makecell[r]{1461}} & Pixel 5 & 1.309 & 2.320 & 1.814 & 1.265 & 2.252 & \textbf{1.759} \\
+					& & & & Pixel 7 Pro & 1.231 & 2.716 & 1.974 & 1.198 & 2.427 & \textbf{1.813} \\
+					\bottomrule
+				\end{tabular*}	
+		   	}}
+			\begin{itemize}
+				\item 数据和模型双驱动方法提升 GNSS 观测质量变差或者信号缺失状态下的定位精度
+			\end{itemize}
+		\end{column} 
+		\begin{column}{0.4\textwidth}
+    		\vspace{-3.2cm}  
+		   	\begin{figure}
+    			\includegraphics[width=0.8\textwidth]{2023-05-25-20-11-us-ca-sjc-he2/sm-s908b/ComparedSubTraceT631GeographicPlot.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{0.2cm}\scalebox{0.7}{{\tiny 2023-05-25-20-11-us-ca-sjc-he2/Galaxy S22 Ultra 轨迹 \SI{631}{\second}不同方法结果对比}}
+		   	\vspace{-0.2cm}
+		   	\begin{figure}
+				\includegraphics[width=0.8\textwidth]{2023-05-26-18-51-us-ca-sjc-ge2/pixel7pro/ComparedSubTraceT289GeographicPlot.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{0.2cm}\scalebox{0.7}{{\tiny 2023-05-26-18-51-us-ca-sjc-ge2/Pixel 7 Pro 轨迹 \SI{289}{\second}不同方法结果对比}}
+		\end{column}    
+	\end{columns}
     {\small
         \setlength{\tabcolsep}{2pt}
-		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccl rrr rrr}
-			\toprule
-			\multirow{2.5}{*}{轨迹采集名称} 
-			& \multirow{2.5}{*}{编号} 
-			& \multirow{2.5}{*}{\makecell[c]{里程\\$\left(\unit{\kilo\meter}\right)$}} 
-			& \multirow{2.5}{*}{\makecell[c]{时长\\$\left(\unit{\second}\right)$}} 
-			& \multirow{2.5}{*}{\makecell[c]{手机型号}} 
-			& \multicolumn{3}{c}{\makecell[c]{RTKLIB\\$\vb*{e}^{\mathrm{APE,horizontal}}$}}
-			& \multicolumn{3}{c}{\makecell[c]{RTKLIB Invariant EKF\\$\vb*{e}^{\mathrm{APE,horizontal}}$}} \\
-			\cmidrule{6-8} \cmidrule{9-11}
-			& & & & & $\SI{50}{\percent}$  & $\SI{95}{\percent}$  & score & $\SI{50}{\percent}$  & $\SI{95}{\percent}$  & score \\
-			\midrule
-			\multirow{3}{*}{\makecell[c]{2023-05-19-20-10\\-us-ca-mtv-ie2}} & \multirow{3}{*}{\makecell[c]{46}} & \multirow{3}{*}{\makecell[r]{5.9}} & \multirow{3}{*}{\makecell[r]{1229}} & Pixel 5 & 1.079 & 2.572 & 1.826 & 1.080 & 2.318 & \textbf{1.699} \\
-			& & & & Pixel 7 Pro & 1.238 & 2.503 & 1.871 & 1.209 & 2.485 & \textbf{1.847} \\
-			& & & & Galaxy S22 Ultra & 1.202 & 2.942 & \textbf{2.072} & 1.204 & 2.989 & 2.097 \\
-			\midrule
-			\multirow{3}{*}{\makecell[c]{2023-05-25-20-11\\-us-ca-sjc-he2}} & \multirow{3}{*}{\makecell[c]{51}} & \multirow{3}{*}{\makecell[r]{10.7}} & \multirow{3}{*}{\makecell[r]{1263}} & Pixel 5 & 0.942 & 2.321 & 1.632 & 0.925 & 2.147 & \textbf{1.536} \\
-			& & & & Pixel 7 Pro & 0.668 & 2.005 & 1.336 & 0.669 & 1.783 & \textbf{1.226} \\
-			& & & & Galaxy S22 Ultra & 0.660 & 1.463 & 1.062 & 0.592 & 1.360 & \textbf{0.976} \\
-			\midrule
-			\multirow{2}{*}{\makecell[c]{2023-05-26-18-51\\-us-ca-sjc-ge2}} & \multirow{2}{*}{\makecell[c]{53}} & \multirow{2}{*}{\makecell[r]{7.4}} & \multirow{2}{*}{\makecell[r]{1461}} & Pixel 5 & 1.309 & 2.320 & 1.814 & 1.265 & 2.252 & \textbf{1.759} \\
-			& & & & Pixel 7 Pro & 1.231 & 2.716 & 1.974 & 1.198 & 2.427 & \textbf{1.813} \\
-			\bottomrule
-		\end{tabular*}	
+
 	}	
 \end{frame}
 
 \begin{frame}
-	\frametitle{数据和模型双驱动定位方法研究}
-	\framesubtitle{2023-05-25-20-11-us-ca-sjc-he2/Galaxy S22 Ultra 轨迹 \SI{631}{\second}不同方法结果对比}
-   	\begin{figure}
-   	\centering
-   	    \includegraphics[width=0.6\textwidth]{2023-05-25-20-11-us-ca-sjc-he2/sm-s908b/ComparedSubTraceT631GeographicPlot.png}
-   	\end{figure} 
-\end{frame}
-
-\begin{frame}
-	\frametitle{数据和模型双驱动定位方法研究}
-	\framesubtitle{2023-05-26-18-51-us-ca-sjc-ge2/Pixel 7 Pro 轨迹 \SI{289}{\second}不同方法结果对比}
-   	\begin{figure}
-   	\centering
-   	    \includegraphics[width=0.6\textwidth]{2023-05-26-18-51-us-ca-sjc-ge2/pixel7pro/ComparedSubTraceT289GeographicPlot.png}
-   	\end{figure} 
+	\frametitle{研究内容3 小结}
+		\begin{block}{提出了一种数据和模型双驱动定位方法}
+		{   
+		    \footnotesize
+		    阐述了模型驱动位置观测量和以几何观测量在不变扩展卡尔曼滤波框架下的更新融合推导。
+		} 
+		\end{block}		
+		\begin{block}{在南京南高铁站自采数据集和 GSDC 公开数据集上进行实验验证}
+		{
+		    \footnotesize
+		    结合具体的音频 TDoA 几何观测量和 GNSS 位置观测量实验验证了数据和模型双驱动定位方法的优越性。。
+		} 
+		\end{block}
 \end{frame}

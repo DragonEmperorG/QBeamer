@@ -305,113 +305,111 @@
 \begin{frame} 
  	\frametitle{研究内容2 数据驱动车载航迹推算方法研究}
  	\framesubtitle{基于重庆数据集对比输出状态量因素速度估计结果}
+	\vspace{-0.2cm}
 	\begin{columns}[t]
 		\begin{column}{0.6\textwidth}
-			\scalebox{0.8}{
-			    {
-			    	\tiny
-			    	\setlength{\tabcolsep}{2pt}
-					\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}clccccccccccc}
-						\toprule
-						\multicolumn{2}{c}{轨迹} & 08 & 09 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 \\
-						\midrule
-						\multirow{4}{*}{$\vb*{v}_y$} 
-						& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
-						& 0.410 & 0.401 & 0.336 & 0.434 & \textbf{0.282} & \textbf{0.333} & \textbf{0.266} & \textbf{0.297} & \textbf{0.510} & \textbf{0.274} & \textbf{0.426} \\         
-						& $\vb*{e}^{\mathrm{AVE}}_{\mathrm{RMSE}}$          
-						& \textbf{0.491} & 0.492 & 0.424 & 0.533 & \textbf{0.358} & \textbf{0.415} & \textbf{0.357} & \textbf{0.374} & \textbf{0.679} & \textbf{0.346} & \textbf{0.527} \\ 
-						& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
-						& \textbf{0.419} & 0.584 & 0.407 & 0.644 & \textbf{0.376} & 0.382 & \textbf{0.393} & \textbf{0.414} & \textbf{0.607} & \textbf{0.401} & \textbf{0.509} \\
-						& $\vb*{e}^{\mathrm{RVE}}_{RMSE,\Delta t}$ 
-						& \textbf{0.510} & 0.753 & 0.487 & 0.824 & \textbf{0.463} & 0.531 & \textbf{0.522} & \textbf{0.515} & \textbf{0.777} & \textbf{0.507} & \textbf{0.646} \\ \addlinespace[1mm]
-						\multirow{4}{*}{$\Delta\vb*{v}_y$} 
-						& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
-						& 1.884 & 0.689 & \textbf{0.241} & 1.451 & 0.481 & 0.605 & 0.942 & 1.339 & 1.573 & 1.374 & 1.326 \\         
-						& $\vb*{e}^{\mathrm{AVE}}_{\mathrm{RMSE}}$         
-						& 2.155 & 0.883 & 0.406 & 1.596 & 0.680 & 0.673 & 1.065 & 1.427 & 1.848 & 1.519 & 1.646 \\
-						& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
-						& 0.927 & \textbf{0.526} & \textbf{0.227} & 1.259 & 0.503 & \textbf{0.216} & 0.707 & 0.770 & 1.243 & 2.197 & 2.145 \\
-						& $\vb*{e}^{\mathrm{RVE}}_{RMSE,\Delta t}$ 
-						& 1.326 & 0.847 & \textbf{0.390} & 1.676 & 0.760 & \textbf{0.344} & 0.959 & 1.036 & 1.594 & 2.528 & 2.475 \\
-						\bottomrule 
-					\end{tabular*}
-				}		
-			}
-		\end{column}   
-		\begin{column}{0.5\textwidth}
-		\vspace{-0.5cm}
-		{
-		   	\small
+			{   
+				\tiny   
+				\setlength{\tabcolsep}{2pt}     
+				\begin{tabular*}{1.1\linewidth}{@{\extracolsep{\fill}}clccccccccccc}
+					\toprule
+					\multicolumn{2}{c}{轨迹} & 08 & 09 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 \\
+					\midrule
+					\multirow{4}{*}{$\vb*{v}_y$} 
+					& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+					& 0.410 & 0.401 & 0.336 & 0.434 & \textbf{0.282} & \textbf{0.333} & \textbf{0.266} & \textbf{0.297} & \textbf{0.510} & \textbf{0.274} & \textbf{0.426} \\         
+					& $\vb*{e}^{\mathrm{AVE}}_{\mathrm{RMSE}}$          
+					& \textbf{0.491} & 0.492 & 0.424 & 0.533 & \textbf{0.358} & \textbf{0.415} & \textbf{0.357} & \textbf{0.374} & \textbf{0.679} & \textbf{0.346} & \textbf{0.527} \\ 
+					& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+					& \textbf{0.419} & 0.584 & 0.407 & 0.644 & \textbf{0.376} & 0.382 & \textbf{0.393} & \textbf{0.414} & \textbf{0.607} & \textbf{0.401} & \textbf{0.509} \\
+					& $\vb*{e}^{\mathrm{RVE}}_{RMSE,\Delta t}$ 
+					& \textbf{0.510} & 0.753 & 0.487 & 0.824 & \textbf{0.463} & 0.531 & \textbf{0.522} & \textbf{0.515} & \textbf{0.777} & \textbf{0.507} & \textbf{0.646} \\ \addlinespace[1mm]
+					\multirow{4}{*}{$\Delta\vb*{v}_y$} 
+					& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+					& 1.884 & 0.689 & \textbf{0.241} & 1.451 & 0.481 & 0.605 & 0.942 & 1.339 & 1.573 & 1.374 & 1.326 \\         
+					& $\vb*{e}^{\mathrm{AVE}}_{\mathrm{RMSE}}$         
+					& 2.155 & 0.883 & 0.406 & 1.596 & 0.680 & 0.673 & 1.065 & 1.427 & 1.848 & 1.519 & 1.646 \\
+					& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+					& 0.927 & \textbf{0.526} & \textbf{0.227} & 1.259 & 0.503 & \textbf{0.216} & 0.707 & 0.770 & 1.243 & 2.197 & 2.145 \\
+					& $\vb*{e}^{\mathrm{RVE}}_{RMSE,\Delta t}$ 
+					& 1.326 & 0.847 & \textbf{0.390} & 1.676 & 0.760 & \textbf{0.344} & 0.959 & 1.036 & 1.594 & 2.528 & 2.475 \\
+					\bottomrule 
+				\end{tabular*}   
+		   	}
 			\begin{itemize}
 				\item 基于 RNN 架构直接估计速度精度更高
 			\end{itemize}
-		 }
+		\end{column} 
+		\begin{column}{0.4\textwidth}
+    		\vspace{-1.4cm}  
+		   	\begin{figure}
+    			\includegraphics[width=0.8\textwidth]{CQDatasetTrack08DataDrivenVelocityOutputFactor.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{0.5cm} {\tiny 重庆数据集 08 轨迹速度估计结果}
+		   	\vspace{-0.2cm}
+		   	\begin{figure}
+				\includegraphics[width=0.8\textwidth]{CQDatasetTrack11DataDrivenVelocityOutputFactor.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{0.5cm} {\tiny 重庆数据集 11 轨迹速度估计结果}
 		\end{column}    
-	\end{columns}
-	\begin{columns}[t]
-		\begin{column}{0.3\textwidth}
-		   	\begin{figure}
-    			\includegraphics[height=3cm]{ConstraintsFactorComparationTrack_a019_3.png}
-		   	\end{figure}
-		   	\vspace{-0.5cm}
-		   	\hspace{1.2cm} {\tiny Uneen 测试集 a019\_3 轨迹}
-		\end{column}   
-		\begin{column}{0.3\textwidth}
-		   	\begin{figure}
-    			\includegraphics[height=3cm]{ConstraintsFactorComparationTrack_a050_1.png}
-		   	\end{figure}
-		   	\vspace{-0.5cm}
-		   	\hspace{1.2cm} {\tiny Uneen 测试集 a050\_1 轨迹}
-		\end{column}  
-		\begin{column}{0.3\textwidth}
-		   	\begin{figure}
-    			\includegraphics[height=3cm]{ConstraintsFactorComparationTrack_a058_3.png}
-		   	\end{figure}
-		   	\vspace{-0.5cm}
-		   	\hspace{1.2cm} {\tiny Uneen 测试集 a058\_3 轨迹}
-		\end{column}
-	\end{columns} 	
-\end{frame}
+	\end{columns}	
+ \end{frame}
 
 \begin{frame} 
  	\frametitle{研究内容2 数据驱动车载航迹推算方法研究}
- 	\framesubtitle{基于重庆数据集对比输入维度因素速度估计误差}
-    {\footnotesize
-    \setlength{\tabcolsep}{2pt}
-		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}clccccccccccc}
-			\toprule
-			\multicolumn{2}{c}{轨迹} & 08 & 09 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 \\
-			\midrule
-			\multirow{4}{*}{\makecell{$\left( \vb*{\omega}_s^s, \vb*{f}_s^s, P_s^s \right)$\\$\mathbb{R}^7$}}
-			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
-			& 0.410 & 0.401 & 0.336 & 0.434 & \textbf{0.282} & \textbf{0.333} & \textbf{0.266} & \textbf{0.297} & \textbf{0.510} & \textbf{0.274} & \textbf{0.426} \\         
-			& $\vb*{e}^{\mathrm{AVE}}_{\mathrm{RMSE}}$          
-			& \textbf{0.491} & 0.492 & 0.424 & 0.533 & \textbf{0.358} & \textbf{0.415} & \textbf{0.357} & \textbf{0.374} & \textbf{0.679} & \textbf{0.346} & \textbf{0.527} \\ 
-			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
-			& \textbf{0.419} & 0.584 & 0.407 & 0.644 & \textbf{0.376} & 0.382 & \textbf{0.393} & \textbf{0.414} & \textbf{0.607} & \textbf{0.401} & \textbf{0.509} \\
-			& $\vb*{e}^{\mathrm{RVE}}_{RMSE,\Delta t}$ 
-			& \textbf{0.510} & 0.753 & 0.487 & 0.824 & \textbf{0.463} & 0.531 & \textbf{0.522} & \textbf{0.515} & \textbf{0.777} & \textbf{0.507} & \textbf{0.646} \\ \addlinespace[1mm]
-			\multirow{4}{*}{\makecell{$\left( \vb*{\omega}_s^s, \vb*{f}_s^s\right)$\\$\mathbb{R}^6$}} 
-			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
-			& 0.208 & 0.315 & 0.325 & 0.381 & 0.232 & 0.141 & 0.241 & 0.290 & 0.481 & 0.245 & 0.383 \\       
-			& $\vb*{e}^{\mathrm{AVE}}_{\mathrm{RMSE}}$         
-			& 0.273 & 0.377 & 0.404 & 0.502 & 0.294 & 0.172 & 0.327 & 0.367 & 0.630 & 0.328 & 0.508 \\
-			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
-			& 0.303 & 0.483 & 0.439 & 0.581 & 0.336 & 0.121 & 0.361 & 0.413 & 0.623 & 0.353 & 0.540 \\
-			& $\vb*{e}^{\mathrm{RVE}}_{RMSE,\Delta t}$ 
-			& 0.369 & 0.598 & 0.540 & 0.772 & 0.418 & 0.154 & 0.467 & 0.522 & 0.809 & 0.449 & 0.713 \\ \addlinespace[1mm]
-			\multirow{4}{*}{\makecell{$\left( \vb*{\omega}_s^s, \vb*{f}_s^s, \vb*{M}_s^s\right)$\\$\mathbb{R}^9$}} 
-			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
-			& \textbf{0.365} & \textbf{0.351} & 0.288 & \textbf{0.416} & 0.341 & 0.360 & 0.279 & 0.362 & 0.591 & 0.378 & 0.530 \\
-			& $\vb*{e}^{\mathrm{AVE}}_{\mathrm{RMSE}}$          
-			& 0.504 & \textbf{0.430} & \textbf{0.361} & \textbf{0.517} & 0.435 & 0.461 & 0.378 & 0.471 & 0.744 & 0.502 & 0.666 \\
-			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
-			& 0.509 & 0.542 & 0.390 & \textbf{0.614} & 0.449 & 0.449 & 0.433 & 0.534 & 0.738 & 0.566 & 0.644 \\ 
-			& $\vb*{e}^{\mathrm{RVE}}_{RMSE,\Delta t}$ 
-			& 0.626 & \textbf{0.662} & 0.506 & \textbf{0.787} & 0.558 & 0.565 & 0.571 & 0.663 & 0.965 & 0.711 & 0.820 \\
-			\bottomrule 
-		\end{tabular*}
-	}	
+ 	\framesubtitle{基于重庆数据集对比输入维度因素速度估计结果}
+	\vspace{-0.2cm}
+	\begin{columns}[t]
+		\begin{column}{0.6\textwidth}
+			\scalebox{0.9}{{   
+				\tiny   
+				\setlength{\tabcolsep}{2pt}     
+				\begin{tabular*}{1.2\linewidth}{@{\extracolsep{\fill}}clccccccccccc}
+					\toprule
+					\multicolumn{2}{c}{轨迹} & 08 & 09 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 \\
+					\midrule
+					\multirow{4}{*}{\makecell{$\left( \vb*{\omega}_s^s, \vb*{f}_s^s, P_s^s \right)$\\$\mathbb{R}^7$}}
+					& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+					& 0.410 & 0.401 & 0.336 & 0.434 & 0.282 & 0.333 & 0.266 & 0.297 & 0.510 & 0.274 & 0.426 \\         
+					& $\vb*{e}^{\mathrm{AVE}}_{\mathrm{RMSE}}$          
+					& 0.491 & 0.492 & 0.424 & 0.533 & 0.358 & 0.415 & 0.357 & 0.374 & 0.679 & 0.346 & 0.527 \\ 
+					& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+					& 0.419 & 0.584 & \textbf{0.407} & 0.644 & 0.376 & 0.382 & 0.393 & 0.414 & \textbf{0.607} & 0.401 & \textbf{0.509} \\
+					& $\vb*{e}^{\mathrm{RVE}}_{RMSE,\Delta t}$ 
+					& 0.510 & 0.753 & \textbf{0.487} & 0.824 & 0.463 & 0.531 & 0.522 & \textbf{0.515} & \textbf{0.777} & 0.507 & \textbf{0.646} \\ \addlinespace[1mm]
+					\multirow{4}{*}{\makecell{$\left( \vb*{\omega}_s^s, \vb*{f}_s^s\right)$\\$\mathbb{R}^6$}} 
+					& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+					& \textbf{0.208} & \textbf{0.315} & \textbf{0.325} & \textbf{0.381} & \textbf{0.232} & \textbf{0.141} & \textbf{0.241} & \textbf{0.290} & \textbf{0.481} & \textbf{0.245} & \textbf{0.383} \\      
+					& $\vb*{e}^{\mathrm{AVE}}_{\mathrm{RMSE}}$         
+					& \textbf{0.273} & \textbf{0.377} & \textbf{0.404} & \textbf{0.502} & \textbf{0.294} & \textbf{0.172} & \textbf{0.327} & \textbf{0.367} & \textbf{0.630} & \textbf{0.328} & \textbf{0.508} \\
+					& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+					& \textbf{0.303} & \textbf{0.483} & 0.439 & \textbf{0.581} & \textbf{0.336} & \textbf{0.121} & \textbf{0.361} & \textbf{0.413} & 0.623 & \textbf{0.353} & 0.540 \\
+					& $\vb*{e}^{\mathrm{RVE}}_{RMSE,\Delta t}$ 
+					& \textbf{0.369} & \textbf{0.598} & 0.540 & \textbf{0.772} & \textbf{0.418} & \textbf{0.154} & \textbf{0.467} & 0.522 & 0.809 & \textbf{0.449} & 0.713 \\
+					\bottomrule 
+				\end{tabular*}  
+		   	}}
+			\begin{itemize}
+				\item 小范围数据集气压计传感器的增加对于数据驱动速度精度提升不显著
+			\end{itemize}
+		\end{column} 
+		\begin{column}{0.4\textwidth}
+    		\vspace{-2.2cm}  
+		   	\begin{figure}
+    			\includegraphics[width=0.8\textwidth]{CQDatasetTrack08DataDrivenVelocityOutputSensorsFactor.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{0.5cm} {\tiny 重庆数据集 08 轨迹速度估计结果}
+		   	\vspace{-0.2cm}
+		   	\begin{figure}
+				\includegraphics[width=0.8\textwidth]{CQDatasetTrack11DataDrivenVelocityOutputSensorsFactor.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{0.5cm} {\tiny 重庆数据集 11 轨迹速度估计结果}
+		\end{column}    
+	\end{columns}	
 \end{frame}
 
 \begin{frame} 
@@ -451,48 +449,109 @@
 \begin{frame} 
  	\frametitle{研究内容2 数据驱动车载航迹推算方法研究}
  	\framesubtitle{重庆数据集万达广场（大渡口店）停车场航迹推算位置误差结果}
-    {\footnotesize
-    \setlength{\tabcolsep}{2pt}
-		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}clrrrrrrrrrrr}
-			\toprule
-			\multicolumn{2}{c}{轨迹} & 08 & 09 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 \\
-			\midrule
-			\multicolumn{2}{c}{里程$\left(\unit{m}\right)$} & 282  & 285  & 285  & 520  & 525  & 524  & 844  & 1556 & 593   & 839  & 1553   \\
-			\multicolumn{2}{c}{时长$\left(\unit{s}\right)$} & 124  & 122  & 208  & 168  & 216  & 370  & 316  & 529  & 459   & 418  & 807    \\
-			\multirow{2}{*}{AI-IMU} & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 15.9 & 24.1 & 65.2 & 11.3 & 26.0 & 1683.8 & 20.8 & 12.6 & 18383.1 & 4829.5 & 176752.2 \\
-			& $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 15.8 & 24.1 & 65.0 & 11.0 & 25.8 & 1656.0 & 20.7 & 12.4 & 6380.6 & 4098.8 & 36066.2 \\
-			\multirow{2}{*}{DeepOdo} & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 5.0 & 9.8 & 18.4 & 13.3 & 9.0 & 22.3 & 9.4 & 10.1 & 41.1 & 13.9 & 27.4 \\
-			& $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 4.7 & 9.7 & 18.4 & 13.2 & 9.0 & 22.3 & 9.3 & 10.0 & 41.0 & 13.6 & 27.2 \\
-			\multirow{2}{*}{DeepOri} & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 5.1 & 1.9 & 8.5 & 6.3 & 2.4 & 3.5 & 2.6 & 5.2 & 5.0 & 3.7 & 7.8 \\
-			& $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 4.5 & 1.4 & 8.4 & 5.2 & 1.7 & 3.4 & 1.4 & 2.7 & 4.2 & 2.2 & 6.0 \\
-			\multirow{2}{*}{\textbf{Proposed}} & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & \textbf{2.1} & \textbf{1.2} & \textbf{0.9} & \textbf{2.8} & \textbf{1.4} & \textbf{0.8} & \textbf{1.9} & \textbf{3.3} & \textbf{2.8} & \textbf{2.9} & \textbf{3.4} \\
-			& $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & \textbf{0.4} & \textbf{0.4} & \textbf{0.4} & \textbf{0.4} & \textbf{0.3} & \textbf{0.3} & \textbf{0.3} & \textbf{0.3} & \textbf{0.5} & \textbf{0.6} & \textbf{0.5} \\
-			\bottomrule 
-		\end{tabular*}
-	}	
+	\vspace{-0.2cm}
+	\begin{columns}[t]
+		\begin{column}{0.6\textwidth}
+			\scalebox{0.9}{{   
+				\tiny   
+				\setlength{\tabcolsep}{2pt}     
+				\begin{tabular*}{1.2\linewidth}{@{\extracolsep{\fill}}clrrrrrrrrrrr}
+					\toprule
+					\multicolumn{2}{c}{轨迹} & 08 & 09 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 \\
+					\midrule
+					\multicolumn{2}{c}{里程$\left(\unit{m}\right)$} & 282  & 285  & 285  & 520  & 525  & 524  & 844  & 1556 & 593   & 839  & 1553   \\
+					\multicolumn{2}{c}{时长$\left(\unit{s}\right)$} & 124  & 122  & 208  & 168  & 216  & 370  & 316  & 529  & 459   & 418  & 807    \\
+					\multirow{2}{*}{AI-IMU} & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 15.9 & 24.1 & 65.2 & 11.3 & 26.0 & 1683.8 & 20.8 & 12.6 & 18383.1 & 4829.5 & 176752.2 \\
+					& $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 15.8 & 24.1 & 65.0 & 11.0 & 25.8 & 1656.0 & 20.7 & 12.4 & 6380.6 & 4098.8 & 36066.2 \\
+					\multirow{2}{*}{DeepOdo} & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 5.0 & 9.8 & 18.4 & 13.3 & 9.0 & 22.3 & 9.4 & 10.1 & 41.1 & 13.9 & 27.4 \\
+					& $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 4.7 & 9.7 & 18.4 & 13.2 & 9.0 & 22.3 & 9.3 & 10.0 & 41.0 & 13.6 & 27.2 \\
+					\multirow{2}{*}{DeepOri} & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 5.1 & 1.9 & 8.5 & 6.3 & 2.4 & 3.5 & 2.6 & 5.2 & 5.0 & 3.7 & 7.8 \\
+					& $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 4.5 & 1.4 & 8.4 & 5.2 & 1.7 & 3.4 & 1.4 & 2.7 & 4.2 & 2.2 & 6.0 \\
+					\rowcolor{gray!50} \multirow{2}{*}{\textbf{Proposed}} & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & \textbf{2.1} & \textbf{1.2} & \textbf{0.9} & \textbf{2.8} & \textbf{1.4} & \textbf{0.8} & \textbf{1.9} & \textbf{3.3} & \textbf{2.8} & \textbf{2.9} & \textbf{3.4} \\
+					\rowcolor{gray!50} & $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & \textbf{0.4} & \textbf{0.4} & \textbf{0.4} & \textbf{0.4} & \textbf{0.3} & \textbf{0.3} & \textbf{0.3} & \textbf{0.3} & \textbf{0.5} & \textbf{0.6} & \textbf{0.5} \\
+					\bottomrule 
+				\end{tabular*}
+		   	}}
+			\begin{itemize}
+				\item 动态位姿约束可以提升位置估计精度
+			\end{itemize}
+		\end{column} 
+		\begin{column}{0.4\textwidth}
+    		\vspace{-3.2cm}  
+		   	\begin{figure}
+    			\includegraphics[width=0.8\textwidth]{CQDatasetTrack08ComparedMethodTrackResult.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{0.5cm} {\tiny 重庆数据集 08 轨迹位置估计结果}
+		   	\vspace{-0.2cm}
+		   	\begin{figure}
+				\includegraphics[width=0.8\textwidth]{CQDatasetTrack11ComparedMethodTrackResult.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{0.5cm} {\tiny 重庆数据集 11 轨迹位置估计结果}
+		\end{column}    
+	\end{columns}
 \end{frame}
 
 \begin{frame} 
  	\frametitle{研究内容2 数据驱动车载航迹推算方法研究}
  	\framesubtitle{KITTI Odometry数据集航迹推算位置误差结果}
-    {\footnotesize
-    \setlength{\tabcolsep}{2pt}
-		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}ccrrrrrrrrrr}
-			\toprule
-            \multicolumn{2}{c}{轨迹} & 00 & 01 & 02 & 04 & 05 & 06 & 07 & 08 & 09 & 10 \\
-			\midrule
-			\multicolumn{2}{c}{里程$\left(\unit{m}\right)$} & 3722 & 2603 & 5089 & 416 & 2214 & 1245 & 693 & 4245 & 1715 & 922 \\
-			\multicolumn{2}{c}{时长$\left(\unit{s}\right)$} &  471 &  121 &  483 &  29 &  288 &  115 & 114 &  537 &  165 & 126 \\
-			\multirow{2}{*}{AI-IMU}            & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 11.8 & 4.0 & 4.5 & 7.0 & 19.1 & 3.5 & 1.8 & 3.2 & 7.4 & 4.0 \\
-			                                   & $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 11.4 & 3.6 & 2.5 & 6.7 & 18.8 & 2.9 & 1.2 & 1.9 & 5.4 & 2.0 \\
-			\multirow{2}{*}{DeepOdo}           & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 7.4 & 5.0 & 3.9 & 2.6 & 3.7 & 2.3 & 1.7 & 4.8 & 5.2 & 5.0 \\
-			                                   & $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 6.8 & 4.0 & 1.3 & 1.3 & 3.3 & 1.5 & 0.9 & 3.7 & 2.7 & 3.0 \\
-			\multirow{2}{*}{DeepOri}           & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 4.1 & 4.4 & 4.4 & 9.8 & 2.1 & 3.6 & 1.7 & \textbf{3.0} & 5.2 & 3.8 \\
-			                                   & $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 3.3 & 3.5 & 2.3 & 9.8 & 1.6 & 3.1 & 0.9 & \textbf{1.7} & 2.8 & 1.8 \\
-			\multirow{2}{*}{\textbf{Proposed}} & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & \textbf{2.1} & \textbf{3.2} & \textbf{3.3} & \textbf{2.0} & \textbf{1.3} & \textbf{1.4} & \textbf{1.5} & 8.2 & \textbf{4.1} & \textbf{3.7} \\
-			                                   & $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & \textbf{1.2} & \textbf{1.9} & \textbf{1.0} & \textbf{0.4} & \textbf{0.4} & \textbf{0.5} & \textbf{0.7} & 4.1 & \textbf{1.2} & \textbf{1.1} \\
-			\bottomrule 
-		\end{tabular*}
-	}	
+	\vspace{-0.2cm}
+	\begin{columns}[t]
+		\begin{column}{0.6\textwidth}
+			{   
+				\tiny   
+				\setlength{\tabcolsep}{2pt}     
+				\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}ccrrrrrrrrrr}
+					\toprule
+		            \multicolumn{2}{c}{轨迹} & 00 & 01 & 02 & 04 & 05 & 06 & 07 & 08 & 09 & 10 \\
+					\midrule
+					\multicolumn{2}{c}{里程$\left(\unit{m}\right)$} & 3722 & 2603 & 5089 & 416 & 2214 & 1245 & 693 & 4245 & 1715 & 922 \\
+					\multicolumn{2}{c}{时长$\left(\unit{s}\right)$} &  471 &  121 &  483 &  29 &  288 &  115 & 114 &  537 &  165 & 126 \\
+					\multirow{2}{*}{AI-IMU}            & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 11.8 & 4.0 & 4.5 & 7.0 & 19.1 & 3.5 & 1.8 & 3.2 & 7.4 & 4.0 \\
+					                                   & $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 11.4 & 3.6 & 2.5 & 6.7 & 18.8 & 2.9 & 1.2 & 1.9 & 5.4 & 2.0 \\
+					\multirow{2}{*}{DeepOdo}           & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 7.4 & 5.0 & 3.9 & 2.6 & 3.7 & 2.3 & 1.7 & 4.8 & 5.2 & 5.0 \\
+					                                   & $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 6.8 & 4.0 & 1.3 & 1.3 & 3.3 & 1.5 & 0.9 & 3.7 & 2.7 & 3.0 \\
+					\multirow{2}{*}{DeepOri}           & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & 4.1 & 4.4 & 4.4 & 9.8 & 2.1 & 3.6 & 1.7 & \textbf{3.0} & 5.2 & 3.8 \\
+					                                   & $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & 3.3 & 3.5 & 2.3 & 9.8 & 1.6 & 3.1 & 0.9 & \textbf{1.7} & 2.8 & 1.8 \\
+					\multirow{2}{*}{\textbf{Proposed}} & $\vb*{e}^{\mathrm{RPE}}_{MAE,unit \Delta l}$ & \textbf{2.1} & \textbf{3.2} & \textbf{3.3} & \textbf{2.0} & \textbf{1.3} & \textbf{1.4} & \textbf{1.5} & 8.2 & \textbf{4.1} & \textbf{3.7} \\
+					                                   & $\vb*{e}^{\mathrm{RPE,horizontal}}_{MAE,unit \Delta l}$ & \textbf{1.2} & \textbf{1.9} & \textbf{1.0} & \textbf{0.4} & \textbf{0.4} & \textbf{0.5} & \textbf{0.7} & 4.1 & \textbf{1.2} & \textbf{1.1} \\
+					\bottomrule 
+				\end{tabular*}  
+		   	}
+			\begin{itemize}
+				\item 动态位姿约束可以提升位置估计精度
+			\end{itemize}
+		\end{column} 
+		\begin{column}{0.4\textwidth}
+    		\vspace{-2.2cm}  
+		   	\begin{figure}
+    			\includegraphics[width=0.7\textwidth]{KITTIDatasetTrack00ComparedMethodPositionResult.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{0.5cm} {\tiny KITTI 数据集 00 轨迹速度估计结果}
+		   	\vspace{-0.2cm}
+		   	\begin{figure}
+				\includegraphics[width=0.7\textwidth]{KITTIDatasetTrack02ComparedMethodPositionResult.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{0.5cm} {\tiny KITTI 数据集 02 轨迹速度估计结果}
+		\end{column}    
+	\end{columns} 		
 \end{frame}
 
+\begin{frame}
+	\frametitle{研究内容2 小结}
+		\begin{block}{提出了一种数据驱动位姿约束智能手机车载航迹推算方法}
+		{   
+		    \footnotesize
+		    基于 HNN模型构建虚拟里程计和转角传感器，在不变扩展卡尔曼滤波框架下实现长时的位姿估计。
+		} 
+		\end{block}		
+		\begin{block}{在公开 KITTI 数据集和自采重庆数据集上对该方法进行了验证}
+		{
+		    \footnotesize
+		    实验深入研究分析了不同数据驱动观测量组合对位姿估计的影响。数据驱动姿态和速度观测值可以有效约束长时航迹推算误差累积。 
+		} 
+		\end{block}
+\end{frame}
