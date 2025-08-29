@@ -124,13 +124,12 @@
 
 \begin{frame}
 	\frametitle{数据驱动行人航迹推算方法}
-	\vspace{-0.5cm}
 	\begin{columns}[t]
-		\begin{column}{0.4\textwidth}
+		\begin{column}{0.5\textwidth}
 		{
 		    \tiny
 		    \setlength{\tabcolsep}{2pt}
-			\begin{tabular*}{1.2\textwidth}{@{\extracolsep{\fill}}lclc}
+			\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lclc}
 				\toprule
 				\multicolumn{1}{c}{模型} & 日期 & 期刊/会议 & 数据集 \\
 				\midrule
@@ -154,83 +153,141 @@
 			\end{tabular*}     
 		}
 		\end{column}   
-		\begin{column}{0.6\textwidth}
-		    \begin{itemize}
-				\item 以智能手机为中心的车载数据采集
-			\end{itemize}
+		\begin{column}{0.5\textwidth}
+		    \begin{block}{研究目标}
+				\begin{itemize}
+					\item 提升模型估计精度
+					\item 降低模型计算开销
+				\end{itemize}
+			\end{block}
+			\begin{block}{提升模型估计精度}
+				\begin{itemize}
+					\item maxplus
+				\end{itemize}
+			\end{block}
 		\end{column}
 	\end{columns}	
 \end{frame}
 
 \begin{frame}
-	\frametitle{数据和模型双驱动行人航迹推算方法}	
-	{\footnotesize
-		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}cccc}
-			\toprule
-			\multicolumn{1}{c}{模型} & 日期 & 期刊/会议 & 数据集 \\
-			\midrule
-			                     RIDI & 2018 & ECCV                            & RIDI                     \\ % ECCV 2018: Computer Vision – ECCV 2018
-			                  EKF+CNN & 2018 & MLSP                            & Public                     \\ % 2018 IEEE 28th International Workshop on Machine Learning for Signal Processing (MLSP)
-			\multirow{2}{*}{EKF+LSTM} & 2018 & IPIN                            & \multirow{2}{*}{Private} \\ % 2018 International Conference on Indoor Positioning and Indoor Navigation (IPIN)
-			                          & 2019 & IEEE Sens. J.                   &                          \\ % IEEE Sensors Journal
-			                    AZUPT & 2019 & GLOBECOM                        & Private                  \\ % 2019 IEEE Global Communications Conference (GLOBECOM)	
-			                     TLIO & 2019 & IEEE Robot. Autom. Lett.        & Private                  \\ % IEEE Robotics and Automation Letters
-			                 IEKF+CNN & 2020 & IROS                            & RIDI \& Private          \\ % 2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
-			                 EKF+LSTM & 2020 & IROS                            & Private                  \\ % 2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
-			                   DeepIT & 2021 & IMWUT                           & Private                  \\ % Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies
-			                     MINN & 2022 & IEEE Sens. J.                   & SLE \& WDE         \\ % IEEE Sensors Journal ( Volume: 22, Issue: 6, 15 March 2022) | 31 January 2022
-			                 TinyOdom & 2022 & IMWUT                           & Public \& Private         \\ % Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies | 07 July 2022
-			               MSCKF+LLIO & 2022 & IEEE Trans. Instrum. Meas.      & Private                  \\ % IEEE Transactions on Instrumentation and Measurement | 27 June 2022
-			               SCEKF+LLIO & 2022 & IEEE Internet Things J.         & Private                  \\ % IEEE Internet of Things Journal ( Volume: 10, Issue: 3, 01 February 2023) | 12 October 2022
-			               EKF+ResNet & 2023 & ICARM                           & RoNIN                    \\ % 2023 International Conference on Advanced Robotics and Mechatronics (ICARM)
-			\bottomrule
-		\end{tabular*}       
-	}
-	
+	\frametitle{数据和模型双驱动行人航迹推算方法}
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+		{
+		    \tiny
+		    \setlength{\tabcolsep}{2pt}
+			\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}cccc}
+				\toprule
+				\multicolumn{1}{c}{模型} & 日期 & 期刊/会议 & 数据集 \\
+				\midrule
+				                     RIDI & 2018 & ECCV                            & RIDI                     \\ % ECCV 2018: Computer Vision – ECCV 2018
+				                  EKF+CNN & 2018 & MLSP                            & Public                     \\ % 2018 IEEE 28th International Workshop on Machine Learning for Signal Processing (MLSP)
+				\multirow{2}{*}{EKF+LSTM} & 2018 & IPIN                            & \multirow{2}{*}{Private} \\ % 2018 International Conference on Indoor Positioning and Indoor Navigation (IPIN)
+				                          & 2019 & IEEE Sens. J.                   &                          \\ % IEEE Sensors Journal
+				                    AZUPT & 2019 & GLOBECOM                        & Private                  \\ % 2019 IEEE Global Communications Conference (GLOBECOM)	
+				                     TLIO & 2019 & IEEE Robot. Autom. Lett.        & Private                  \\ % IEEE Robotics and Automation Letters
+				                 IEKF+CNN & 2020 & IROS                            & RIDI \& Private          \\ % 2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
+				                 EKF+LSTM & 2020 & IROS                            & Private                  \\ % 2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
+				                   DeepIT & 2021 & IMWUT                           & Private                  \\ % Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies
+				                     MINN & 2022 & IEEE Sens. J.                   & SLE \& WDE         \\ % IEEE Sensors Journal ( Volume: 22, Issue: 6, 15 March 2022) | 31 January 2022
+				                 TinyOdom & 2022 & IMWUT                           & Public \& Private         \\ % Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies | 07 July 2022
+				               MSCKF+LLIO & 2022 & IEEE Trans. Instrum. Meas.      & Private                  \\ % IEEE Transactions on Instrumentation and Measurement | 27 June 2022
+				               SCEKF+LLIO & 2022 & IEEE Internet Things J.         & Private                  \\ % IEEE Internet of Things Journal ( Volume: 10, Issue: 3, 01 February 2023) | 12 October 2022
+				               EKF+ResNet & 2023 & ICARM                           & RoNIN                    \\ % 2023 International Conference on Advanced Robotics and Mechatronics (ICARM)
+				\bottomrule
+			\end{tabular*}          
+		}
+		\end{column}   
+		\begin{column}{0.5\textwidth}
+		    \begin{block}{研究目标}
+				\begin{itemize}
+					\item 提升模型估计精度
+					\item 降低模型计算开销
+				\end{itemize}
+			\end{block}
+			\begin{block}{提升模型估计精度}
+				\begin{itemize}
+					\item maxplus
+				\end{itemize}
+			\end{block}
+		\end{column}
+	\end{columns}	
 \end{frame}
 
 \begin{frame}
-
 	\frametitle{数据驱动载具航迹推算方法}
-	
-	{\small
-		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}cccc}
-			\toprule
-			\multicolumn{1}{c}{模型} & 日期 & 期刊/会议 & 数据集 \\
-			\midrule
-			OriNet  & 2020 & IEEE Robot. Autom. Lett.  & EuRoC MAV \\
-			DeepVIP & 2022 & IEEE Trans. Veh. Technol. & Private   \\ % IEEE Transactions on Vehicular Technology ( Volume: 71, Issue: 12, December 2022) | 17 August 2022
-			LSTM    & 2023 & Machines                  & JKK       \\
-			DI-EME  & 2024 & IEEE Sens. J.             & Private   \\
-			\bottomrule
-		\end{tabular*}       
-	}
-	
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+		{
+		    \tiny
+		    \setlength{\tabcolsep}{2pt}
+			\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}cccc}
+				\toprule
+				\multicolumn{1}{c}{模型} & 日期 & 期刊/会议 & 数据集 \\
+				\midrule
+				OriNet  & 2020 & IEEE Robot. Autom. Lett.  & EuRoC MAV \\
+				DeepVIP & 2022 & IEEE Trans. Veh. Technol. & Private   \\ % IEEE Transactions on Vehicular Technology ( Volume: 71, Issue: 12, December 2022) | 17 August 2022
+				LSTM    & 2023 & Machines                  & JKK       \\
+				DI-EME  & 2024 & IEEE Sens. J.             & Private   \\
+				\bottomrule
+			\end{tabular*}         
+		}
+		\end{column}   
+		\begin{column}{0.5\textwidth}
+		    \begin{block}{研究目标}
+				\begin{itemize}
+					\item 提升模型估计精度
+					\item 降低模型计算开销
+				\end{itemize}
+			\end{block}
+			\begin{block}{提升模型估计精度}
+				\begin{itemize}
+					\item maxplus
+				\end{itemize}
+			\end{block}
+		\end{column}
+	\end{columns}	
 \end{frame}
 
 \begin{frame}
-
     \frametitle{数据和模型双驱动载具航迹推算方法}
-    
-    {\small
-   		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}cccc}
-			\toprule
-			\multicolumn{1}{c}{模型} & 日期 & 期刊/会议 & 数据集 \\
-			\midrule
-			AbolDeepIO & 2019 & IEEE Trans. Intell. Transp. Syst. & EuRoC          \\ % IEEE Transactions on Intelligent Transportation Systems
-			RINS-W     & 2019 & IROS                              & KAIST          \\ % 2019 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
-			AI-IMU     & 2020 & IEEE T. Intell. Veh.              & KITTI Odometry \\ % IEEE Transactions on Intelligent Vehicles
-			RAN        & 2021 & IEEE Trans. Veh. Technol.         & Private         \\ % IEEE Transactions on Vehicular Technology
-			RNN        & 2021 & ICRA                              & EuRoC \& KAIST    \\ 
-			TinyOdom   & 2022 & IMWUT                             & Public \& Private \\
-			RNN-IEKF   & 2022 & IROS                              & KITTI Odometry    \\
-			OdoNet     & 2022 & IEEE Sens. J.                     & Private         \\ % IEEE Sensors Journal
-			SdoNet     & 2023 & IEEE Internet Things J.           & KITTI Odometry \\ % IEEE Internet of Things Journal
-			DeepOdo    & 2023 & IEEE Trans. Instrum. Meas.        & Private         \\ % IEEE Transactions on Instrumentation and Measurement
-			IEKF+CNN   & 2023 & IEEE Trans. Ind. Electron.        & KITTI \& Private         \\ % IEEE Transactions on Industrial Electronics | 15 August 2023
-			KF+VHRNet  & 2025 & IEEE Sens. J.                     & Private         \\ % IEEE Sensors Journal
-			\bottomrule
-   		\end{tabular*}       
-   	}
-
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+		{
+		    \tiny
+		    \setlength{\tabcolsep}{2pt}
+	   		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}cccc}
+				\toprule
+				\multicolumn{1}{c}{模型} & 日期 & 期刊/会议 & 数据集 \\
+				\midrule
+				AbolDeepIO & 2019 & IEEE Trans. Intell. Transp. Syst. & EuRoC          \\ % IEEE Transactions on Intelligent Transportation Systems
+				RINS-W     & 2019 & IROS                              & KAIST          \\ % 2019 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
+				AI-IMU     & 2020 & IEEE T. Intell. Veh.              & KITTI Odometry \\ % IEEE Transactions on Intelligent Vehicles
+				RAN        & 2021 & IEEE Trans. Veh. Technol.         & Private         \\ % IEEE Transactions on Vehicular Technology
+				RNN        & 2021 & ICRA                              & EuRoC \& KAIST    \\ 
+				TinyOdom   & 2022 & IMWUT                             & Public \& Private \\
+				RNN-IEKF   & 2022 & IROS                              & KITTI Odometry    \\
+				OdoNet     & 2022 & IEEE Sens. J.                     & Private         \\ % IEEE Sensors Journal
+				SdoNet     & 2023 & IEEE Internet Things J.           & KITTI Odometry \\ % IEEE Internet of Things Journal
+				DeepOdo    & 2023 & IEEE Trans. Instrum. Meas.        & Private         \\ % IEEE Transactions on Instrumentation and Measurement
+				IEKF+CNN   & 2023 & IEEE Trans. Ind. Electron.        & KITTI \& Private         \\ % IEEE Transactions on Industrial Electronics | 15 August 2023
+				KF+VHRNet  & 2025 & IEEE Sens. J.                     & Private         \\ % IEEE Sensors Journal
+				\bottomrule
+	   		\end{tabular*}
+		}
+		\end{column}   
+		\begin{column}{0.5\textwidth}
+		    \begin{block}{研究目标}
+				\begin{itemize}
+					\item 提升模型估计精度
+					\item 降低模型计算开销
+				\end{itemize}
+			\end{block}
+			\begin{block}{提升模型估计精度}
+				\begin{itemize}
+					\item maxplus
+				\end{itemize}
+			\end{block}
+		\end{column}
+	\end{columns}
 \end{frame}
