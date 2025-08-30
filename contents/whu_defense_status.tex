@@ -123,7 +123,9 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{数据驱动行人航迹推算方法}
+	\frametitle{国内外研究现状}
+	\framesubtitle{数据驱动行人航迹推算方法}
+	\vspace{-0.5cm}
 	\begin{columns}[t]
 		\begin{column}{0.5\textwidth}
 		{
@@ -133,37 +135,54 @@
 				\toprule
 				\multicolumn{1}{c}{模型} & 日期 & 期刊/会议 & 数据集 \\
 				\midrule
-				\multirow{2}{*}{IONet} & 2018 & AAAI                            & \multirow{2}{*}{OxIOD} \\ % Proceedings of the AAAI Conference on Artificial Intelligence
-				                       & 2019 & IEEE. Trans. Mob. Comput.       &                        \\ % IEEE Transactions on Mobile Computing
-				               L-IONet & 2020 & IEEE Internet Things J.         & OxIOD                  \\ % IEEE Internet of Things Journal
-				                 RoNIN & 2020 & ICRA                            & RoNIN                  \\ % 2020 IEEE International Conference on Robotics and Automation (ICRA)
-				        Extended IONet & 2021 & Expert Syst. Appl.              & OxIOD                   \\ 
-				                   DIO & 2021 & IEEE Trans. Instrum. Meas.      & RoNIN \& Private       \\ % IEEE Transactions on Instrumentation and Measurement
-				                  IDOL & 2021 & AAAI                            & IDOL                   \\ % Proceedings of the AAAI Conference on Artificial Intelligence, 35
-				                   RIO & 2022 & CVPR                            & Public \& Private      \\ % 2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) | 18-24 June 2022 | 27 September 2022
-				                 HNNTA & 2022 & IEEE Trans. Instrum. Meas.      & RoNIN \& Private       \\ % IEEE Transactions on Instrumentation and Measurement
-				                  CTIN & 2022 & AAAI                            & Public \& Private      \\ % Proceedings of the AAAI Conference on Artificial Intelligence, 36
+				\multirow{2}{*}{IONet} & 2018 & AAAI                            & \multirow{2}{*}{OxIOD} \\
+				                       & 2019 & IEEE. Trans. Mob. Comput.       &                        \\
+				               L-IONet & 2020 & IEEE Internet Things J.         & OxIOD                  \\
+				                 RoNIN & 2020 & ICRA                            & RoNIN                  \\
+				        Extended IONet & 2021 & Expert Syst. Appl.              & OxIOD                  \\ 
+				                   DIO & 2021 & IEEE Trans. Instrum. Meas.      & RoNIN \& Private       \\
+				                  IDOL & 2021 & AAAI                            & IDOL                   \\
+				                   RIO & 2022 & CVPR                            & Public \& Private      \\
+				                 HNNTA & 2022 & IEEE Trans. Instrum. Meas.      & RoNIN \& Private       \\
+				                  CTIN & 2022 & AAAI                            & Public \& Private      \\
 				                  RIOT & 2023 & Sensors                         & OxIOD                  \\
 				              DO IONet & 2023 & IEEE Access                     & OxIOD                  \\
 				                 SSHNN & 2023 & IEEE Sens. J.                   & Private                \\
-				                  SIMD & 2023 & IEEE Trans. Instrum. Meas.      & SIMD                   \\ % IEEE Transactions on Instrumentation and Measurement
+				                  SIMD & 2023 & IEEE Trans. Instrum. Meas.      & SIMD                   \\
 				                IMUNet & 2024 & IEEE Trans. Instrum. Meas.      & Public                 \\
 				              ResMixer & 2024 & IEEE Sens. J.                   & RoNIN \& Private       \\
 				\bottomrule
 			\end{tabular*}     
 		}
-		\end{column}   
+		\end{column}
 		\begin{column}{0.5\textwidth}
-		    \begin{block}{研究目标}
-				\begin{itemize}
-					\item 提升模型估计精度
-					\item 降低模型计算开销
-				\end{itemize}
+		    \vspace{-1.0cm}
+			\begin{block}{数据驱动模型估计精度}
+			    {
+			        \footnotesize
+					\begin{itemize}
+						\item 应用先进深度神经网络模型
+						\item 设计合理损失函数
+						\item 设计合理损失函数
+					\end{itemize}			    
+			    }
 			\end{block}
-			\begin{block}{提升模型估计精度}
-				\begin{itemize}
-					\item maxplus
-				\end{itemize}
+		    \begin{block}{数据驱动模型输出维度}
+  			    {
+  			        \footnotesize
+					\begin{itemize}
+						\item 三维位姿表达
+						\item 位置和姿态多任务学习
+					\end{itemize}
+				}
+			\end{block}
+			\begin{block}{数据驱动模型计算量}
+			    {
+			        \footnotesize
+					\begin{itemize}
+						\item 应用轻量级网络减小计算量
+					\end{itemize}
+				}
 			\end{block}
 		\end{column}
 	\end{columns}	
@@ -180,35 +199,49 @@
 				\toprule
 				\multicolumn{1}{c}{模型} & 日期 & 期刊/会议 & 数据集 \\
 				\midrule
-				                     RIDI & 2018 & ECCV                            & RIDI                     \\ % ECCV 2018: Computer Vision – ECCV 2018
-				                  EKF+CNN & 2018 & MLSP                            & Public                     \\ % 2018 IEEE 28th International Workshop on Machine Learning for Signal Processing (MLSP)
-				\multirow{2}{*}{EKF+LSTM} & 2018 & IPIN                            & \multirow{2}{*}{Private} \\ % 2018 International Conference on Indoor Positioning and Indoor Navigation (IPIN)
-				                          & 2019 & IEEE Sens. J.                   &                          \\ % IEEE Sensors Journal
-				                    AZUPT & 2019 & GLOBECOM                        & Private                  \\ % 2019 IEEE Global Communications Conference (GLOBECOM)	
-				                     TLIO & 2019 & IEEE Robot. Autom. Lett.        & Private                  \\ % IEEE Robotics and Automation Letters
-				                 IEKF+CNN & 2020 & IROS                            & RIDI \& Private          \\ % 2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
-				                 EKF+LSTM & 2020 & IROS                            & Private                  \\ % 2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
-				                   DeepIT & 2021 & IMWUT                           & Private                  \\ % Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies
-				                     MINN & 2022 & IEEE Sens. J.                   & SLE \& WDE         \\ % IEEE Sensors Journal ( Volume: 22, Issue: 6, 15 March 2022) | 31 January 2022
-				                 TinyOdom & 2022 & IMWUT                           & Public \& Private         \\ % Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies | 07 July 2022
-				               MSCKF+LLIO & 2022 & IEEE Trans. Instrum. Meas.      & Private                  \\ % IEEE Transactions on Instrumentation and Measurement | 27 June 2022
-				               SCEKF+LLIO & 2022 & IEEE Internet Things J.         & Private                  \\ % IEEE Internet of Things Journal ( Volume: 10, Issue: 3, 01 February 2023) | 12 October 2022
-				               EKF+ResNet & 2023 & ICARM                           & RoNIN                    \\ % 2023 International Conference on Advanced Robotics and Mechatronics (ICARM)
+				    \rowcolor{gray!50} RIDI & 2018 & ECCV                            & RIDI                     \\
+				                    EKF+CNN & 2018 & MLSP                            & Public                    \\
+				  \multirow{2}{*}{EKF+LSTM} & 2018 & IPIN                            & \multirow{2}{*}{Private} \\
+				                            & 2019 & IEEE Sens. J.                   &                          \\
+				                      AZUPT & 2019 & GLOBECOM                        & Private                  \\	
+				    \rowcolor{gray!50} TLIO & 2019 & IEEE Robot. Autom. Lett.        & Private                  \\
+				\rowcolor{gray!50} IEKF+CNN & 2020 & IROS                            & RIDI \& Private          \\
+				                   EKF+LSTM & 2020 & IROS                            & Private                  \\
+				                     DeepIT & 2021 & IMWUT                           & Private                  \\
+				                       MINN & 2022 & IEEE Sens. J.                   & SLE \& WDE               \\
+				                   TinyOdom & 2022 & IMWUT                           & Public \& Private        \\
+				                 MSCKF+LLIO & 2022 & IEEE Trans. Instrum. Meas.      & Private                  \\
+				                 SCEKF+LLIO & 2022 & IEEE Internet Things J.         & Private                  \\
+				                 EKF+ResNet & 2023 & ICARM                           & RoNIN                    \\
 				\bottomrule
 			\end{tabular*}          
 		}
 		\end{column}   
 		\begin{column}{0.5\textwidth}
-		    \begin{block}{研究目标}
-				\begin{itemize}
-					\item 提升模型估计精度
-					\item 降低模型计算开销
-				\end{itemize}
+			\begin{block}{数据驱动模型估计精度}
+			   {
+			       \footnotesize
+					\begin{itemize}
+						\item 三维位姿表达
+					\end{itemize}
+				}
 			\end{block}
-			\begin{block}{提升模型估计精度}
-				\begin{itemize}
-					\item maxplus
-				\end{itemize}
+		    \begin{block}{数据驱动模型输出观测量}数据驱动模型估计精度
+  			    {
+  			        \footnotesize
+					\begin{itemize}
+						\item 三维位姿表达
+						\item 位置和姿态多任务学习
+					\end{itemize}
+				}
+			\end{block}
+			\begin{block}{数据驱动模型计算量}
+			    {
+			        \footnotesize
+					\begin{itemize}
+						\item 应用轻量级网络减小计算量
+					\end{itemize}
+				}
 			\end{block}
 		\end{column}
 	\end{columns}	
