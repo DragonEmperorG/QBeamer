@@ -77,7 +77,7 @@
 				\cmidrule{5-8} \cmidrule{9-10}
 				& & & & 轨迹 & \makecell[c]{长度\\$\left(\unit{\km}\right)$} & \makecell[c]{时长\\$\left(\unit{\hour}\right)$} & \makecell[c]{采样率\\$\left(\unit{\hertz}\right)$} & \multicolumn{1}{c}{设备} & \makecell[c]{采样率\\$\left(\unit{\hertz}\right)$} \\
 				\midrule
-				\href{https://www.cvlibs.net/datasets/kitti/eval_odometry.php}{KITTI} 
+				\rowcolor{gray!50} \href{https://www.cvlibs.net/datasets/kitti/eval_odometry.php}{KITTI} 
 				& 2012 & \ding{51} & LV                &  11 &   22.2 & 40.1 &    200 & GNSS/INS                       & 100       \\
 				\href{https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets}{EuRoC MAV} 
 				& 2016 & \ding{51} & MR                &  11 &    0.9 &  0.4 &    200 & Leica MS50 \& Vicon            & 20 \& 100 \\
@@ -85,9 +85,9 @@
 				& 2018 & \ding{51} & LV                &  41 &  356.1 &  $-$ &    100 & SLAM                           & 100       \\
 				\href{https://github.com/onyekpeu/IO-VNBD}{IO-VNBD} 
 				& 2021 & \ding{51} & LV                &  43 & 4400   & 58   &    100 & GNSS                           &  10       \\
-				\href{https://www.kaggle.com/competitions/smartphone-decimeter-2022/data}{GSDC} 
+				\rowcolor{gray!50} \href{https://www.kaggle.com/competitions/smartphone-decimeter-2022/data}{GSDC} 
 				& 2022 & \ding{51} & LV                &  62 & 2123.6 & 30.3 & 50-200 & GNSS/INS                       &   1       \\
-				\href{https://www.kaggle.com/competitions/smartphone-decimeter-2023}{GSDC} 
+				\rowcolor{gray!50} \href{https://www.kaggle.com/competitions/smartphone-decimeter-2023}{GSDC} 
 				& 2023 & \ding{51} & LV                &  65 & 1685.3 & 29.4 & 50-200 & GNSS/INS                       &   1       \\
 				\href{https://figshare.com/articles/dataset/Multiple_and_Gyro-Free_Inertial_Datasets/26927089/1?file=48979765}{MAGF-ID} 
 				& 2024 & \ding{51} & LV \& MR          & 115 &    $-$ &  5.6 &    200 & $\mathrm{GNSS}^{\mathrm{RTK}}$ & 200        \\
@@ -125,38 +125,40 @@
 \begin{frame}
 	\frametitle{国内外研究现状}
 	\framesubtitle{数据驱动行人航迹推算方法}
-	\vspace{-0.5cm}
 	\begin{columns}[t]
-		\begin{column}{0.5\textwidth}
+		\begin{column}[t]{0.5\textwidth}
 		{
 		    \tiny
-		    \setlength{\tabcolsep}{2pt}
-			\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lclc}
+		    \SetTblrInner{rowsep=1pt,colsep=2pt}
+			\begin{tblr}{
+			  colspec = {l c l c},
+			  row{2,3,4,5,7,14} = {bg=gray!50},
+			}
 				\toprule
-				\multicolumn{1}{c}{模型} & 日期 & 期刊/会议 & 数据集 \\
+				模型 & 日期 & 期刊/会议 & 数据集 \\
 				\midrule
-				\multirow{2}{*}{IONet} & 2018 & AAAI                            & \multirow{2}{*}{OxIOD} \\
-				                       & 2019 & IEEE. Trans. Mob. Comput.       &                        \\
-				               L-IONet & 2020 & IEEE Internet Things J.         & OxIOD                  \\
-				                 RoNIN & 2020 & ICRA                            & RoNIN                  \\
-				        Extended IONet & 2021 & Expert Syst. Appl.              & OxIOD                  \\ 
-				                   DIO & 2021 & IEEE Trans. Instrum. Meas.      & RoNIN \& Private       \\
-				                  IDOL & 2021 & AAAI                            & IDOL                   \\
-				                   RIO & 2022 & CVPR                            & Public \& Private      \\
-				                 HNNTA & 2022 & IEEE Trans. Instrum. Meas.      & RoNIN \& Private       \\
-				                  CTIN & 2022 & AAAI                            & Public \& Private      \\
-				                  RIOT & 2023 & Sensors                         & OxIOD                  \\
-				              DO IONet & 2023 & IEEE Access                     & OxIOD                  \\
-				                 SSHNN & 2023 & IEEE Sens. J.                   & Private                \\
-				                  SIMD & 2023 & IEEE Trans. Instrum. Meas.      & SIMD                   \\
-				                IMUNet & 2024 & IEEE Trans. Instrum. Meas.      & Public                 \\
-				              ResMixer & 2024 & IEEE Sens. J.                   & RoNIN \& Private       \\
+				\SetCell[r=2]{} IONet & 2018 & AAAI                            & \SetCell[r=2]{} OxIOD \\
+				                      & 2019 & IEEE. Trans. Mob. Comput.       &                       \\
+				              L-IONet & 2020 & IEEE Internet Things J.         & OxIOD                 \\
+				                RoNIN & 2020 & ICRA                            & RoNIN                 \\
+				       Extended IONet & 2021 & Expert Syst. Appl.              & OxIOD                 \\ 
+				                  DIO & 2021 & IEEE Trans. Instrum. Meas.      & RoNIN \& Private      \\
+				                 IDOL & 2021 & AAAI                            & IDOL                  \\
+				                  RIO & 2022 & CVPR                            & Public {\&} Private   \\
+				                HNNTA & 2022 & IEEE Trans. Instrum. Meas.      & RoNIN {\&} Private    \\
+				                 CTIN & 2022 & AAAI                            & Public {\&} Private   \\
+				                 RIOT & 2023 & Sensors                         & OxIOD                 \\
+				             DO IONet & 2023 & IEEE Access                     & OxIOD                 \\
+				                SSHNN & 2023 & IEEE Sens. J.                   & Private               \\
+				                 SIMD & 2023 & IEEE Trans. Instrum. Meas.      & SIMD                  \\
+				               IMUNet & 2024 & IEEE Trans. Instrum. Meas.      & Public                \\
+				             ResMixer & 2024 & IEEE Sens. J.                   & RoNIN {\&} Private    \\
 				\bottomrule
-			\end{tabular*}     
+			\end{tblr}     
 		}
 		\end{column}
-		\begin{column}{0.5\textwidth}
-		    \vspace{-1.0cm}
+		\begin{column}[t]{0.5\textwidth}
+		    \vspace{-3.0cm}
 			\begin{block}{数据驱动模型估计精度}
 			    {
 			        \footnotesize
@@ -200,7 +202,7 @@
 				\multicolumn{1}{c}{模型} & 日期 & 期刊/会议 & 数据集 \\
 				\midrule
 				    \rowcolor{gray!50} RIDI & 2018 & ECCV                            & RIDI                     \\
-				                    EKF+CNN & 2018 & MLSP                            & Public                    \\
+				                    EKF+CNN & 2018 & MLSP                            & Public                   \\
 				  \multirow{2}{*}{EKF+LSTM} & 2018 & IPIN                            & \multirow{2}{*}{Private} \\
 				                            & 2019 & IEEE Sens. J.                   &                          \\
 				                      AZUPT & 2019 & GLOBECOM                        & Private                  \\	
@@ -213,6 +215,7 @@
 				                 MSCKF+LLIO & 2022 & IEEE Trans. Instrum. Meas.      & Private                  \\
 				                 SCEKF+LLIO & 2022 & IEEE Internet Things J.         & Private                  \\
 				                 EKF+ResNet & 2023 & ICARM                           & RoNIN                    \\
+				    \rowcolor{gray!50} 3DIO & 2024 & IEEE Internet Things J.         & Private                  \\
 				\bottomrule
 			\end{tabular*}          
 		}
@@ -222,16 +225,9 @@
 			   {
 			       \footnotesize
 					\begin{itemize}
-						\item 三维位姿表达
-					\end{itemize}
-				}
-			\end{block}
-		    \begin{block}{数据驱动模型输出观测量}数据驱动模型估计精度
-  			    {
-  			        \footnotesize
-					\begin{itemize}
-						\item 三维位姿表达
-						\item 位置和姿态多任务学习
+					    \item 优化滤波框架
+						\item 优化数据驱动观测量精度
+						\item 增加新的数据驱动观测量
 					\end{itemize}
 				}
 			\end{block}
@@ -267,16 +263,23 @@
 		}
 		\end{column}   
 		\begin{column}{0.5\textwidth}
-		    \begin{block}{研究目标}
-				\begin{itemize}
-					\item 提升模型估计精度
-					\item 降低模型计算开销
-				\end{itemize}
+			\begin{block}{数据驱动模型估计精度}
+			    {
+			        \footnotesize
+					\begin{itemize}
+						\item 应用先进深度神经网络模型
+						\item 设计合理损失函数
+						\item 设计合理损失函数
+					\end{itemize}			    
+			    }
 			\end{block}
-			\begin{block}{提升模型估计精度}
-				\begin{itemize}
-					\item maxplus
-				\end{itemize}
+			\begin{block}{数据驱动模型计算量}
+			    {
+			        \footnotesize
+					\begin{itemize}
+						\item 应用轻量级网络减小计算量
+					\end{itemize}
+				}
 			\end{block}
 		\end{column}
 	\end{columns}	
@@ -284,43 +287,67 @@
 
 \begin{frame}
     \frametitle{数据和模型双驱动载具航迹推算方法}
+    \vspace{-0.5cm}
 	\begin{columns}[t]
 		\begin{column}{0.5\textwidth}
 		{
 		    \tiny
-		    \setlength{\tabcolsep}{2pt}
-	   		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}cccc}
+		    \SetTblrInner{rowsep=1pt,colsep=2pt}
+			\begin{tblr}{
+			  colspec = {cccc},
+			  row{4,11} = {bg=gray!50},
+			}
 				\toprule
-				\multicolumn{1}{c}{模型} & 日期 & 期刊/会议 & 数据集 \\
+				模型       & 日期 & 期刊/会议                          & 数据集            \\
 				\midrule
-				AbolDeepIO & 2019 & IEEE Trans. Intell. Transp. Syst. & EuRoC          \\ % IEEE Transactions on Intelligent Transportation Systems
-				RINS-W     & 2019 & IROS                              & KAIST          \\ % 2019 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
-				AI-IMU     & 2020 & IEEE T. Intell. Veh.              & KITTI Odometry \\ % IEEE Transactions on Intelligent Vehicles
-				RAN        & 2021 & IEEE Trans. Veh. Technol.         & Private         \\ % IEEE Transactions on Vehicular Technology
+				AbolDeepIO & 2019 & IEEE Trans. Intell. Transp. Syst. & EuRoC             \\
+				RINS-W     & 2019 & IROS                              & KAIST             \\
+				AI-IMU     & 2020 & IEEE T. Intell. Veh.              & KITTI Odometry    \\
+				RAN        & 2021 & IEEE Trans. Veh. Technol.         & Private           \\
 				RNN        & 2021 & ICRA                              & EuRoC \& KAIST    \\ 
 				TinyOdom   & 2022 & IMWUT                             & Public \& Private \\
 				RNN-IEKF   & 2022 & IROS                              & KITTI Odometry    \\
-				OdoNet     & 2022 & IEEE Sens. J.                     & Private         \\ % IEEE Sensors Journal
-				SdoNet     & 2023 & IEEE Internet Things J.           & KITTI Odometry \\ % IEEE Internet of Things Journal
-				DeepOdo    & 2023 & IEEE Trans. Instrum. Meas.        & Private         \\ % IEEE Transactions on Instrumentation and Measurement
-				IEKF+CNN   & 2023 & IEEE Trans. Ind. Electron.        & KITTI \& Private         \\ % IEEE Transactions on Industrial Electronics | 15 August 2023
-				KF+VHRNet  & 2025 & IEEE Sens. J.                     & Private         \\ % IEEE Sensors Journal
+				OdoNet     & 2022 & IEEE Sens. J.                     & Private           \\
+				SdoNet     & 2023 & IEEE Internet Things J.           & KITTI Odometry    \\
+				DeepOdo    & 2023 & IEEE Trans. Instrum. Meas.        & Private           \\ 
+				IEKF+CNN   & 2023 & IEEE Trans. Ind. Electron.        & KITTI \& Private  \\
+				KF+VHRNet  & 2025 & IEEE Sens. J.                     & Private           \\
 				\bottomrule
-	   		\end{tabular*}
+			\end{tblr}   
 		}
 		\end{column}   
 		\begin{column}{0.5\textwidth}
-		    \begin{block}{研究目标}
-				\begin{itemize}
-					\item 提升模型估计精度
-					\item 降低模型计算开销
-				\end{itemize}
+			\begin{block}{数据驱动模型估计精度}
+			    {
+			        \footnotesize
+					\begin{itemize}
+						\item 数据驱动自适应调节滤波器参数
+						\item 数据驱动前向速度观测量
+					\end{itemize}			    
+			    }
 			\end{block}
-			\begin{block}{提升模型估计精度}
-				\begin{itemize}
-					\item maxplus
-				\end{itemize}
+			\begin{block}{数据驱动模型计算量}
+			    {
+			        \footnotesize
+					\begin{itemize}
+						\item 应用轻量级网络减小计算量
+					\end{itemize}
+				}
 			\end{block}
+		\end{column}
+	\end{columns}
+	\vspace{-0.2cm}
+	\begin{columns}[b]
+		\begin{column}{0.5\textwidth}
+		   	\begin{figure}
+				\includegraphics[height=2cm]{wu2-3301531-large.png}
+		   	\end{figure}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+%		    \vspace{-0.5cm}
+%		   	\begin{figure}
+%				\includegraphics[height=2.5cm]{ComplexUrbanDatasetRecordingPlatform.png}
+%		   	\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}
