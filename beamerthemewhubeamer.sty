@@ -20,33 +20,77 @@
 %% See the License for the specific language governing permissions and
 %% limitations under the License.
 %% ------------------------------------------------------------------------
+
+% https://www.beamer.plus/Themes.html
+% Presentation Themes 
+% Conceptually, a presentation theme dictates for every single detail of a presentation
+% what it looks like. Thus, choosing a particular presentation theme will setup for, say, the numbers in
+% enumeration what color they have, what color their background has, what font is used to render them,
+% whether a circle or ball or rectangle or whatever is drawn behind them, and so forth. Thus, when you
+% choose a presentation theme, your presentation will look the way someone (the creator of the theme)
+% thought that a presentation should look like. Presentation themes typically only choose a particular
+% color theme, font theme, inner theme, and outer theme that go well together.
+
+% https://latexref.xyz/dev/latex2e.html
+% Identification. 
+% The file declares itself as a class written with the LaTeX2ε syntax.
+% \NeedsTeXFormat {⟨format-name⟩} [⟨release-date⟩]
+% This command tells TEX that this file should be processed using a format with
+% name ⟨format-name⟩. You can use the optional argument ⟨release-date⟩ to
+% further specify the earliest release date of the format that is needed. When
+% the release date of the format is older than the one specified a warning will
+% be generated. The standard ⟨format-name⟩ is LaTeX2e. The ⟨release-date⟩, if
+% present, must be in the form ‘yyyy-mm-dd’ or ‘yyyy/mm/dd’.
 \NeedsTeXFormat{LaTeX2e}
+% \ProvidesClass {⟨class-name⟩} [⟨release-info⟩]
+% \ProvidesPackage {⟨package-name⟩} [⟨release-info⟩]
+% This declares that the current file contains the definitions for the document class
+% ⟨class-name⟩ or package ⟨package-name⟩.
+% The optional ⟨release-info⟩, if used, must contain:
+%   • the release date of this version of the file, in the form yyyy-mm-dd;
+%   • optionally followed by a space and a short description, possibly including
+%     a version number.
 \ProvidesPackage{beamerthemewhubeamer}[2024/12/21 v3.1.1 whubeamer parent theme]
-\DeclareOptionBeamer{maxplus}{
-  \def\whubeamer@cover{maxplus}\def\whubeamer@logopos{topright}}
+% Options. 
+% The class declares and processes the options.
 \DeclareOptionBeamer{max}{
-  \def\whubeamer@cover{max}\def\whubeamer@logopos{bottomright}}
-\DeclareOptionBeamer{min}{
-  \def\whubeamer@cover{min}\def\whubeamer@logopos{topright}}
-\DeclareOptionBeamer{my}{
-  \def\whubeamer@cover{my}\def\whubeamer@logopos{bottomright}}
-    % reserved for customization
+  \def\whubeamer@cover{max}
+  \def\whubeamer@logopos{bottomright}
+}
+
+% reserved for customization
 \ExecuteOptionsBeamer{
-  maxplus,
-  min,
-  my,
   max,
 }
-\DeclareOptionBeamer{red}{\def\whubeamer@color{red}}
-\DeclareOptionBeamer{blue}{\def\whubeamer@color{blue}}
+
+\DeclareOptionBeamer{red}{
+    \def\whubeamer@color{red}
+}
+\DeclareOptionBeamer{blue}{
+    \def\whubeamer@color{blue}
+}
 \ExecuteOptionsBeamer{red}
-\DeclareOptionBeamer{light}{\def\whubeamer@lum{light}}
-\DeclareOptionBeamer{dark}{\def\whubeamer@lum{dark}}
+
+\DeclareOptionBeamer{light}{
+    \def\whubeamer@lum{light}
+}
+\DeclareOptionBeamer{dark}{
+    \def\whubeamer@lum{dark}
+}
 \ExecuteOptionsBeamer{dark}
-\DeclareOptionBeamer{zh}{\def\whubeamer@lang{zh}}
-\DeclareOptionBeamer{en}{\def\whubeamer@lang{en}}
-\@ifclassloaded{ctexbeamer}{\ExecuteOptionsBeamer{zh}}{
-  \ExecuteOptionsBeamer{en}}
+
+\DeclareOptionBeamer{zh}{
+    \def\whubeamer@lang{zh}
+}
+\DeclareOptionBeamer{en}{
+    \def\whubeamer@lang{en}
+}
+\@ifclassloaded{ctexbeamer}{
+    \ExecuteOptionsBeamer{zh}
+}{
+    \ExecuteOptionsBeamer{en}
+}
+
 \DeclareOptionBeamer{miniframes}{\def\whubeamer@nav{miniframes}}
 \DeclareOptionBeamer{infolines}{\def\whubeamer@nav{infolines}}
 \DeclareOptionBeamer{sidebar}{\def\whubeamer@nav{sidebar}}
@@ -57,40 +101,58 @@
 \DeclareOptionBeamer{tree}{\def\whubeamer@nav{tree}}
 \DeclareOptionBeamer{smoothtree}{\def\whubeamer@nav{smoothtree}}
 \ExecuteOptionsBeamer{miniframes}
+
 \DeclareOptionBeamer{topright}{\def\whubeamer@logopos{topright}}
 \DeclareOptionBeamer{bottomright}{\def\whubeamer@logopos{bottomright}}
+% 7.4 Option processing
+% \ProcessOptions
+% This command executes the ⟨code⟩ for each selected option.
+% We shall first describe how \ProcessOptions works in a package file, and then
+% how this differs in a class file.
+% To understand in detail what \ProcessOptions does in a package file, you have
+% to know the difference between local and global options.
+%   • Local options are those which have been explicitly specified for this
+%     particular package in the ⟨options⟩ argument of any of these:
+%       \PassOptionsToPackage{<options>} \usepackage[<options>]
+%       \RequirePackage[<options>]
+%   • Global options are any other options that are specified by the author in
+%     the ⟨options⟩ argument of \documentclass[<options>].
 \ProcessOptionsBeamer
-\PassOptionsToPackage{\whubeamer@cover}{beamerinnerthemewhubeamer}
-\PassOptionsToPackage{\whubeamer@color}{beamercolorthemewhubeamer}
-\PassOptionsToPackage{\whubeamer@color}{beamerinnerthemewhubeamer}
-\PassOptionsToPackage{\whubeamer@lum}{beamercolorthemewhubeamer}
-\PassOptionsToPackage{\whubeamer@lang}{beamerinnerthemewhubeamer}
+
 \PassOptionsToPackage{\whubeamer@nav}{beamerouterthemewhubeamer}
 \PassOptionsToPackage{\whubeamer@logopos}{beamerouterthemewhubeamer}
+
+\PassOptionsToPackage{\whubeamer@cover}{beamerinnerthemewhubeamer}
+\PassOptionsToPackage{\whubeamer@color}{beamerinnerthemewhubeamer}
+\PassOptionsToPackage{\whubeamer@lang}{beamerinnerthemewhubeamer}
+
+\PassOptionsToPackage{\whubeamer@color}{beamercolorthemewhubeamer}
+\PassOptionsToPackage{\whubeamer@lum}{beamercolorthemewhubeamer}
+
 \mode<presentation>
-\usecolortheme{whubeamer}
-\usefonttheme{whubeamer}
+
+% 16.1 Inner Themes
+% An inner theme installs templates that dictate how the following elements are typeset:
+% • Title and part pages.
+% • Itemize environments.
+% • Enumerate environments.
+% • Description environments.
+% • Block environments.
+% • Theorem and proof environments.
+% • Figures and tables.
+% • Footnotes.
+% • Bibliography entries.
 \useinnertheme{whubeamer}
+% 16.2 Outer Themes
+% An outer theme dictates (roughly) the overall layout of frames. It specifies where any navigational elements
+% should go (like a mini table of contents or navigational mini frames) and what they should look like. Typically,
+% an outer theme specifies how the following elements are rendered:
+% • The head- and footline.
+% • The sidebars.
+% • The logo.
+% • The frame title.
 \useoutertheme{whubeamer}
-\newrobustcmd*\usewhutheme[2][]{
-  \def\whubeamer@mythemeoptions{#1}
-  \def\whubeamer@mythemelist{#2}
-  \@for\whubeamer@mythemename:=\whubeamer@mythemelist\do{
-    \@for\whubeamer@mythemeoption:=\whubeamer@mythemeoptions\do{
-      \expandafter\def\csname whubeamer@\whubeamer@mythemename
-        @\whubeamer@mythemeoption\endcsname{true}
-    }
-    \def\whubeamer@mythemefile{whubeamertheme\whubeamer@mythemename.ltx}
-    \IfFileExists{\whubeamer@mythemefile}{
-      \PackageWarning{\whubeamer@mythemename}{
-        Local ltx file is found. For documentation use only. \MessageBreak
-        Move to \getcontribdir{\whubeamer@mythemename} for release.
-        Unexpected error in other ltx may occur}
-      \renewcommand{\getcontribdir}[1]{.}
-    }{}
-    \input{\getcontribpath{\whubeamer@mythemename}{\whubeamer@mythemefile}}
-  }
-}
-\endinput
-%%
-%% End of file `beamerthemewhubeamer.sty'.
+% 17.1 Color Themes
+\usecolortheme{whubeamer}
+% 18.1 Font Themes
+\usefonttheme{whubeamer}
