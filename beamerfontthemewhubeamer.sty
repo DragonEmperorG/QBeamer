@@ -20,16 +20,55 @@
 %% See the License for the specific language governing permissions and
 %% limitations under the License.
 %% ------------------------------------------------------------------------
+
+% Font Themes 
+% A font theme dictates which fonts or font attributes are used in a presentation. Similar to
+% colors, the font of all text elements used in a presentation can be specified independently.
+
+% Identification. 
+% The file declares itself as a class written with the LaTeX2ε syntax.
+% \NeedsTeXFormat {⟨format-name⟩} [⟨release-date⟩]
 \NeedsTeXFormat{LaTeX2e}
+% \ProvidesPackage {⟨package-name⟩} [⟨release-info⟩]
 \ProvidesPackage{beamerfontthemewhubeamer}[2024/12/21 v3.1.1 whubeamer font theme]
-\RequirePackage{silence}
-\WarningFilter{latexfont}{Font shape}
+
+% silence – Selective filtering of error messages and warnings
+% \RequirePackage{silence}
+% \WarningFilter[<family>]{<package>}{<message>}
+% \WarningFilter{latexfont}{Font shape}
+
+% 18 Fonts
+% 18.1 Font Themes
+% This font theme does not really change any fonts. Rather, it suppresses certain internal replacements
+% performed by beamer. If you use “professional fonts” (fonts that you buy and that come with a
+% complete set of every symbol in all modes), you do not want beamer to meddle with the fonts you
+% use. beamer normally replaces certain character glyphs in mathematical text by more appropriate
+% versions. For example, beamer will normally replace glyphs such that the italic characters from the
+% main font are used for variables in mathematical text. If your professional font package takes care of this
+% already, beamer’s meddling should be switched off. Note that beamer’s substitution is automatically
+% turned off if one of the following packages is loaded: arevmath, hvmath, kpfonts, lmodern, lucidabr,
+% lucimatx, mathastext, mathpmnt, mathpple, mathtime, mtpro, and mtpro2. It is also turned off when
+% unicode-math is loaded for the use of Unicode math fonts. If your favorite professional font package is
+% not among these, use the professionalfonts theme (and open an issue in our github bug tracker, so
+% that the package can be added).
+% \usefonttheme{professionalfonts}
 \usefonttheme{professionalfonts}
+% \usefonttheme[⟨options⟩]{structurebold}
+% This font theme will cause titles and text in the headlines, footlines, and sidebars to be typeset in a
+% bold font.
+% The following ⟨options⟩ may be given:
+%   • onlysmall will cause only “small” text to be typeset in bold. More precisely, only the text in the
+%     headline, footline, and sidebars is changed to be typeset in bold. Large titles are not affected.
+%   • onlylarge will cause only “large” text to be typeset in bold. These are the main title, frame titles,
+%     and section entries in the table of contents.
 \usefonttheme{structurebold}
+
+% 18.3 Changing the Fonts Used for Different Elements of a Presentation
+% 18.3.3 Setting Beamer’s Fonts
+% \setbeamerfont*{⟨beamer-font name⟩}{⟨attributes⟩}
 \setbeamerfont{part name}{size=\normalsize}
 \setbeamerfont{section name}{size=\normalsize}
 \setbeamerfont{subsection name}{size=\normalsize}
 \setbeamerfont{footnote}{size=\footnotesize}
-\endinput
 %%
 %% End of file `beamerfontthemewhubeamer.sty'.

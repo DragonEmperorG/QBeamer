@@ -415,35 +415,58 @@
 \begin{frame} 
  	\frametitle{研究内容2 数据驱动车载航迹推算方法研究}
  	\framesubtitle{基于重庆数据集对比输入采样率因素速度估计结果}
-    {\footnotesize
-    \setlength{\tabcolsep}{2pt}
-		\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}clccccccccccc}
-			\toprule
-			\multicolumn{2}{c}{轨迹} & 08 & 09 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 \\
-			\midrule
-			\multirow{2}{*}{\SI{50}{Hz}} 
-			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
-			& 0.410 & 0.401 & 0.336 & 0.434 & 0.282 & 0.333 & 0.266 & 0.297 & 0.510 & 0.274 & 0.426 \\
-			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
-			& 0.419 & 0.584 & 0.407 & 0.644 & 0.376 & 0.382 & 0.393 & 0.414 & \textbf{0.607} & 0.401 & \textbf{0.509} \\ \addlinespace[1mm]
-			\multirow{2}{*}{\SI{100}{Hz}} 
-			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
-			& \textbf{0.277} & \textbf{0.308} & \textbf{0.274} & \textbf{0.361} & \textbf{0.206} & \textbf{0.237} & \textbf{0.225} & 0.277 & 0.480 & \textbf{0.229} & 0.411 \\ 
-			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
-			& 0.411 & \textbf{0.448} & \textbf{0.382} & 0.587 & 0.309 & \textbf{0.302} & \textbf{0.319} & 0.391 & 0.640 & \textbf{0.345} & 0.573 \\ \addlinespace[1mm]
-			\multirow{2}{*}{\SI{150}{Hz}} 
-			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
-			& 0.289 & 0.348 & 0.281 & 0.362 & 0.212 & 0.273 & 0.238 & \textbf{0.252} & \textbf{0.452} & 0.276 & \textbf{0.391} \\
-			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
-			& 0.412 & 0.485 & 0.403 & \textbf{0.574} & \textbf{0.301} & 0.359 & 0.339 & \textbf{0.351} & 0.625 & 0.395 & 0.493 \\ \addlinespace[1mm]
-			\multirow{2}{*}{\SI{200}{Hz}} 
-			& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
-			& 0.285 & 0.311 & 0.322 & 0.466 & 0.222 & 0.284 & 0.261 & 0.261 & 0.457 & 0.276 & 0.394 \\         
-			& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
-			& \textbf{0.401} & 0.488 & 0.474 & 0.673 & 0.312 & 0.374 & 0.358 & 0.370 & 0.647 & 0.395 & 0.527 \\
-			\bottomrule 
-		\end{tabular*}
-	}	
+	\vspace{-0.2cm}
+	\begin{columns}[t]
+		\begin{column}{0.6\textwidth}
+			\scalebox{0.9}{{   
+				\tiny   
+				\setlength{\tabcolsep}{2pt}     
+				\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}clccccccccccc}
+					\toprule
+					\multicolumn{2}{c}{轨迹} & 08 & 09 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 \\
+					\midrule
+					\multirow{2}{*}{\SI{50}{Hz}} 
+					& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+					& 0.410 & 0.401 & 0.336 & 0.434 & 0.282 & 0.333 & 0.266 & 0.297 & 0.510 & 0.274 & 0.426 \\
+					& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+					& 0.419 & 0.584 & 0.407 & 0.644 & 0.376 & 0.382 & 0.393 & 0.414 & \textbf{0.607} & 0.401 & \textbf{0.509} \\ \addlinespace[1mm]
+					\multirow{2}{*}{\SI{100}{Hz}} 
+					& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+					& \textbf{0.277} & \textbf{0.308} & \textbf{0.274} & \textbf{0.361} & \textbf{0.206} & \textbf{0.237} & \textbf{0.225} & 0.277 & 0.480 & \textbf{0.229} & 0.411 \\ 
+					& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+					& 0.411 & \textbf{0.448} & \textbf{0.382} & 0.587 & 0.309 & \textbf{0.302} & \textbf{0.319} & 0.391 & 0.640 & \textbf{0.345} & 0.573 \\ \addlinespace[1mm]
+					\multirow{2}{*}{\SI{150}{Hz}} 
+					& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+					& 0.289 & 0.348 & 0.281 & 0.362 & 0.212 & 0.273 & 0.238 & \textbf{0.252} & \textbf{0.452} & 0.276 & \textbf{0.391} \\
+					& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+					& 0.412 & 0.485 & 0.403 & \textbf{0.574} & \textbf{0.301} & 0.359 & 0.339 & \textbf{0.351} & 0.625 & 0.395 & 0.493 \\ \addlinespace[1mm]
+					\multirow{2}{*}{\SI{200}{Hz}} 
+					& $\vb*{e}^{\mathrm{AVE}}_{MAE}$ 
+					& 0.285 & 0.311 & 0.322 & 0.466 & 0.222 & 0.284 & 0.261 & 0.261 & 0.457 & 0.276 & 0.394 \\         
+					& $\vb*{e}^{\mathrm{RVE}}_{MAE, \Delta t}$ 
+					& \textbf{0.401} & 0.488 & 0.474 & 0.673 & 0.312 & 0.374 & 0.358 & 0.370 & 0.647 & 0.395 & 0.527 \\
+					\bottomrule 
+				\end{tabular*}
+		   	}}
+			\begin{itemize}
+				\item 动态位姿约束可以提升位置估计精度
+			\end{itemize}
+		\end{column} 
+		\begin{column}{0.4\textwidth}
+    		\vspace{-3.2cm}  
+		   	\begin{figure}
+    			\includegraphics[width=0.8\textwidth]{CQDatasetTrack08DataDrivenVelocityInputSampleRateFactor.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{0.5cm} {\tiny 重庆数据集 08 轨迹速度估计结果}
+		   	\vspace{-0.2cm}
+		   	\begin{figure}
+				\includegraphics[width=0.8\textwidth]{CQDatasetTrack11DataDrivenVelocityInputSampleRateFactor.png}
+		   	\end{figure}
+		   	\vspace{-0.5cm}
+		   	\hspace{0.5cm} {\tiny 重庆数据集 11 轨迹速度估计结果}
+		\end{column}    
+	\end{columns}	
 \end{frame}
 
 \begin{frame} 
@@ -473,7 +496,7 @@
 				\end{tabular*}
 		   	}}
 			\begin{itemize}
-				\item 动态位姿约束可以提升位置估计精度
+				\item \SI{100}{\hertz} 采样率可以实现相对高精度的速度估计
 			\end{itemize}
 		\end{column} 
 		\begin{column}{0.4\textwidth}

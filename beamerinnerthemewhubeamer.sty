@@ -20,10 +20,23 @@
 %% See the License for the specific language governing permissions and
 %% limitations under the License.
 %% ------------------------------------------------------------------------
+
+% Inner Themes 
+% An inner theme specifies how certain elements of a presentation are typeset. This includes
+% all elements that are at the “inside” of the frame, that is, that are not part of the headline, footline,
+% or sidebars. This includes all enumerations, itemize environments, block environments, theorem environments,
+% or the table of contents. For example, an inner theme might specify that in an enumeration
+% the number should be typeset without a dot and that a small circle should be shown behind it. The
+% inner theme would not specify what color should be used for the number or the circle (this is the job
+% of the color theme) nor which font should be used (this is the job of the font theme).
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{beamerinnerthemewhubeamer}[2024/12/21 v3.1.1 whubeamer inner theme]
+
+% Preliminary declarations. 
+% Here the external packages and classes needed are imported. Also, in this part of the file the commands and definitions needed by the declared options are coded.
 \RequirePackage{whuvi}
 \RequirePackage{tcolorbox}
+
 \DefineOption{inner}{cover}{maxplus}
 \DefineOption{inner}{cover}{max}
 \DefineOption{inner}{cover}{min}
@@ -38,10 +51,12 @@
 \DeclareOptionBeamer{en}{\def\whubeamer@inner@lang{en}}
 \@ifclassloaded{ctexbeamer}{\ExecuteOptionsBeamer{zh}}{
   \ExecuteOptionsBeamer{en}}
+
 \DefineOption{inner}{color}{red}
 \DefineOption{inner}{color}{blue}
 \ExecuteOptionsBeamer{red}
 \ProcessOptionsBeamer
+
 \PassOptionsToPackage{\whubeamer@inner@lang}{whucover}
 \if\EqualOption{inner}{color}{red}
   \colorlet{cprimary}{whuRedPrimary}
@@ -377,6 +392,5 @@
     \fi%
   }
 }
-\endinput
 %%
 %% End of file `beamerinnerthemewhubeamer.sty'.
